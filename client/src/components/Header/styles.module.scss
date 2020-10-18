@@ -1,0 +1,79 @@
+@import 'src/styles/variables';
+$headerBackground: #ec174d;
+$marginTop: 12px;
+$height: 50px;
+
+.header {
+  height: $height;
+  background-color: $headerBackground;
+  display: flex;
+  align-items: stretch;
+
+  .innerHeader {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $height;
+  }
+
+  h1 {
+    height: $height;
+    font-size: 2.2rem;
+    margin-top: $marginTop;
+  }
+
+  a {
+    height: $height;
+    text-decoration: none;
+    color: $linkColor;
+    margin: 0px 25px 0px 25px;
+
+    &:hover {
+      border-bottom: 5px solid $colorWhite;
+    }
+
+    h3 {
+      margin-top: $marginTop;
+    }
+  }
+
+  svg {
+    margin: 0px 10px 0px 10px;
+    font-size: $mediumLarge;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .chooseCity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .profileIcon {
+    border-radius: 50%;
+    border: 3px solid $colorWhite;
+    width: 40px;
+    height: 40px;
+    padding-left: 9px;
+    padding-top: 2px;
+    font-size: $medium;
+    margin-left: 25px;
+
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
