@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
 import styles from './styles.module.scss';
-import SearchIcon from '@material-ui/icons/Search';
 import EventIcon from '@material-ui/icons/Event';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 
@@ -15,6 +14,7 @@ const HeaderComponent: React.FC<IProps> = ({ profileNamePreview }) => {
     <header className={styles.header}>
       <div className={styles.innerHeader}>
         <h1>music.ua</h1>
+        <div className={styles.break}></div>
         <NavLink to={Routes.CONCERTS}>
           <h3>Concerts</h3>
         </NavLink>
@@ -24,7 +24,7 @@ const HeaderComponent: React.FC<IProps> = ({ profileNamePreview }) => {
         <NavLink to={Routes.ALBUMS}>
           <h3>Albums</h3>
         </NavLink>
-        <SearchIcon />
+        <div className={styles.break}></div>
         <EventIcon />
         <div className={styles.chooseCity}>
           <LocationCityIcon />
