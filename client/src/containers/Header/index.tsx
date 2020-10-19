@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
 
@@ -9,7 +9,8 @@ import { fetchCities, fetchDates } from './redux/actions';
 import styles from './styles.module.scss';
 import EventIcon from '@material-ui/icons/Event';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
-import ProfileIcon from './components/profile-icon';
+import ProfileIcon from './components/ProfileIcon';
+import DatesMenu from './components/DatesMenu';
 
 interface IProps {
   profileNamePreview: string;
@@ -25,8 +26,9 @@ const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
       state: { user },
     },
   } = useSelector((state: RootState) => ({ navbar: state.navbar, profile: state.profile }));
+  const eventIconRef = React.useRef<SVGSVGElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(fetchDates.request());
     dispatch(fetchCities.request());
   }, []);
@@ -46,7 +48,17 @@ const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
           <h3>Albums</h3>
         </NavLink>
         <div className={styles.break}></div>
-        <EventIcon />
+        <>
+          <EventIcon ref={eventIconRef}></EventIcon>
+          <DatesMenu
+            dates={dates}
+            anchorEl={(eventIconRef.current as unknown) as HTMLElement}
+            onSelect={(id: string) => {
+              console.log(`Selected date id in navbar: ${id}`);
+            }}
+          />
+        </>
+
         <div className={styles.chooseCity}>
           <LocationCityIcon />
           <h3>Choose city</h3>

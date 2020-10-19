@@ -13,22 +13,27 @@ export class DateService {
           {
             date: 'Today',
             isPlainString: true,
+            id: '1',
           },
           {
             date: 'Tomorrow',
             isPlainString: true,
+            id: '2',
           },
           {
             date: 'This week',
             isPlainString: true,
+            id: '3',
           },
           {
             date: 'Next week',
             isPlainString: true,
+            id: '4',
           },
           {
             date: 'This month',
             isPlainString: true,
+            id: '5',
           },
         ]);
       }, 1000);
