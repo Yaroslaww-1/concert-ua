@@ -37,7 +37,7 @@ $height: 50px;
     margin-top: $marginTop;
   }
 
-  a {
+  a:not([custom-attribute="main-logo"]) {
     height: $height;
     text-decoration: none;
     color: $linkColor;
@@ -51,6 +51,11 @@ $height: 50px;
       margin-top: $marginTop;
     }
   }
+
+  a[custom-attribute="main-logo"] {
+    text-decoration: none;
+    color: $linkColor;
+  }  
 
   svg {
     margin: 0px 10px 0px 10px;

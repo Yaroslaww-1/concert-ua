@@ -46,7 +46,9 @@ const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
   return (
     <header className={styles.header}>
       <div className={styles.innerHeader}>
-        <h1>music.ua</h1>
+        <NavLink to={Routes.DEFAULT} custom-attribute="main-logo">
+          <h1>music.ua</h1>
+        </NavLink>
         <div className={styles.break}></div>
         <NavLink to={Routes.CONCERTS}>
           <h3>Concerts</h3>
