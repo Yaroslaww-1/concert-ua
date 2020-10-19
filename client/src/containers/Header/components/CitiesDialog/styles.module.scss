@@ -1,0 +1,26 @@
+@import 'src/styles/variables';
+
+.dialogTitle {
+  margin: 0px 0px !important;
+}
+
+.dialog {
+  background-color: $colorWhite !important;
+  color: $colorBlack !important;
+
+  .dialogInner {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+
+    .listItem {
+      margin-right: 5px;
+      font-size: $medium;
+      cursor: pointer;
+
+      &:hover {
+        color: $colorRed;
+      }
+    }
+  }
+}

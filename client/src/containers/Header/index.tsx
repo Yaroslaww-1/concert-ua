@@ -11,6 +11,7 @@ import EventIcon from '@material-ui/icons/Event';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import ProfileIcon from './components/ProfileIcon';
 import DatesMenu from './components/DatesMenu';
+import CitiesDialog from './components/CitiesDialog';
 
 interface IProps {
   profileNamePreview: string;
@@ -27,11 +28,20 @@ const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
     },
   } = useSelector((state: RootState) => ({ navbar: state.navbar, profile: state.profile }));
   const eventIconRef = React.useRef<SVGSVGElement>(null);
+  const chooseCityRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     dispatch(fetchDates.request());
     dispatch(fetchCities.request());
   }, []);
+
+  const onDateSelect = (id: string) => {
+    console.log(`Selected date id in navbar: ${id}`);
+  };
+
+  const onCitySelect = (id: string) => {
+    console.log(`Selected city id in navbar: ${id}`);
+  };
 
   return (
     <header className={styles.header}>
@@ -53,15 +63,14 @@ const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
           <DatesMenu
             dates={dates}
             anchorEl={(eventIconRef.current as unknown) as HTMLElement}
-            onSelect={(id: string) => {
-              console.log(`Selected date id in navbar: ${id}`);
-            }}
+            onSelect={onDateSelect}
           />
         </>
 
-        <div className={styles.chooseCity}>
+        <div className={styles.chooseCity} ref={chooseCityRef}>
           <LocationCityIcon />
           <h3>Choose city</h3>
+          <CitiesDialog anchorEl={chooseCityRef.current} onSelect={onCitySelect} cities={cities} />
         </div>
         {user ? <ProfileIcon profileNamePreview={user.name.toUpperCase().charAt(0)} /> : <h3>Login</h3>}
       </div>
