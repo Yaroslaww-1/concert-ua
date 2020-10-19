@@ -44,7 +44,7 @@ const CitiesDialog: React.FC<IProps> = ({ cities, onSelect: propsOnSelect, ancho
       maxWidth={false}
     >
       <DialogTitle id="choose-city-title" classes={{ root: styles.dialogTitle }}>
-        <Typography variant="h3" component="h1">
+        <Typography variant="h3" component="h1" classes={{ root: styles.dialogTitleText }}>
           Choose city
         </Typography>
       </DialogTitle>
@@ -53,7 +53,9 @@ const CitiesDialog: React.FC<IProps> = ({ cities, onSelect: propsOnSelect, ancho
           <List key={index}>
             {columnOfCities.map((city) => (
               <ListItem key={city.id} onClick={() => onClose(city.id)} classes={{ root: styles.listItem }}>
-                {city.name}
+                <Typography variant="h6" component="h1">
+                  {city.name}
+                </Typography>
               </ListItem>
             ))}
           </List>
