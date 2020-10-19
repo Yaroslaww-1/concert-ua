@@ -1,6 +1,6 @@
 import React from 'react';
 import Spinner from 'src/components/Spinner';
-import HeaderComponent from 'src/components/Header';
+import HeaderContainer from 'src/containers/Header';
 
 interface IProps {
   loading: boolean;
@@ -9,7 +9,7 @@ interface IProps {
 const PageComponent: React.FC<IProps> = ({ loading, children }) => {
   return (
     <>
-      <HeaderComponent profileNamePreview={'A'} />
+      <HeaderContainer profileNamePreview={'A'} />
       {loading ? <Spinner /> : children}
     </>
   );

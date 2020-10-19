@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/redux/rootReducer';
+import { fetchCities, fetchDates } from './redux/actions';
+
 import styles from './styles.module.scss';
 import EventIcon from '@material-ui/icons/Event';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
+import ProfileIcon from './components/profile-icon';
 
 interface IProps {
   profileNamePreview: string;
 }
 
-const HeaderComponent: React.FC<IProps> = ({ profileNamePreview }) => {
+const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
+  const dispatch = useDispatch();
+  const {
+    navbar: {
+      state: { dates, cities },
+    },
+    profile: {
+      state: { user },
+    },
+  } = useSelector((state: RootState) => ({ navbar: state.navbar, profile: state.profile }));
+
+  useEffect(() => {
+    dispatch(fetchDates.request());
+    dispatch(fetchCities.request());
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.innerHeader}>
@@ -30,10 +51,10 @@ const HeaderComponent: React.FC<IProps> = ({ profileNamePreview }) => {
           <LocationCityIcon />
           <h3>Choose city</h3>
         </div>
-        <div className={styles.profileIcon}>{profileNamePreview}</div>
+        {user ? <ProfileIcon profileNamePreview={user.name.toUpperCase().charAt(0)} /> : <h3>Login</h3>}
       </div>
     </header>
   );
 };
 
-export default HeaderComponent;
+export default HeaderContainer;
