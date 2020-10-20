@@ -2,7 +2,7 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.scss';
 import App from 'src/pages/App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';

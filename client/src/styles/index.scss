@@ -1,0 +1,39 @@
+@import './variables';
+@import './fonts';
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: $bgColor;
+  color: #fff;
+  margin: 0;
+  font-size: 0.875rem;
+  font-family: Lato, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  min-height: 100vh;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: $linkColor;
+  transition: color .2s;
+
+  &:hover {
+    color: $linkHoveredColor;
+  }
+
+  &:active {
+    color: $linkActiveColor
+  }
+}
+

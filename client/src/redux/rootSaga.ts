@@ -1,7 +1,8 @@
 import { all } from 'redux-saga/effects';
-import fetchPingSagas from 'src/pages/Ping/redux/sagas';
+import fetchNavbarSagas from 'src/containers/Header/redux/sagas';
+import fetchUserSagas from 'src/pages/Profile/redux/sagas';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function* rootSaga(): Iterator<any, any, undefined> {
-  yield all([fetchPingSagas()]);
+  yield all([fetchUserSagas(), fetchNavbarSagas()]);
 }

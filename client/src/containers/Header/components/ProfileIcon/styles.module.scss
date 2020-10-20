@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+
+.profileIcon {
+  border-radius: 50%;
+  border: 3px solid $colorWhite;
+  width: 40px;
+  height: 40px;
+  padding-left: 9px;
+  padding-top: 2px;
+  font-size: $medium;
+  margin-left: 25px;
+
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
