@@ -4,15 +4,21 @@ import { useInterval } from 'src/common/hooks/use-interval';
 import styles from './styles.module.scss';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import MinimizeRoundedIcon from '@material-ui/icons/MinimizeRounded';
 
 interface IProps {
   columns?: number;
-  withArrows?: boolean;
   changeTimeout?: number;
   items: JSX.Element[];
   className?: string;
+  withArrows?: boolean;
   leftArrowClassName?: string;
   rightArrowClassName?: string;
+  withNavigation?: boolean;
+  navigationClassName?: string;
+  navigationSelectedClassName?: string;
+  navigationNotSelectedClassName?: string;
 }
 
 const Carousel: React.FC<IProps> = ({
@@ -21,8 +27,12 @@ const Carousel: React.FC<IProps> = ({
   changeTimeout = 5000,
   className = '',
   items: propsItems,
-  leftArrowClassName,
-  rightArrowClassName,
+  leftArrowClassName = '',
+  rightArrowClassName = '',
+  withNavigation = true,
+  navigationClassName = '',
+  navigationSelectedClassName = '',
+  navigationNotSelectedClassName = '',
 }) => {
   const items = propsItems.map((item, index) => ({ index, item }));
   const [visibleItemIndexes, setVisibleItemIndexes] = React.useState<number[]>(
@@ -49,6 +59,12 @@ const Carousel: React.FC<IProps> = ({
     setVisibleItemIndexes([newVisibleIndex, ...visibleIndexes]);
   };
 
+  const moveTo = (index: number) => {
+    const newVisibleIndexes = [...items, ...items].slice(index, index + columns).map((item) => item.index);
+    console.log(visibleItemIndexes, newVisibleIndexes);
+    setVisibleItemIndexes(newVisibleIndexes);
+  };
+
   useInterval(() => {
     moveRight();
   }, changeTimeout);
@@ -69,6 +85,24 @@ const Carousel: React.FC<IProps> = ({
             </div>
           </div>
         </>
+      )}
+      {withNavigation && (
+        <div className={`${styles.navigation} ${navigationClassName}`}>
+          {items.map((item) =>
+            visibleItemIndexes[0] === item.index ? (
+              <MinimizeRoundedIcon
+                key={item.index}
+                classes={{ root: `${styles.icon} ${navigationSelectedClassName}` }}
+              />
+            ) : (
+              <FiberManualRecordIcon
+                key={item.index}
+                classes={{ root: `${styles.icon} ${navigationNotSelectedClassName}` }}
+                onClick={() => moveTo(item.index)}
+              />
+            ),
+          )}
+        </div>
       )}
     </div>
   );

@@ -18,6 +18,9 @@ const EventsMainCarousel: React.FC = () => {
         className={styles.carouselContent}
         leftArrowClassName={styles.arrowLeft}
         rightArrowClassName={styles.arrowRight}
+        navigationClassName={styles.navigation}
+        navigationSelectedClassName={styles.selected}
+        navigationNotSelectedClassName={styles.notSelected}
         items={events.map((event) => (
           <div className={styles.slide} key={event.id}>
             <img src={event.imageUrl} />

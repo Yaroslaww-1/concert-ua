@@ -48,4 +48,22 @@
     right: 58px;
     top: 45%;
   }
+
+  .navigation {
+    position: absolute;
+    bottom: 0px;
+  }
+
+  .notSelected {
+    opacity: 0.5;
+  }
+
+  .selected {
+    margin-top: -94px;
+    padding: 0px 0px 0px 0px !important;
+    color: $colorRed;
+    font-size: 8rem;
+    font-weight: 900;
+    color: $colorWhite;
+  }
 }
