@@ -13,7 +13,7 @@ const NotFoundPage: React.FC = () => {
           <Typography variant="h2" component="h1" className={styles.notFoundText}>
             Page was not found :(
           </Typography>
-          <h1>Do not worry! Try some poplar events we prepared for you:</h1>
+          <h1>Do not worry! Try some popular events we prepared for you:</h1>
         </div>
         <div className={styles.listWrapper}>
           <ShowMore />
