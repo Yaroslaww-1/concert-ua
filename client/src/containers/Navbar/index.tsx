@@ -13,11 +13,7 @@ import ProfileIcon from './components/ProfileIcon';
 import DatesMenu from './components/DatesMenu';
 import CitiesDialog from './components/CitiesDialog';
 
-interface IProps {
-  profileNamePreview: string;
-}
-
-const HeaderContainer: React.FC<IProps> = ({ profileNamePreview }) => {
+const HeaderContainer: React.FC = () => {
   const dispatch = useDispatch();
   const {
     navbar: {
