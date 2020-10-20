@@ -12,6 +12,8 @@ html {
   min-height: 100%;
   margin:0;
   padding:0;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
 }
 
 body {
@@ -25,6 +27,7 @@ body {
   height: 100%;
   min-height: 100%;
   top: 0 !important;
+  padding: 0 !important;
 
   #root {
     position: relative;

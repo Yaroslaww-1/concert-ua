@@ -2,6 +2,8 @@ import React from 'react';
 import { useInterval } from 'src/common/hooks/use-interval';
 
 import styles from './styles.module.scss';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { style } from '@material-ui/system';
 
 interface IProps {
   columns?: number;
@@ -14,7 +16,7 @@ interface IProps {
 const Carousel: React.FC<IProps> = ({
   columns = 1,
   withArrows = true,
-  changeTimeout = 5000,
+  changeTimeout = 5000000,
   className = '',
   items: propsItems,
 }) => {
@@ -50,6 +52,9 @@ const Carousel: React.FC<IProps> = ({
   return (
     <div className={`${styles.wrapper} ${className}`}>
       {items.filter((item) => visibleItemIndexes.includes(item.index)).map((item) => item.item)}
+      {/* <div className={styles.arrowLeft}>
+        <ArrowBackIosIcon />
+      </div> */}
     </div>
   );
 };
