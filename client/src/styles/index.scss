@@ -6,9 +6,12 @@
 }
 
 html {
-  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  min-height: 100%;
+  margin:0;
+  padding:0;
 }
 
 body {
@@ -19,21 +22,18 @@ body {
   font-family: Lato, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.43;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
+  top: 0 !important;
+
+  #root {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
+  }
 }
 
-.link {
+a {
   text-decoration: none;
-  cursor: pointer;
   color: $linkColor;
-  transition: color .2s;
-
-  &:hover {
-    color: $linkHoveredColor;
-  }
-
-  &:active {
-    color: $linkActiveColor
-  }
 }
-
