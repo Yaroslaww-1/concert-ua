@@ -16,6 +16,8 @@ const EventsMainCarousel: React.FC = () => {
     <div className={styles.carouselWrapper}>
       <Carousel
         className={styles.carouselContent}
+        leftArrowClassName={styles.arrowLeft}
+        rightArrowClassName={styles.arrowRight}
         items={events.map((event) => (
           <div className={styles.slide} key={event.id}>
             <img src={event.imageUrl} />

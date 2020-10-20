@@ -5,69 +5,33 @@
   flex-direction: row;
   overflow-x: hidden;
 
-  .arrowLeft {
-    z-index: 2 !important;
-    padding: 10px;
-    
-    font-size: 8rem;
+  .shadow {
+    height: 160px !important;
+    width: 160px !important;
     position: absolute;
-    left: -108px;
-    top: 45%;
-
-    .shadow {
-      height: 160px !important;
-      width: 160px !important;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    
+    &.left {
       align-items: flex-end;
-      justify-content: center;
-      cursor: pointer;
-
-      svg {
-        font-size: 5rem;
-        color: $colorRed;
-      }
-
-      &:hover {
-        background-color: rgba($color: $colorBlack, $alpha: 0.55);
-        border-radius: 50%;
-        box-shadow: 0 0 0 0;
-        transition: 0.3s;
-      }
     }
-  }
 
-  .arrowRight {
-    z-index: 2 !important;
-    padding: 10px;
-    
-    font-size: 8rem;
-    position: absolute;
-    right: 58px;
-    top: 45%;
-
-    .shadow {
-      height: 160px !important;
-      width: 160px !important;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
+    &.right {
       align-items: flex-start;
-      justify-content: center;
-      cursor: pointer;
+    }
 
-      svg {
-        font-size: 5rem;
-        color: $colorRed;
-      }
+    svg {
+      font-size: 5rem;
+      color: $colorRed;
+    }
 
-      &:hover {
-        background-color: rgba($color: $colorBlack, $alpha: 0.55);
-        border-radius: 50%;
-        box-shadow: 0 0 0 0;
-        transition: 0.3s;
-      }
+    &:hover {
+      background-color: rgba($color: $colorBlack, $alpha: 0.55);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0;
+      transition: 0.3s;
     }
   }
 }

@@ -58,13 +58,13 @@ const Carousel: React.FC<IProps> = ({
       {items.filter((item) => visibleItemIndexes.includes(item.index)).map((item) => item.item)}
       {withArrows && (
         <>
-          <div className={`${styles.arrowLeft} ${leftArrowClassName}`} onClick={moveLeft}>
-            <div className={styles.shadow}>
+          <div className={leftArrowClassName} onClick={moveLeft}>
+            <div className={`${styles.shadow} ${styles.left}`}>
               <NavigateBeforeIcon />
             </div>
           </div>
-          <div className={`${styles.arrowRight} ${rightArrowClassName}`} onClick={moveRight}>
-            <div className={styles.shadow}>
+          <div className={rightArrowClassName} onClick={moveRight}>
+            <div className={`${styles.shadow} ${styles.right}`}>
               <NavigateNextIcon />
             </div>
           </div>

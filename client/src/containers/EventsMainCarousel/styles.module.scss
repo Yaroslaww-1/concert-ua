@@ -1,3 +1,5 @@
+@import 'src/styles/variables';
+
 .carouselWrapper {
   height: 100%;
 
@@ -25,5 +27,25 @@
         backface-visibility: hidden;
       }
     }
+  }
+
+  .arrowLeft {
+    z-index: 2 !important;
+    padding: 10px;
+    
+    font-size: 8rem;
+    position: absolute;
+    left: -108px;
+    top: 45%;
+  }
+
+  .arrowRight {
+    z-index: 2 !important;
+    padding: 10px;
+    
+    font-size: 8rem;
+    position: absolute;
+    right: 58px;
+    top: 45%;
   }
 }
