@@ -2,8 +2,8 @@ import React from 'react';
 import { useInterval } from 'src/common/hooks/use-interval';
 
 import styles from './styles.module.scss';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import { style } from '@material-ui/system';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 interface IProps {
   columns?: number;
@@ -11,14 +11,18 @@ interface IProps {
   changeTimeout?: number;
   items: JSX.Element[];
   className?: string;
+  leftArrowClassName?: string;
+  rightArrowClassName?: string;
 }
 
 const Carousel: React.FC<IProps> = ({
   columns = 1,
   withArrows = true,
-  changeTimeout = 5000000,
+  changeTimeout = 5000,
   className = '',
   items: propsItems,
+  leftArrowClassName,
+  rightArrowClassName,
 }) => {
   const items = propsItems.map((item, index) => ({ index, item }));
   const [visibleItemIndexes, setVisibleItemIndexes] = React.useState<number[]>(
@@ -52,9 +56,20 @@ const Carousel: React.FC<IProps> = ({
   return (
     <div className={`${styles.wrapper} ${className}`}>
       {items.filter((item) => visibleItemIndexes.includes(item.index)).map((item) => item.item)}
-      {/* <div className={styles.arrowLeft}>
-        <ArrowBackIosIcon />
-      </div> */}
+      {withArrows && (
+        <>
+          <div className={`${styles.arrowLeft} ${leftArrowClassName}`} onClick={moveLeft}>
+            <div className={styles.shadow}>
+              <NavigateBeforeIcon />
+            </div>
+          </div>
+          <div className={`${styles.arrowRight} ${rightArrowClassName}`} onClick={moveRight}>
+            <div className={styles.shadow}>
+              <NavigateNextIcon />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
