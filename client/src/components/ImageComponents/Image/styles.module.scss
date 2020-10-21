@@ -1,0 +1,34 @@
+@import 'src/styles/variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $colorBlack;
+  height: 100%;
+  position: relative;
+
+  .text {
+    z-index: 201;
+    height: 100%;
+    top: 35%;
+    position: absolute;
+    color: $colorWhite;
+    font-weight: 900;
+
+    .date {
+      font-size: 5rem;
+    }
+
+    .title {
+      line-height: 1;
+      font-size: 10rem;
+    }
+
+    .place {
+      font-size: 5rem;
+    }
+  }
+}

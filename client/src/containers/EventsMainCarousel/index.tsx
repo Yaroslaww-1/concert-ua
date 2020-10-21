@@ -7,6 +7,7 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import FullscreenImage from 'src/components/ImageComponents/FullscreenImage';
 
 const EventsSecondaryCarousel: React.FC = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const EventsSecondaryCarousel: React.FC = () => {
       <Slider
         dots={true}
         infinite={true}
-        autoplay={true}
+        autoplay={false}
         autoplaySpeed={5000}
         speed={500}
         slidesToShow={1}
@@ -53,7 +54,15 @@ const EventsSecondaryCarousel: React.FC = () => {
         prevArrow={<PrevArrow />}
       >
         {events.map((event) => (
-          <img key={event.id} src={event.imageUrl} />
+          <FullscreenImage
+            key={event.id}
+            imageSrc={event.imageUrl}
+            imageAltText={event.name}
+            withText={true}
+            date={event.date}
+            title={event.name}
+            place={event.place}
+          />
         ))}
       </Slider>
     </div>
