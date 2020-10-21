@@ -2,6 +2,7 @@ import React from 'react';
 import { useInterval } from 'src/common/hooks/use-interval';
 
 import styles from './styles.module.scss';
+import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
@@ -70,41 +71,16 @@ const Carousel: React.FC<IProps> = ({
   }, changeTimeout);
 
   return (
-    <div className={`${styles.wrapper} ${className}`}>
-      {items.filter((item) => visibleItemIndexes.includes(item.index)).map((item) => item.item)}
-      {withArrows && (
-        <>
-          <div className={leftArrowClassName} onClick={moveLeft}>
-            <div className={`${styles.shadow} ${styles.left}`}>
-              <NavigateBeforeIcon />
-            </div>
-          </div>
-          <div className={rightArrowClassName} onClick={moveRight}>
-            <div className={`${styles.shadow} ${styles.right}`}>
-              <NavigateNextIcon />
-            </div>
-          </div>
-        </>
+    // <div className={`${styles.wrapper} ${className}`}>
+    <Slider dots={true} infinite={true} speed={500} slidesToShow={1} slidesToScroll={1} className={styles.innerWrapper}>
+      {items.map(
+        (item) =>
+          // <div key={item.index} className={`${styles.inner}`}>
+          item.item,
+        // </div>
       )}
-      {withNavigation && (
-        <div className={`${styles.navigation} ${navigationClassName}`}>
-          {items.map((item) =>
-            visibleItemIndexes[0] === item.index ? (
-              <MinimizeRoundedIcon
-                key={item.index}
-                classes={{ root: `${styles.icon} ${navigationSelectedClassName}` }}
-              />
-            ) : (
-              <FiberManualRecordIcon
-                key={item.index}
-                classes={{ root: `${styles.icon} ${navigationNotSelectedClassName}` }}
-                onClick={() => moveTo(item.index)}
-              />
-            ),
-          )}
-        </div>
-      )}
-    </div>
+    </Slider>
+    // </div>
   );
 };
 

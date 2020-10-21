@@ -4,6 +4,7 @@ import { RootState } from 'src/redux/rootReducer';
 
 import styles from './styles.module.scss';
 import Carousel from 'src/components/Carousel';
+import Slider from 'react-slick';
 
 const EventsMainCarousel: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const EventsMainCarousel: React.FC = () => {
   } = useSelector((state: RootState) => ({ home: state.home }));
   return (
     <div className={styles.carouselWrapper}>
-      <Carousel
+      {/* <Carousel
         className={styles.carouselContent}
         leftArrowClassName={styles.arrowLeft}
         rightArrowClassName={styles.arrowRight}
@@ -22,11 +23,25 @@ const EventsMainCarousel: React.FC = () => {
         navigationSelectedClassName={styles.selected}
         navigationNotSelectedClassName={styles.notSelected}
         items={events.map((event) => (
-          <div className={styles.slide} key={event.id}>
-            <img src={event.imageUrl} />
-          </div>
+          <img key={event.id} src={event.imageUrl} />
         ))}
-      />
+      /> */}
+      <Slider
+        dots={true}
+        infinite={true}
+        speed={500}
+        slidesToShow={1}
+        slidesToScroll={1}
+        className={styles.innerWrapper}
+      >
+        {events.map(
+          (event) => (
+            // <div key={item.index} className={`${styles.inner}`}>
+            <img key={event.id} src={event.imageUrl} />
+          ),
+          // </div>
+        )}
+      </Slider>
     </div>
   );
 };
