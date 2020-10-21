@@ -45,14 +45,11 @@ $height: 50px;
     height: $height;
     text-decoration: none;
     color: $linkColor;
-    margin: 0px 25px 0px 25px;
+    margin: 0px 25px 10px 25px;
 
     &:hover {
       border-bottom: 5px solid $colorWhite;
-    }
-
-    h3 {
-      margin-top: $marginTop;
+      margin-bottom: 5px;
     }
   }
 
