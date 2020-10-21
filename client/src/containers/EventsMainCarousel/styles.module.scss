@@ -2,51 +2,86 @@
 
 .carouselWrapper {
   height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
   img {
     object-fit: cover;
-    height: 100vh !important;
-    width: auto;
+    height: 100vh;
+    width: 100%;
     min-width: 100%;
-    height: auto;
-    max-height: 100%;
-  }
-
-  .arrowLeft {
-    z-index: 2 !important;
-    padding: 10px;
-    
-    font-size: 8rem;
-    position: absolute;
-    left: -108px;
-    top: 45%;
-  }
-
-  .arrowRight {
-    z-index: 2 !important;
-    padding: 10px;
-    
-    font-size: 8rem;
-    position: absolute;
-    right: 58px;
-    top: 45%;
   }
 
   .navigation {
     position: absolute;
-    bottom: 0px;
+    left: 0;
+    bottom: 50px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+
+    li {
+      button:before {
+        opacity: 0.8;
+        color: $colorWhite;
+        content: "";
+        background-color: $colorWhite;
+        border-radius: 10px;
+        width: 15px;
+        height: 15px;
+      }
+
+      &:global(.slick-active) button:before {
+        width: 60px;
+        left: -20px;
+      }
+      
+      padding: 0px 30px 20px 30px;
+      cursor: pointer;
+    }
   }
 
-  .notSelected {
-    opacity: 0.5;
-  }
+  // .arrowLeft {
+  //   z-index: 2 !important;
+  //   padding: 10px;
+    
+  //   font-size: 8rem;
+  //   position: absolute;
+  //   left: -108px;
+  //   top: 45%;
+  // }
 
-  .selected {
-    margin-top: -94px;
-    padding: 0px 0px 0px 0px !important;
-    color: $colorRed;
-    font-size: 8rem;
-    font-weight: 900;
-    color: $colorWhite;
-  }
+  // .arrowRight {
+  //   z-index: 2 !important;
+  //   padding: 10px;
+    
+  //   font-size: 8rem;
+  //   position: absolute;
+  //   right: 58px;
+  //   top: 45%;
+  // }
+
+  // .navigation {
+  //   position: absolute;
+  //   bottom: 0px;
+  // }
+
+  // .notSelected {
+  //   opacity: 0.5;
+  // }
+
+  // .selected {
+  //   margin-top: -94px;
+  //   padding: 0px 0px 0px 0px !important;
+  //   color: $colorRed;
+  //   font-size: 8rem;
+  //   font-weight: 900;
+  //   color: $colorWhite;
+  // }
 }
