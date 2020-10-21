@@ -13,7 +13,7 @@ import ProfileIcon from './components/ProfileIcon';
 import DatesMenu from './components/DatesMenu';
 import CitiesDialog from './components/CitiesDialog';
 
-const HeaderContainer: React.FC = () => {
+const Navbar: React.FC = () => {
   const dispatch = useDispatch();
   const {
     navbar: {
@@ -40,8 +40,8 @@ const HeaderContainer: React.FC = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.innerHeader}>
+    <header className={styles.navbar}>
+      <div className={styles.innerNavbar}>
         <NavLink to={Routes.DEFAULT} custom-attribute="main-logo">
           <h1>music.ua</h1>
         </NavLink>
@@ -76,4 +76,4 @@ const HeaderContainer: React.FC = () => {
   );
 };
 
-export default HeaderContainer;
+export default Navbar;

@@ -1,16 +1,20 @@
 @import 'src/styles/variables';
 
-$headerBackground: #ec174d;
+$navbarBackground: #ec174d;
 $marginTop: 12px;
 $height: 50px;
 
-.header {
+.navbar {
   height: $height;
-  background-color: $headerBackground;
+  background-color: $navbarBackground;
   display: flex;
   align-items: stretch;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
 
-  .innerHeader {
+  .innerNavbar {
     max-width: 1170px;
     margin: 0 auto;
     display: flex;

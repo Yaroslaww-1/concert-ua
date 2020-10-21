@@ -1,4 +1,6 @@
 import React from 'react';
+
+import styles from './styles.module.scss';
 import Spinner from 'src/components/Spinner';
 import Navbar from 'src/containers/Navbar';
 
@@ -10,7 +12,7 @@ interface IProps {
 
 const PageComponent: React.FC<IProps> = ({ loading, children, withoutNavbar = false, className = '' }) => {
   return (
-    <div className={className}>
+    <div className={`${styles.page} ${className}`}>
       {!withoutNavbar && <Navbar />}
       {loading ? <Spinner /> : children}
     </div>
