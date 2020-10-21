@@ -5,6 +5,7 @@ import { fetchEvents } from './redux/actions';
 import styles from './styles.module.scss';
 import PageComponent from 'src/components/Page';
 import EventsMainCarousel from 'src/containers/EventsMainCarousel';
+import EventsSecondaryCarousel from 'src/containers/EventsSecondaryCarousel';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const HomePage: React.FC = () => {
   return (
     <PageComponent loading={false}>
       <EventsMainCarousel />
+      <EventsSecondaryCarousel />
     </PageComponent>
   );
 };

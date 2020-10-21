@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-const EventsMainCarousel: React.FC = () => {
+const EventsSecondaryCarousel: React.FC = () => {
   const dispatch = useDispatch();
   const {
     home: {
@@ -43,6 +43,8 @@ const EventsMainCarousel: React.FC = () => {
       <Slider
         dots={true}
         infinite={true}
+        autoplay={true}
+        autoplaySpeed={5000}
         speed={500}
         slidesToShow={1}
         slidesToScroll={1}
@@ -58,4 +60,4 @@ const EventsMainCarousel: React.FC = () => {
   );
 };
 
-export default EventsMainCarousel;
+export default EventsSecondaryCarousel;
