@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import FullscreenImage from 'src/components/ImageComponents/FullscreenImage';
+import FullscreenImage from 'src/components/ImageComponents/Images/FullscreenImage';
 
 const EventsSecondaryCarousel: React.FC = () => {
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const EventsSecondaryCarousel: React.FC = () => {
         prevArrow={<PrevArrow />}
       >
         {events.map((event) => (
-          <FullscreenImage key={event.id} imageSrc={event.imageUrl} imageAltText={event.name} withText={false} />
+          <FullscreenImage key={event.id} imageSrc={event.imageUrl} imageAltText={event.name} />
         ))}
       </Slider>
     </div>

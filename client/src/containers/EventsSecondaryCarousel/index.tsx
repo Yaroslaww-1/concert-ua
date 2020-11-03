@@ -5,7 +5,8 @@ import { RootState } from 'src/redux/rootReducer';
 
 import styles from './styles.module.scss';
 import Slider from 'react-slick';
-import SquareImage from 'src/components/ImageComponents/SquareImage';
+import SquareImage from 'src/components/ImageComponents/Images/SquareImage';
+import SquareImageHoverOverlay from 'src/components/ImageComponents/HoverOverlays/ImageHover';
 
 const EventsMainCarousel: React.FC = () => {
   const dispatch = useDispatch();
@@ -35,14 +36,11 @@ const EventsMainCarousel: React.FC = () => {
             key={event.id}
             imageSrc={event.imageUrl}
             imageAltText={event.name}
-            withText={false}
-            withHover={true}
-            withTextOnHover={true}
-            date={event.date}
-            title={event.name}
-            place={event.place}
-            imageClassName={styles.image}
-            imageWrapperClassName={styles.imageWrapper}
+            classes={{
+              root: styles.imageWrapper,
+              image: styles.image,
+            }}
+            frontElement={<SquareImageHoverOverlay onBuy={() => {}} onLike={() => {}} title={event.name} />}
           />
         ))}
       </Slider>

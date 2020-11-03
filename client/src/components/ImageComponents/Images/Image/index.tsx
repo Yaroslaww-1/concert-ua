@@ -2,54 +2,45 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-interface IProps {
-  withHover?: boolean;
-  withTextOnHover?: boolean;
-  withText?: boolean;
-  title?: string;
-  date?: string;
-  place?: string;
+export interface IImageProps {
+  classes?: {
+    root?: string;
+    image?: string;
+  };
   imageSrc: string;
   imageAltText?: string;
-  imageWrapperClassName?: string;
-  imageClassName?: string;
-  textClassName?: {
-    root?: string;
-    date?: string;
-    title?: string;
-    place?: string;
-  };
+  hoverElement?: JSX.Element;
+  frontElement?: JSX.Element;
 }
 
-const Image: React.FC<IProps> = ({
-  withHover = false,
-  withTextOnHover = false,
-  withText = true,
-  title = '',
-  date = '',
-  place = '',
+const Image: React.FC<IImageProps> = ({
   imageSrc,
   imageAltText = 'An image',
-  imageWrapperClassName = '',
-  imageClassName = '',
-  textClassName = {
+  classes = {
     root: '',
-    date: '',
-    title: '',
-    place: '',
+    image: '',
   },
+  hoverElement = null,
+  frontElement = null,
 }) => {
+  const [hovered, setHovered] = React.useState<boolean>(false);
   return (
-    <div className={`${styles.wrapper} ${imageWrapperClassName}`}>
-      <img src={imageSrc} alt={imageAltText} className={imageClassName} />
-      {withText && (
+    <div
+      className={`${styles.wrapper} ${classes.root}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <img src={imageSrc} alt={imageAltText} className={classes.image} />
+      {frontElement && frontElement}
+      {/* {withText && (
         <div className={`${styles.text} ${textClassName.root}`}>
           {date !== '' && <div className={`${styles.date} ${textClassName.date}`}>{date}</div>}
           {title !== '' && <div className={`${styles.title} ${textClassName.title}`}>{title}</div>}
           {place !== '' && <div className={`${styles.place} ${textClassName.place}`}>{place}</div>}
         </div>
-      )}
-      {withHover && (
+      )} */}
+      {hoverElement && hovered && hoverElement}
+      {/* {withHover && (
         <div className={styles.hoverOverlay}>
           {withTextOnHover && (
             <div className={`${styles.text} ${textClassName.root}`}>
@@ -59,7 +50,7 @@ const Image: React.FC<IProps> = ({
             </div>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
