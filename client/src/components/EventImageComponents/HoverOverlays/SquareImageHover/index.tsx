@@ -17,7 +17,9 @@ const SquareImageHoverOverlay: React.FC<IProps> = ({ title, onLike, onBuy }) => 
         <div className={styles.likeIcon}>
           <LikeIcon onClick={onLike} />
         </div>
-        <div className={styles.title}>{title}</div>
+        <div className={styles.title}>
+          <div>{title}</div>
+        </div>
         <div className={styles.buyButton}>
           <TransparentButton text={'Buy now'} onClick={onBuy} />
         </div>
