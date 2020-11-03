@@ -3,7 +3,8 @@
 .carouselWrapper {
   margin: 30px 0px 30px 0px;
   width: 100%;
-	padding-bottom: 40.25%; /* 16:9 */
+  padding-bottom: 20.25%;
+  height: 30%;
 	position: relative;
 
   .slider {
@@ -19,7 +20,7 @@
     }
 
     *:global(.slick-slide) {
-      margin: 0px 10px 0px 10px;
+      padding: 10px;
     }
 
     .image {
