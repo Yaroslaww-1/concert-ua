@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import FullscreenImage from 'src/components/ImageComponents/Images/FullscreenImage';
+import FullscreenImage from 'src/components/EventImageComponents/Images/FullscreenImage';
 
 const EventsSecondaryCarousel: React.FC = () => {
   const dispatch = useDispatch();

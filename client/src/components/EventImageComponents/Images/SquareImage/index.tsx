@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './styles.module.scss';
-import Image, { IImageProps } from 'src/components/ImageComponents/Images/Image';
+import Image, { IImageProps } from 'src/components/EventImageComponents/Images/Image';
 
 const SquareImage: React.FC<IImageProps> = (props) => {
   return (

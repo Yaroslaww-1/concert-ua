@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './styles.module.scss';
-import Image from 'src/components/ImageComponents/Images/Image';
+import Image from 'src/components/EventImageComponents/Images/Image';
 
 interface IProps {
   imageSrc: string;

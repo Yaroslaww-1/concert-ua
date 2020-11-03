@@ -5,8 +5,8 @@ import { RootState } from 'src/redux/rootReducer';
 
 import styles from './styles.module.scss';
 import Slider from 'react-slick';
-import SquareImage from 'src/components/ImageComponents/Images/SquareImage';
-import SquareImageHoverOverlay from 'src/components/ImageComponents/HoverOverlays/ImageHover';
+import SquareImage from 'src/components/EventImageComponents/Images/SquareImage';
+import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
 
 const EventsMainCarousel: React.FC = () => {
   const dispatch = useDispatch();

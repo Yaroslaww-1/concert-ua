@@ -12,7 +12,7 @@ export class EventService {
         resolve([
           {
             id: 'string',
-            name: 'string',
+            name: 'stringstringstringstringstring',
             description: 'string',
             place: 'string',
             date: 'string',

@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+
+.root {
+  background-color: transparent;
+  border: 2px solid $colorWhite;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90px !important;
+
+  &:hover {
+    transition: .5s ease;
+    background-color: $colorWhite;
+    color: $colorBlack;
+  }
+}
