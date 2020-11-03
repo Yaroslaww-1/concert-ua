@@ -5,6 +5,7 @@ import { RootState } from 'src/redux/rootReducer';
 
 import styles from './styles.module.scss';
 import Slider from 'react-slick';
+import SquareImage from 'src/components/ImageComponents/SquareImage';
 
 const EventsMainCarousel: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,8 @@ const EventsMainCarousel: React.FC = () => {
       <Slider
         dots={true}
         infinite={true}
-        autoplay={true}
-        className={'center'}
+        // autoplay={true}
+        className={styles.slider}
         centerMode={true}
         centerPadding={'100px'}
         autoplaySpeed={5000}
@@ -30,7 +31,19 @@ const EventsMainCarousel: React.FC = () => {
         dotsClass={`slick-dots ${styles.navigation}`}
       >
         {events.map((event) => (
-          <img key={event.id} src={event.imageUrl} />
+          <SquareImage
+            key={event.id}
+            imageSrc={event.imageUrl}
+            imageAltText={event.name}
+            withText={false}
+            withHover={true}
+            withTextOnHover={true}
+            date={event.date}
+            title={event.name}
+            place={event.place}
+            imageClassName={styles.image}
+            imageWrapperClassName={styles.imageWrapper}
+          />
         ))}
       </Slider>
     </div>

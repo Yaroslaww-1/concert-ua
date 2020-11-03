@@ -49,6 +49,17 @@ const Image: React.FC<IProps> = ({
           {place !== '' && <div className={`${styles.place} ${textClassName.place}`}>{place}</div>}
         </div>
       )}
+      {withHover && (
+        <div className={styles.hoverOverlay}>
+          {withTextOnHover && (
+            <div className={`${styles.text} ${textClassName.root}`}>
+              {date !== '' && <div className={`${styles.date} ${textClassName.date}`}>{date}</div>}
+              {title !== '' && <div className={`${styles.title} ${textClassName.title}`}>{title}</div>}
+              {place !== '' && <div className={`${styles.place} ${textClassName.place}`}>{place}</div>}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

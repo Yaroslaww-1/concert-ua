@@ -1,29 +1,62 @@
 @import 'src/styles/variables';
 
 .carouselWrapper {
-  padding: 30px 0px 30px 0px;
+  margin: 30px 0px 30px 0px;
+  width: 100%;
+	padding-bottom: 40.25%; /* 16:9 */
+	position: relative;
 
-  img {
-    padding: 15px;
-  }
+  .slider {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
 
-  li {
-    button:before {
-      opacity: 0.8;
-      color: $colorRed;
-      content: "";
-      background-color: $colorRed;
-      border-radius: 10px;
-      width: 10px;
-      height: 10px;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+
+    *:global(.slick-list), *:global(.slick-track), *:global(.slick-slide) div {
+      height: 100%;
     }
 
-    &:global(.slick-active) button:before {
-      width: 50px;
-      left: -20px;
+    *:global(.slick-slide) {
+      margin: 0px 10px 0px 10px;
     }
-    
-    padding: 0px 30px 20px 10px;
-    cursor: pointer;
+
+    .image {
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .imageWrapper {
+      height: 100% !important;
+    }
+  
+    *.center {
+      height: 100%;
+    }
+  
+    li {
+      bottom: -20px;
+  
+      button:before {
+        opacity: 1;
+        color: $colorRed;
+        content: "";
+        background-color: $colorRed;
+        border-radius: 10px;
+        width: 10px;
+        height: 10px;
+      }
+  
+      &:global(.slick-active) button:before {
+        width: 50px;
+        left: -20px;
+      }
+      
+      padding: 0px 30px 20px 10px;
+      cursor: pointer;
+    }
   }
 }

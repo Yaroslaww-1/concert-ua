@@ -44,7 +44,7 @@ const EventsSecondaryCarousel: React.FC = () => {
       <Slider
         dots={true}
         infinite={true}
-        autoplay={false}
+        // autoplay={true}
         autoplaySpeed={5000}
         speed={500}
         slidesToShow={1}
@@ -54,15 +54,7 @@ const EventsSecondaryCarousel: React.FC = () => {
         prevArrow={<PrevArrow />}
       >
         {events.map((event) => (
-          <FullscreenImage
-            key={event.id}
-            imageSrc={event.imageUrl}
-            imageAltText={event.name}
-            withText={true}
-            date={event.date}
-            title={event.name}
-            place={event.place}
-          />
+          <FullscreenImage key={event.id} imageSrc={event.imageUrl} imageAltText={event.name} withText={false} />
         ))}
       </Slider>
     </div>
