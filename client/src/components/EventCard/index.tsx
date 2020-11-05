@@ -12,12 +12,19 @@ interface IProps {
   name: string;
   place: string;
   price: string;
+  classes?: {
+    root?: string;
+  };
 }
 
-const EventCard: React.FC<IProps> = ({ image, date, name, place, price }) => {
+const EventCard: React.FC<IProps> = ({ image, date, name, place, price, classes }) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
   return (
-    <div className={styles.root} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+    <div
+      className={`${styles.root} ${classes?.root}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <div className={styles.image}>
         <img src={image.src} alt={image.alt || 'An image'}></img>
       </div>

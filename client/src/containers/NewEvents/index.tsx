@@ -14,7 +14,13 @@ const NewEventsSection: React.FC = () => {
     imageUrl: 'https://storage.concert.ua/Jnt/15/jj/5f8807e64ec54/eca7.jpg:31-mainpage-megabanner-desktop',
     price: '100$',
   };
-  return <EventsCardsSection events={[event]} header={'New events'} onLoadMore={() => {}} />;
+  return (
+    <EventsCardsSection
+      events={[event, event, event, event, event, event, event, event]}
+      header={'New events'}
+      onLoadMore={() => {}}
+    />
+  );
 };
 
 export default NewEventsSection;

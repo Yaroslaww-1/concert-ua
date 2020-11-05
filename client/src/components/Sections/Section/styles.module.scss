@@ -1,7 +1,6 @@
 @import 'src/styles/variables';
 
 .root {
-  padding: 0 15px;
   max-width: $sectionWidth;
   margin: 3.5% auto 0px;
   box-sizing: border-box;
@@ -12,5 +11,6 @@
     text-transform: uppercase;
     color: $colorBlack;
     font-size: 2rem;
+    margin-left: -4px;
   }
 }
