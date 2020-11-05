@@ -8,14 +8,15 @@ $height: 50px;
   height: $height;
   background-color: $navbarBackground;
   display: flex;
+  justify-content: center;
   align-items: stretch;
   top: 0;
   z-index: 1000;
-  width: 100%;
+  width: calc(100% - 17px);
+  position: fixed;
 
   .innerNavbar {
-    max-width: 1170px;
-    margin: 0 auto;
+    width: $sectionWidth;
     display: flex;
     justify-content: space-between;
     align-items: center;
