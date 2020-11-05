@@ -1,0 +1,39 @@
+@import 'src/styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $colorBlack;
+  width: calc(25% - 20px);
+  min-height: 460px;
+  // margin: 0 10px 20px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: black;
+
+  .image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $colorBlack;
+    height: 50%;
+    width: 25%;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      padding: 0;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
