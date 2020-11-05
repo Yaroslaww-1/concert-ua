@@ -11,8 +11,8 @@ export class EventService {
       setTimeout(() => {
         resolve([
           {
-            id: 'string',
-            name: 'stringstringstringstringstring',
+            id: 'string11',
+            name: 'Stringstringstringstringstring',
             description: 'string',
             place: 'string',
             date: 'string',
@@ -20,8 +20,8 @@ export class EventService {
             price: '100uah',
           },
           {
-            id: 'string',
-            name: 'string',
+            id: 'string22',
+            name: 'String',
             description: 'string',
             place: 'string',
             date: 'string',
@@ -29,8 +29,8 @@ export class EventService {
             price: '100uah',
           },
           {
-            id: 'string',
-            name: 'string',
+            id: 'string33',
+            name: 'String',
             description: 'string',
             place: 'string',
             date: 'string',
@@ -38,8 +38,8 @@ export class EventService {
             price: '100uah',
           },
           {
-            id: 'string',
-            name: 'string',
+            id: 'string44',
+            name: 'String',
             description: 'string',
             place: 'string',
             date: 'string',

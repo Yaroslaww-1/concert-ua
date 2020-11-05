@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from 'src/components/Text';
 
 import styles from './styles.module.scss';
 
@@ -28,7 +29,9 @@ const TransparentButton: React.FC<IProps> = ({ text, onClick, color = 'white', a
 
   return (
     <div className={`${styles.root} ${getColorClass()} ${getAnimationClass()}`} onClick={onClick}>
-      <h1>{text}</h1>
+      <Text textTransform={'uppercase'} fontSize={'1.5em'}>
+        {text}
+      </Text>
     </div>
   );
 };

@@ -7,21 +7,31 @@ import Text from 'src/components/Text';
 
 interface IProps {
   title: string;
+  date: string;
+  place: string;
   onLike: () => void;
   onBuy: () => void;
 }
 
-const SquareImageHoverOverlay: React.FC<IProps> = ({ title, onLike, onBuy }) => {
+const EventCardImageHoverOverlay: React.FC<IProps> = ({ title, date, place, onLike, onBuy }) => {
   return (
     <div className={styles.root}>
       <div className={styles.innerRoot}>
-        <div className={styles.likeIcon}>
-          <LikeIcon onClick={onLike} />
+        <div className={styles.likeIconWrapper}>
+          <LikeIcon onClick={onLike} classes={{ svg: styles.icon }} />
+        </div>
+        <div className={styles.date}>
+          <Text fontSize={'0.75vw'} textTransform={'uppercase'}>
+            {date}
+          </Text>
         </div>
         <div className={styles.title}>
-          <Text fontSize={'5vw'} textTransform={'uppercase'} lineHeight={1}>
+          <Text fontSize={'1.7vw'} textTransform={'uppercase'} lineHeight={1}>
             {title}
           </Text>
+        </div>
+        <div className={styles.place}>
+          <Text fontSize={'1.25vw'}>{place}</Text>
         </div>
         <div className={styles.buyButton}>
           <TransparentButton text={'Buy now'} onClick={onBuy} />
@@ -31,4 +41,4 @@ const SquareImageHoverOverlay: React.FC<IProps> = ({ title, onLike, onBuy }) => 
   );
 };
 
-export default SquareImageHoverOverlay;
+export default EventCardImageHoverOverlay;

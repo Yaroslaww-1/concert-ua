@@ -18,6 +18,7 @@ const HomePage: React.FC = () => {
       <EventsMainCarousel />
       <EventsSecondaryCarousel />
       <NewEventsSection />
+      <NewEventsSection />
     </PageComponent>
   );
 };

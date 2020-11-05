@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
+import EventCardImageHoverOverlay from '../EventImageComponents/HoverOverlays/EventCardImageHover';
 
 interface IProps {
   image: {
@@ -34,7 +35,9 @@ const EventCard: React.FC<IProps> = ({ image, date, name, place, price, classes 
         <div className={styles.place}>{place}</div>
         <div className={styles.price}>{price}</div>
       </div>
-      {hovered && <SquareImageHoverOverlay onBuy={() => {}} onLike={() => {}} title={name} />}
+      {hovered && (
+        <EventCardImageHoverOverlay onBuy={() => {}} onLike={() => {}} title={name} date={date} place={place} />
+      )}
     </div>
   );
 };
