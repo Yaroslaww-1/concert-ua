@@ -2,17 +2,75 @@
 
 .root {
   background-color: transparent;
-  border: 2px solid $colorWhite;
-  padding: 10px;
+  padding: 0px 30px 0px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90px !important;
+  height: 70px !important;
+  max-width: 210px;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  cursor: pointer;
 
-  &:hover {
-    transition: .5s ease;
-    background-color: $colorWhite;
-    color: $colorBlack;
+  &.white {
+    color: $colorWhite;
+    border: 2px solid $colorWhite;
+    &:hover {
+      transition: 150ms;
+      background-color: $colorWhite;
+      color: $colorBlack;
+    }
+  }
+
+  &.red {
+    color: $colorRed;
+    border: 2px solid $colorRed;
+    &:hover {
+      transition: 150ms;
+      background-color: $colorRed;
+      color: $colorWhite;
+    }
+  }
+
+  &.appearing {
+    &:hover {
+      transition: .5s ease;
+    }
+  }
+
+  &.growCenter {
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+    z-index: 1;
+
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%);
+      width: 0;
+      height: 100%;
+      background: $colorRed;
+      z-index: -1;
+      -webkit-transition: width 150ms ease-in-out;
+      transition: width 150ms ease-in-out;
+    }
+
+    &:hover {
+      &.red {
+        background-color: $colorRed;
+        color: $colorWhite;
+      }
+    }
+
+    &:hover:after {
+      width: 110%;
+    }
   }
 }
