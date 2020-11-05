@@ -44,7 +44,7 @@ const EventsSecondaryCarousel: React.FC = () => {
       <Slider
         dots={true}
         infinite={true}
-        // autoplay={true}
+        autoplay={true}
         autoplaySpeed={5000}
         speed={500}
         slidesToShow={1}
