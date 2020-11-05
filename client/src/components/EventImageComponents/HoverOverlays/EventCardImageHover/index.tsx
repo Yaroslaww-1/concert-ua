@@ -6,6 +6,8 @@ import LikeIcon from 'src/components/Icons/LikeIcon';
 import Text from 'src/components/Text';
 
 interface IProps {
+  imageSrc: string;
+  imageAltText: string;
   title: string;
   date: string;
   place: string;
@@ -13,10 +15,19 @@ interface IProps {
   onBuy: () => void;
 }
 
-const EventCardImageHoverOverlay: React.FC<IProps> = ({ title, date, place, onLike, onBuy }) => {
+const EventCardImageHoverOverlay: React.FC<IProps> = ({
+  imageSrc,
+  imageAltText,
+  title,
+  date,
+  place,
+  onLike,
+  onBuy,
+}) => {
   return (
     <div className={styles.root}>
       <div className={styles.innerRoot}>
+        <img src={imageSrc} alt={imageAltText}></img>
         <div className={styles.likeIconWrapper}>
           <LikeIcon onClick={onLike} classes={{ svg: styles.icon }} />
         </div>

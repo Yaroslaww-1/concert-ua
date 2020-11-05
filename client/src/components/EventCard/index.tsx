@@ -1,13 +1,12 @@
 import React from 'react';
 
 import styles from './styles.module.scss';
-import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
 import EventCardImageHoverOverlay from '../EventImageComponents/HoverOverlays/EventCardImageHover';
 
 interface IProps {
   image: {
     src: string;
-    alt?: string;
+    altText?: string;
   };
   date: string;
   name: string;
@@ -18,7 +17,14 @@ interface IProps {
   };
 }
 
-const EventCard: React.FC<IProps> = ({ image, date, name, place, price, classes }) => {
+const EventCard: React.FC<IProps> = ({
+  image: { src: imageSrc, altText: imageAlt = 'An image' },
+  date,
+  name,
+  place,
+  price,
+  classes,
+}) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
   return (
     <div
@@ -27,7 +33,7 @@ const EventCard: React.FC<IProps> = ({ image, date, name, place, price, classes 
       onMouseLeave={() => setHovered(false)}
     >
       <div className={styles.image}>
-        <img src={image.src} alt={image.alt || 'An image'}></img>
+        <img src={imageSrc} alt={imageAlt}></img>
       </div>
       <div className={styles.main}>
         <div className={styles.date}>{date}</div>
@@ -36,7 +42,15 @@ const EventCard: React.FC<IProps> = ({ image, date, name, place, price, classes 
         <div className={styles.price}>{price}</div>
       </div>
       {hovered && (
-        <EventCardImageHoverOverlay onBuy={() => {}} onLike={() => {}} title={name} date={date} place={place} />
+        <EventCardImageHoverOverlay
+          onBuy={() => {}}
+          onLike={() => {}}
+          title={name}
+          date={date}
+          place={place}
+          imageSrc={imageSrc}
+          imageAltText={imageAlt}
+        />
       )}
     </div>
   );

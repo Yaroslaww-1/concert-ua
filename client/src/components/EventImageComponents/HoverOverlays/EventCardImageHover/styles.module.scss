@@ -25,6 +25,7 @@
   .innerRoot {
     z-index: 201;
     height: 100%;
+    width: 100%;
     padding: 5%;
     position: absolute;
     color: $colorWhite;
@@ -35,6 +36,19 @@
     align-items: center;
     text-align: center;
     vertical-align: middle;
+    background: inherit;
+
+    * {
+      z-index: 2;
+    }
+
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      opacity: 0.01;
+    }
 
     .likeIconWrapper {
       .icon {

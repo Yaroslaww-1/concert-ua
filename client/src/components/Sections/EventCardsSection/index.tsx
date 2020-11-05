@@ -27,7 +27,7 @@ const CardsSection: React.FC<IProps> = ({ header, events, onLoadMore }) => {
         {events.map((event) => (
           <EventCard
             key={event.id}
-            image={{ src: event.imageUrl, alt: 'An event image' }}
+            image={{ src: event.imageUrl, altText: 'An event image' }}
             date={event.date}
             name={event.name}
             place={event.place}
