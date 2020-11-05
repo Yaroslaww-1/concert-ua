@@ -5,4 +5,5 @@ export type EventModel = {
   place: string;
   date: string;
   imageUrl: string;
+  price: string;
 };
