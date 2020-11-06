@@ -40,7 +40,14 @@ const EventsMainCarousel: React.FC = () => {
               root: styles.imageWrapper,
               image: styles.image,
             }}
-            frontElement={<SquareImageHoverOverlay onBuy={() => {}} onLike={() => {}} title={event.name} />}
+            frontElement={
+              <SquareImageHoverOverlay
+                onBuy={() => {}}
+                onLike={() => {}}
+                title={event.name}
+                imageSrc={event.imageUrl}
+              />
+            }
           />
         ))}
       </Slider>
