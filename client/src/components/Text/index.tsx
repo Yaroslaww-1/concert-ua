@@ -27,6 +27,23 @@ interface IProps {
     | 'break-all'
     | 'break-word'
     | 'keep-all';
+  textAlign?:
+    | '-moz-initial'
+    | 'inherit'
+    | 'initial'
+    | 'revert'
+    | 'unset'
+    | 'center'
+    | 'end'
+    | 'justify'
+    | 'left'
+    | 'match-parent'
+    | 'right'
+    | 'start';
+  fontWeight?: number;
+  classes?: {
+    root?: string;
+  };
 }
 
 const Text: React.FC<IProps> = ({
@@ -35,15 +52,22 @@ const Text: React.FC<IProps> = ({
   textTransform = 'none',
   lineHeight = 1.4,
   wordBreak = 'break-all',
+  textAlign = 'center',
+  fontWeight = 400,
+  classes = {
+    root: '',
+  },
 }) => {
   const style = {
     fontSize,
     textTransform,
     lineHeight,
     wordBreak,
+    textAlign,
+    fontWeight,
   };
   return (
-    <div style={{ ...style }} className={styles.root}>
+    <div style={{ ...style }} className={`${styles.root} ${classes.root}`}>
       {children}
     </div>
   );

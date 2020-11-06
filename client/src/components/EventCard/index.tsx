@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import EventCardImageHoverOverlay from '../EventImageComponents/HoverOverlays/EventCardImageHover';
+import Text from '../Text';
 
 interface IProps {
   image: {
@@ -35,11 +36,27 @@ const EventCard: React.FC<IProps> = ({
       <div className={styles.image}>
         <img src={imageSrc} alt={imageAlt}></img>
       </div>
-      <div className={styles.main}>
-        <div className={styles.date}>{date}</div>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.place}>{place}</div>
-        <div className={styles.price}>{price}</div>
+      <div className={styles.content}>
+        <div className={styles.date}>
+          <Text fontSize="1rem" textAlign="left" textTransform="capitalize">
+            {date}
+          </Text>
+        </div>
+        <div className={styles.name}>
+          <Text fontSize="2rem" textAlign="left" fontWeight={900} lineHeight={1} textTransform="uppercase">
+            {name}
+          </Text>
+        </div>
+        <div className={styles.place}>
+          <Text fontSize="1rem" textAlign="left" textTransform="capitalize">
+            {place}
+          </Text>
+        </div>
+        <div className={styles.price}>
+          <Text fontSize="1.25rem" textAlign="left" fontWeight={900}>
+            {price}
+          </Text>
+        </div>
       </div>
       {hovered && (
         <EventCardImageHoverOverlay

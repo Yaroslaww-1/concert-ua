@@ -29,7 +29,7 @@ const TransparentButton: React.FC<IProps> = ({ text, onClick, color = 'white', a
 
   return (
     <div className={`${styles.root} ${getColorClass()} ${getAnimationClass()}`} onClick={onClick}>
-      <Text textTransform={'uppercase'} fontSize={'1.5em'}>
+      <Text textTransform={'uppercase'} fontSize={'1.5em'} fontWeight={750}>
         {text}
       </Text>
     </div>

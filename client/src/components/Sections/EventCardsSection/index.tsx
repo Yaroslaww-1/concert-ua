@@ -5,6 +5,7 @@ import { EventModel } from 'src/api/models/event.model';
 import Section from '../Section';
 import EventCard from 'src/components/EventCard';
 import TransparentButton from 'src/components/Buttons/TransparentButton';
+import Text from 'src/components/Text';
 
 interface IProps {
   header?: string;
@@ -15,7 +16,17 @@ interface IProps {
 const CardsSection: React.FC<IProps> = ({ header, events, onLoadMore }) => {
   return (
     <Section
-      header={<h1>{header}</h1>}
+      header={
+        <Text
+          fontSize="3rem"
+          fontWeight={700}
+          textTransform="uppercase"
+          textAlign="left"
+          classes={{ root: styles.header }}
+        >
+          {header}
+        </Text>
+      }
       classes={{ contentRoot: styles.root }}
       footer={
         <div className={styles.loadMoreButtonWrapper}>

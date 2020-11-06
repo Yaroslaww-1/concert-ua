@@ -1,5 +1,4 @@
 @import './variables';
-@import './fonts';
 @import '../../node_modules/slick-carousel/slick/slick.scss';
 @import '../../node_modules/slick-carousel/slick/slick-theme.scss';
 
@@ -17,6 +16,7 @@ html {
   max-width: 100%;
   overflow-y: hidden;
   overflow-x: hidden !important;
+  font-family: 'Oswald', sans-serif;
 }
 
 body {

@@ -26,8 +26,8 @@ const EventCardImageHoverOverlay: React.FC<IProps> = ({
 }) => {
   return (
     <div className={styles.root}>
+      <img src={imageSrc} alt={imageAltText}></img>
       <div className={styles.innerRoot}>
-        <img src={imageSrc} alt={imageAltText}></img>
         <div className={styles.likeIconWrapper}>
           <LikeIcon onClick={onLike} classes={{ svg: styles.icon }} />
         </div>

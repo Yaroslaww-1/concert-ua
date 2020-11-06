@@ -19,7 +19,7 @@ const SquareImageHoverOverlay: React.FC<IProps> = ({ title, onLike, onBuy }) => 
           <LikeIcon onClick={onLike} />
         </div>
         <div className={styles.title}>
-          <Text fontSize={'5vw'} textTransform={'uppercase'} lineHeight={1}>
+          <Text fontSize={'5vw'} textTransform={'uppercase'} lineHeight={1} fontWeight={900}>
             {title}
           </Text>
         </div>

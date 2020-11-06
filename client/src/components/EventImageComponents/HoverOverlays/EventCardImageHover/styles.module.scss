@@ -22,6 +22,14 @@
     opacity: 1;
   }
 
+  img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
   .innerRoot {
     z-index: 201;
     height: 100%;
@@ -37,19 +45,13 @@
     text-align: center;
     vertical-align: middle;
     background: inherit;
+    // background-color: rgba($color: $colorBlack, $alpha: 0.65);
+    z-index: 3;
 
     * {
       z-index: 2;
     }
-
-    img {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      opacity: 0.01;
-    }
-
+   
     .likeIconWrapper {
       .icon {
         font-size: 3rem;
