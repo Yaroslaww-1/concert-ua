@@ -15,24 +15,30 @@
   text-align: center;
 
   &.white {
-    color: $colorWhite;
+    div {
+      color: $colorWhite !important;
+    }
     border: 2px solid $colorWhite;
     &:hover {
-      transition: 150ms;
+      transition: 350ms;
       background-color: $colorWhite;
-      color: $colorBlack;
+      div {
+        color: $colorBlack !important;
+      }
     }
   }
 
   &.red {
-    * {
+    div {
       color: $colorRed !important;
     }
     border: 2px solid $colorRed;
     &:hover {
-      transition: 150ms;
+      transition: 250ms;
       background-color: $colorRed;
-      color: $colorWhite;
+      div {
+        color: $colorWhite !important;
+      }
     }
   }
 
@@ -45,8 +51,8 @@
   &.growCenter {
     position: relative;
     overflow: hidden;
-    -webkit-transition: color 150ms ease-in-out;
-    transition: color 150ms ease-in-out;
+    -webkit-transition: color 250ms ease-in-out;
+    transition: color 250ms ease-in-out;
     z-index: 1;
 
     &:after {
@@ -61,8 +67,8 @@
       height: 100%;
       background: $colorRed;
       z-index: -1;
-      -webkit-transition: width 150ms ease-in-out;
-      transition: width 150ms ease-in-out;
+      -webkit-transition: width 250ms ease-in-out;
+      transition: width 250ms ease-in-out;
     }
 
     &:hover {
