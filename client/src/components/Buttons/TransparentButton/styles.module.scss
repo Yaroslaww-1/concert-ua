@@ -25,7 +25,9 @@
   }
 
   &.red {
-    color: $colorRed;
+    * {
+      color: $colorRed !important;
+    }
     border: 2px solid $colorRed;
     &:hover {
       transition: 150ms;

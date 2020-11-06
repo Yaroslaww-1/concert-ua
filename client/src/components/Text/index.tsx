@@ -44,6 +44,7 @@ interface IProps {
   classes?: {
     root?: string;
   };
+  color?: 'white' | 'black';
 }
 
 const Text: React.FC<IProps> = ({
@@ -57,7 +58,12 @@ const Text: React.FC<IProps> = ({
   classes = {
     root: '',
   },
+  color = 'white',
 }) => {
+  const colors = {
+    white: styles.colorWhite,
+    black: styles.colorBlack,
+  };
   const style = {
     fontSize,
     textTransform,
@@ -65,6 +71,7 @@ const Text: React.FC<IProps> = ({
     wordBreak,
     textAlign,
     fontWeight,
+    color: colors[color],
   };
   return (
     <div style={{ ...style }} className={`${styles.root} ${classes.root}`}>

@@ -38,22 +38,29 @@ const EventCard: React.FC<IProps> = ({
       </div>
       <div className={styles.content}>
         <div className={styles.date}>
-          <Text fontSize="1rem" textAlign="left" textTransform="capitalize">
+          <Text fontSize="1rem" textAlign="left" textTransform="capitalize" color="black">
             {date}
           </Text>
         </div>
         <div className={styles.name}>
-          <Text fontSize="2rem" textAlign="left" fontWeight={900} lineHeight={1} textTransform="uppercase">
+          <Text
+            fontSize="2rem"
+            textAlign="left"
+            fontWeight={900}
+            lineHeight={1}
+            textTransform="uppercase"
+            color="black"
+          >
             {name}
           </Text>
         </div>
         <div className={styles.place}>
-          <Text fontSize="1rem" textAlign="left" textTransform="capitalize">
+          <Text fontSize="1rem" textAlign="left" textTransform="capitalize" color="black">
             {place}
           </Text>
         </div>
         <div className={styles.price}>
-          <Text fontSize="1.25rem" textAlign="left" fontWeight={900}>
+          <Text fontSize="1.25rem" textAlign="left" fontWeight={900} color="black">
             {price}
           </Text>
         </div>

@@ -1,16 +1,30 @@
 @import 'src/styles/variables';
 
 .root {
-  max-width: $sectionWidth;
-  margin: 1.5% auto 0px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
 
-  .header {
-    text-transform: uppercase;
-    color: $colorBlack;
-    font-size: 2rem;
-    margin-left: -4px;
+  .content {
+    max-width: $sectionWidth;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header {
+      margin-left: -2px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &:nth-child(2n + 1) {
+    background-color: rgba($colorLightGray, 0.35);
   }
 }
