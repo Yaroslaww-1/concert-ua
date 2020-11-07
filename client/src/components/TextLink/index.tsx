@@ -17,7 +17,7 @@ const TextLink: React.FC<IProps> = ({ to, text, style = 'greyRed' }) => {
   return (
     <div className={styles.root}>
       <NavLink to={to} className={styleOptions[style]}>
-        <Text fontSize="1.25rem" color="gray" textAlign="left" fontWeight={500}>
+        <Text fontSize="1.1rem" color="gray" textAlign="left" fontWeight={200}>
           {text}
         </Text>
       </NavLink>

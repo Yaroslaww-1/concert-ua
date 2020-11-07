@@ -8,7 +8,7 @@ interface IProps {}
 
 const Footer: React.FC<IProps> = ({}) => {
   const getLinks = () => {
-    const linkElement = <TextLink to={''} text={'Profile'} />;
+    const linkElement = <TextLink to={''} text={'Profile Profile'} />;
     return new Array(18).fill(linkElement);
   };
   return (
