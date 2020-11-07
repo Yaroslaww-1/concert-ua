@@ -21,7 +21,7 @@ const EventsMainCarousel: React.FC = () => {
       <Slider
         dots={true}
         infinite={true}
-        // autoplay={true}
+        autoplay={true}
         className={styles.slider}
         centerMode={true}
         centerPadding={'100px'}

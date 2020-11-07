@@ -17,7 +17,14 @@ const CardsSection: React.FC<IProps> = ({ header, events, onLoadMore }) => {
   return (
     <Section
       header={
-        <Text fontSize="3rem" fontWeight={700} textTransform="uppercase" textAlign="left" color="black">
+        <Text
+          fontSize="3rem"
+          fontWeight={700}
+          textTransform="uppercase"
+          textAlign="left"
+          color="black"
+          letterSpacing="-2px"
+        >
           {header}
         </Text>
       }
