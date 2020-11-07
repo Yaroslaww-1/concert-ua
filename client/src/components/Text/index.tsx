@@ -44,7 +44,7 @@ interface IProps {
   classes?: {
     root?: string;
   };
-  color?: 'white' | 'black';
+  color?: 'white' | 'black' | 'red' | 'gray';
   letterSpacing?: string;
 }
 
@@ -62,9 +62,19 @@ const Text: React.FC<IProps> = ({
   color = 'white',
   letterSpacing = 'normal',
 }) => {
-  const colors = {
-    white: styles.colorWhite,
-    black: styles.colorBlack,
+  const getColor = () => {
+    switch (color) {
+      case 'white':
+        return styles.colorWhite;
+      case 'black':
+        return styles.colorBlack;
+      case 'red':
+        return styles.colorRed;
+      case 'gray':
+        return styles.colorGray;
+      default:
+        return color;
+    }
   };
   const style = {
     fontSize,
@@ -73,7 +83,7 @@ const Text: React.FC<IProps> = ({
     wordBreak,
     textAlign,
     fontWeight,
-    color: colors[color],
+    color: getColor(),
     letterSpacing,
   };
   return (

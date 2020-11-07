@@ -7,4 +7,9 @@
   text-align: center;
 }
 
-:export { colorBlack: $colorBlack; colorWhite: $colorWhite; }
+:export { 
+  colorBlack: $colorBlack;
+  colorWhite: $colorWhite;
+  colorRed: $colorRed;
+  colorGray: $colorGray;
+}
