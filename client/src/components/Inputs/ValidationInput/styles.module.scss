@@ -1,0 +1,34 @@
+@import 'src/styles/variables';
+
+.root {
+  .textFieldRoot {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    * {
+      color: $colorBlack;
+    }
+    * fieldset {
+      border: none;
+    }
+    * [aria-invalid=true] {
+      border: 1px solid $colorRed;
+    }
+    * [aria-invalid=false] {
+      border: 1px solid $colorMiddleLightGray;
+    }
+    .helperText {
+      position: absolute;
+      background-color: $colorRed;
+      top: -25px;
+      left: -14px;
+      padding: 0px 10px 0px 10px;
+      height: 40%;
+      color: $colorWhite;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.85rem;
+    }
+  }
+}
