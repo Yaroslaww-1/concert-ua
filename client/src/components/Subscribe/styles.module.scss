@@ -14,14 +14,13 @@
     border-top: 1px solid $colorMiddleLightGray;
 
     .form {
-      width: 40%;
+      width: 50%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
       .inputRoot {
-        width: 60%;
-        margin-right: 10px;
+        width: 65%;
 
         .inputTextField {
           input {

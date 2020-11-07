@@ -22,7 +22,7 @@ const Subscribe: React.FC<IProps> = ({ onSubscribe: onSubscribeProps }) => {
     <div className={styles.root}>
       <div className={styles.innerRoot}>
         <div className={styles.subscribeText}>
-          <Text color="black" fontSize="2.5rem" fontWeight={800} textTransform="uppercase">
+          <Text color="black" fontSize="2rem" fontWeight={800} textTransform="uppercase" letterSpacing="-2px">
             Subscribe for news
           </Text>
         </div>

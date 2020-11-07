@@ -1,5 +1,12 @@
 @import 'src/styles/variables';
 
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder           { @content; }
+  &::-moz-placeholder          { @content; }
+  &:-ms-input-placeholder      { @content; }  
+}
+
 .root {
   .textFieldRoot {
     display: flex;
@@ -14,10 +21,19 @@
     }
     * [aria-invalid=true] {
       border: 1px solid $colorRed;
+      @include placeholder {
+        color: $colorBlack;
+        opacity: 1;
+      }
     }
     * [aria-invalid=false] {
       border: 1px solid $colorMiddleLightGray;
+      @include placeholder {
+        color: $colorBlack;
+        opacity: 1;
+      }
     }
+
     .helperText {
       position: absolute;
       background-color: $colorRed;
