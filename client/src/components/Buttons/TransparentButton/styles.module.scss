@@ -20,7 +20,7 @@
     }
     border: 2px solid $colorWhite;
     &:hover {
-      transition: 350ms;
+      transition: 300ms;
       background-color: $colorWhite;
       div {
         color: $colorBlack !important;
@@ -34,7 +34,7 @@
     }
     border: 2px solid $colorRed;
     &:hover {
-      transition: 250ms;
+      transition: 300ms;
       background-color: $colorRed;
       div {
         color: $colorWhite !important;
@@ -51,35 +51,16 @@
   &.growCenter {
     position: relative;
     overflow: hidden;
-    -webkit-transition: color 250ms ease-in-out;
-    transition: color 250ms ease-in-out;
     z-index: 1;
-
-    &:after {
-      content: '';
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-              transform: translateX(-50%);
-      width: 0;
-      height: 100%;
-      background: $colorRed;
-      z-index: -1;
-      -webkit-transition: width 250ms ease-in-out;
-      transition: width 250ms ease-in-out;
-    }
+    background-image: linear-gradient($colorRed, $colorRed);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 300ms, color 300ms;
 
     &:hover {
-      &.red {
-        background-color: $colorRed;
-        color: $colorWhite;
-      }
-    }
-
-    &:hover:after {
-      width: 110%;
+      transition: 300ms;
+      background-size: 100% 100%;
     }
   }
 }
