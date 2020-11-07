@@ -1,0 +1,34 @@
+@import 'src/styles/variables';
+
+.root {
+  width: 100%;
+  
+  .innerRoot {
+    width: $sectionWidth;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0px 25px 0px;
+    border-top: 1px solid $colorMiddleLightGray;
+
+    .form {
+      width: 40%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .inputRoot {
+        width: 60%;
+        margin-right: 10px;
+
+        .inputTextField {
+          input {
+            height: 21px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ import PageComponent from 'src/components/Page';
 import EventsMainCarousel from 'src/containers/EventsMainCarousel';
 import EventsSecondaryCarousel from 'src/containers/EventsSecondaryCarousel';
 import NewEventsSection from 'src/containers/NewEvents';
+import Subscribe from 'src/components/Subscribe';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const HomePage: React.FC = () => {
       <NewEventsSection />
       <NewEventsSection />
       <NewEventsSection />
+      <Subscribe onSubscribe={() => {}} />
     </PageComponent>
   );
 };
