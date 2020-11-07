@@ -7,66 +7,101 @@
   .innerRoot {
     max-width: $sectionWidth;
     margin: 0 auto;
-    display: flex;
-    flex-direction: row;
 
-    .data {
-      flex: 3.5;
+    .topFooter {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 60px;
 
-      .logo {
-        height: 60px;
-        padding-bottom: 40px;
+      .data {
+        flex: 3.5;
+  
+        .logo {
+          height: 60px;
+          padding-bottom: 40px;
+        }
+  
+        .links {
+          margin-left: 2px;
+          max-height: 210px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+        }
       }
-
-      .links {
-        margin-left: 2px;
-        max-height: 210px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-      }
-    }
-
-    .info {
-      flex: 1;
-
-      .socialIcons {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-        height: 80px;
-        padding-bottom: 20px;
-
-        svg {
-          color: $colorRed;
-          font-size: 2.5rem;
-          cursor: pointer;
-
-          &:hover {
-            opacity: 0.5;
+  
+      .info {
+        flex: 1;
+  
+        .socialIcons {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+          height: 80px;
+          padding-bottom: 20px;
+  
+          svg {
+            color: $colorRed;
+            font-size: 2.5rem;
+            cursor: pointer;
+  
+            &:hover {
+              opacity: 0.5;
+            }
+          }
+        }
+  
+        .contacts {
+          .contact {
+            width: 68%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            color: $colorRed;
+            padding: 5px 0px 5px 0px;
+          }
+  
+          .contactUs {
+            margin-top: 5px;
           }
         }
       }
+    }
 
-      .contacts {
-        .contact {
-          width: 68%;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
+    .bottomFooter {
+      border-top: 1px solid $colorMiddleLightGray;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .logos {
+        width: 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .mastercardLogo {
+          height: 50px;
+          width: 50px;
           color: $colorRed;
-          padding: 5px 0px 5px 0px;
+          background-image: url("../../assets/images/mastercard-logo.svg");
+          background-size: 50px 50px;
         }
 
-        .contactUs {
-          margin-top: 5px;
+        .visaLogo {
+          height: 50px;
+          width: 50px;
+          color: $colorRed;
+          background-image: url("../../assets/images/visa-logo.svg");
+          background-size: 50px 50px;
         }
       }
-    }
+    }    
   }
 }
