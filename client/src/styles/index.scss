@@ -6,6 +6,13 @@
   box-sizing: inherit;
 }
 
+*::selection {
+  background: $colorRed;
+}
+*::-moz-selection {
+  background: $colorRed;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
