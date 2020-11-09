@@ -3,12 +3,12 @@ import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import styles from './styles.module.scss';
 
-type PropsType = {
+type IProps = {
   loading?: boolean;
   className?: string;
 };
 
-const Spinner = ({ loading = true, className = '' }: PropsType): JSX.Element => {
+const Spinner: React.FC<IProps> = ({ loading = true, className = '' }: IProps): JSX.Element => {
   const allClass = [styles.spinner, loading ? '' : styles.hide, className].join(' ');
 
   return (

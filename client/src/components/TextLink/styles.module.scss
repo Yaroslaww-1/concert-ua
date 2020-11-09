@@ -1,0 +1,13 @@
+@import 'src/styles/variables';
+
+.root {
+  margin: 5px 10px 5px 0px;
+  .greyRed {
+    color: $colorGray;
+
+    *:hover {
+      color: $colorRed !important;
+      transition: 200ms;
+    }
+  }
+}

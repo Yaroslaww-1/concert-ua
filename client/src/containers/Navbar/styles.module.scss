@@ -1,0 +1,86 @@
+@import 'src/styles/variables';
+
+$navbarBackground: #ec174d;
+$marginTop: 12px;
+$height: 50px;
+
+.navbar {
+  height: $height;
+  background-color: $navbarBackground;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  top: 0;
+  z-index: 1000;
+  width: calc(100% - 17px);
+  position: fixed;
+
+  .innerNavbar {
+    width: $sectionWidth;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $height;
+
+    .break {
+      width: 100px;
+    }
+
+    h3 {
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+  }
+
+  h1 {
+    height: $height;
+    font-size: 2.2rem;
+    margin-top: $marginTop;
+  }
+
+  a:not([custom-attribute="main-logo"]) {
+    height: $height;
+    text-decoration: none;
+    color: $linkColor;
+    margin: 0px 25px 10px 25px;
+
+    &:hover {
+      border-bottom: 5px solid $colorWhite;
+      margin-bottom: 5px;
+    }
+  }
+
+  a[custom-attribute="main-logo"] {
+    text-decoration: none;
+    color: $linkColor;
+  }  
+
+  svg {
+    margin: 0px 10px 0px 10px;
+    font-size: $mediumLarge;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .chooseCity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 25px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    svg {
+      margin: 0px 2.5px 0px 10px;
+    }
+  }
+}

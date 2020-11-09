@@ -1,4 +1,7 @@
 export enum Routes {
   DEFAULT = '/',
-  PING = '/ping',
+  NOT_FOUND = '/404',
+  CONCERTS = '/catalog/concerts/',
+  BANDS = '/wiki/bands/',
+  ALBUMS = '/wiki/albums/',
 }

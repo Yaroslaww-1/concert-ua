@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import pingReducer from 'src/pages/Ping/redux/reducer';
+import navbarReducer from 'src/containers/Navbar/redux/reducer';
+import homeReducer from 'src/pages/Home/redux/reducer';
+import profileReducer from 'src/pages/Profile/redux/reducer';
 
 const RootReducer = combineReducers({
-  ping: pingReducer,
+  profile: profileReducer,
+  navbar: navbarReducer,
+  home: homeReducer,
 });
 
 export default RootReducer;

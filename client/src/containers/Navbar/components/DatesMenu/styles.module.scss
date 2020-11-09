@@ -1,0 +1,22 @@
+@import 'src/styles/variables';
+
+.menuRoot {
+  background-color: transparent;
+  width: 300px;
+  margin-top: 34px !important;
+  border-radius: 0 !important;
+}
+
+.menuList {
+  background-color: $colorWhite;
+  color: $colorBlack;
+}
+
+.menuItemRoot {
+  font-size: $mediumLarge !important;
+  font-weight: 700;
+
+  &:hover {
+    color: $colorRed;
+  }
+}
