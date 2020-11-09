@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import TransparentButton from 'src/components/Buttons/TransparentButton';
 import LikeIcon from 'src/components/Icons/LikeIcon';
 import Text from 'src/components/Text';
-import { getImageColor, RgbColor } from 'src/helpers/image.helper';
+import { getImageColor, RgbColor } from 'src/common/images/image.helper';
 import { useHover } from 'src/common/hooks/use-hover';
 
 interface IProps {
