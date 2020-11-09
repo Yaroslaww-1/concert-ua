@@ -23,6 +23,10 @@ const FilterDate: React.FC<IProps> = ({}) => {
 
   const open = Boolean(anchorEl);
 
+  const onSelect = (from: Date, to: Date) => {
+    console.log(from, to);
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.openButton} onClick={onOpen}>
@@ -46,7 +50,7 @@ const FilterDate: React.FC<IProps> = ({}) => {
           paper: styles.popoverRoot,
         }}
       >
-        <DatePicker />
+        <DatePicker onClose={onClose} onSelect={onSelect} />
       </Popover>
     </div>
   );

@@ -15,10 +15,15 @@ import {
   getFirstDateOfMonth,
   getLastDateOfMonth,
 } from 'src/common/date/date.helper';
+import TransparentButton from 'src/components/Buttons/TransparentButton';
+import BorderlessTransparentButton from 'src/components/Buttons/BorderlessTransparentButton';
 
-interface IProps {}
+interface IProps {
+  onClose: () => void;
+  onSelect: (from: Date, to: Date) => void;
+}
 
-const DatePickerComponent: React.FC<IProps> = () => {
+const DatePickerComponent: React.FC<IProps> = ({ onClose, onSelect }) => {
   const [startDate, setStartDate] = React.useState<Date>(new Date());
   const [visibleMonth, setVisibleMonth] = React.useState<number>(new Date().getMonth());
   const [endDate, setEndDate] = React.useState<Date | null>(null);
@@ -63,6 +68,11 @@ const DatePickerComponent: React.FC<IProps> = () => {
   const getDateString = (date: Date) => {
     const options = { year: 'numeric', month: 'long' };
     return date.toLocaleDateString('us', options);
+  };
+
+  const onSubmitSelect = () => {
+    onSelect(startDate, endDate ? endDate : startDate);
+    onClose();
   };
 
   return (
@@ -140,6 +150,10 @@ const DatePickerComponent: React.FC<IProps> = () => {
           </div>
         )}
       />
+      <div className={styles.confirmingButtons}>
+        <BorderlessTransparentButton onClick={onClose} text="Cancel" color="red" />
+        <ColoredButton onClick={onSubmitSelect} text="Submit" />
+      </div>
     </>
   );
 };
