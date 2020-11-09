@@ -15,12 +15,11 @@ import {
   getFirstDateOfMonth,
   getLastDateOfMonth,
 } from 'src/common/date/date.helper';
-import TransparentButton from 'src/components/Buttons/TransparentButton';
 import BorderlessTransparentButton from 'src/components/Buttons/BorderlessTransparentButton';
 
 interface IProps {
   onClose: () => void;
-  onSelect: (from: Date, to: Date) => void;
+  onSelect: (payload: { from: Date; to: Date }) => void;
 }
 
 const DatePickerComponent: React.FC<IProps> = ({ onClose, onSelect }) => {
@@ -71,7 +70,7 @@ const DatePickerComponent: React.FC<IProps> = ({ onClose, onSelect }) => {
   };
 
   const onSubmitSelect = () => {
-    onSelect(startDate, endDate ? endDate : startDate);
+    onSelect({ from: startDate, to: endDate ? endDate : startDate });
     onClose();
   };
 
