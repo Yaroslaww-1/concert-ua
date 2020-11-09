@@ -91,6 +91,12 @@ const DatePickerComponent: React.FC<IProps> = () => {
             ])
           }
         />
+        <ColoredButton
+          text="All dates"
+          variant="gray"
+          classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
+          onClick={() => onChange([getFirstDateOfMonth(startDate), getLastDateOfMonth(addMonthsToDate(startDate, 12))])}
+        />
       </div>
       <ReactDatePicker
         selected={startDate}
