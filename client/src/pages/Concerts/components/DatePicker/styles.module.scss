@@ -3,7 +3,7 @@
 :global(.react-datepicker) {
   border-radius: 0px !important;
   border: none !important;
-  padding: 20px;
+  padding: 20px 80px 20px 80px;
 }
 
 .day {
@@ -11,6 +11,8 @@
   background-color: $colorWhite;
   margin: 0px !important;
   border-radius: 0px !important;
+  padding: 5px 7px 5px 7px;
+  font-size: 1rem;
 
   &.selected {
     color: $colorWhite !important;
@@ -26,7 +28,7 @@
 
   }
 
-  &.nextMonth {
+  &.notCurrentMonth {
     color: $colorMiddleLightGray !important;
   }
 
@@ -41,7 +43,41 @@
   border: none !important;
 }
 
+:global(.react-datepicker__day-name) {
+  margin: 0px 7px 0px 7px !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: $colorGray !important;
+}
+
 .header {
   background-color: $colorWhite !important;
   
+  .date {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: $colorRed;
+
+    &.buttonPrev {
+      position: absolute;
+      left: -80px;
+      top: 175%;
+    }
+  
+    &.buttonNext {
+      position: absolute;
+      right: -80px;
+      top: 175%;
+    }
+
+    svg {
+      font-size: 3rem;
+    }
+  }
 }

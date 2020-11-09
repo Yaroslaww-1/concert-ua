@@ -3,6 +3,8 @@ import React from 'react';
 import styles from './styles.module.scss';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 interface IProps {}
 
@@ -35,11 +37,10 @@ const DatePickerComponent: React.FC<IProps> = () => {
   const getDayClassNameByMonth = (date: Date) => {
     const dayStyles = {
       currentMonth: styles.currentMonth,
-      nextMonth: styles.nextMonth,
+      notCurrentMonth: styles.notCurrentMonth,
     };
     if (!startDate) return dayStyles.currentMonth;
-    if (date.getMonth() > startDate.getMonth() || date.getFullYear() > startDate.getFullYear())
-      return dayStyles.nextMonth;
+    if (date.getMonth() !== startDate.getMonth()) return dayStyles.notCurrentMonth;
     return dayStyles.currentMonth;
   };
 
@@ -67,12 +68,12 @@ const DatePickerComponent: React.FC<IProps> = () => {
         nextMonthButtonDisabled,
       }) => (
         <div className={styles.header}>
-          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
-            {'<'}
+          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className={styles.buttonPrev}>
+            <NavigateBeforeIcon />
           </button>
           <div className={styles.date}>{getDateString(date)}</div>
-          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
-            {'>'}
+          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className={styles.buttonNext}>
+            <NavigateNextIcon />
           </button>
         </div>
       )}
