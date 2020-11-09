@@ -8,14 +8,13 @@ import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import FullscreenImage from 'src/components/EventImageComponents/Images/FullscreenImage';
+import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
+import { fetchNewEvents } from 'src/containers/NewEvents/redux/actions';
 
-const EventsSecondaryCarousel: React.FC = () => {
+const EventsMainCarousel: React.FC = () => {
   const dispatch = useDispatch();
-  const {
-    home: {
-      state: { events },
-    },
-  } = useSelector((state: RootState) => ({ home: state.home }));
+  const events = useSelector((state: RootState) => state.home.newEvents.state.events);
+  useFetchIfNeeded(dispatch, fetchNewEvents.request);
 
   const NextArrow = (props: any) => {
     const { className, style, onClick } = props;
@@ -61,4 +60,4 @@ const EventsSecondaryCarousel: React.FC = () => {
   );
 };
 
-export default EventsSecondaryCarousel;
+export default EventsMainCarousel;

@@ -7,14 +7,13 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import SquareImage from 'src/components/EventImageComponents/Images/SquareImage';
 import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
+import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
+import { fetchPopularEvents } from 'src/containers/PopularEvents/redux/actions';
 
-const EventsMainCarousel: React.FC = () => {
+const EventsSecondaryCarousel: React.FC = () => {
   const dispatch = useDispatch();
-  const {
-    home: {
-      state: { events },
-    },
-  } = useSelector((state: RootState) => ({ home: state.home }));
+  const events = useSelector((state: RootState) => state.home.popularEvents.state.events);
+  useFetchIfNeeded(dispatch, fetchPopularEvents.request);
 
   return (
     <div className={styles.carouselWrapper}>
@@ -55,4 +54,4 @@ const EventsMainCarousel: React.FC = () => {
   );
 };
 
-export default EventsMainCarousel;
+export default EventsSecondaryCarousel;

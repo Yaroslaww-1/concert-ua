@@ -1,16 +1,17 @@
 import React from 'react';
-import { EventModel } from 'src/api/models/event.model';
 
 import styles from './styles.module.scss';
 import EventsCardsSection from 'src/components/Sections/EventCardsSection';
-import { EventService } from 'src/api/services/event.service';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/redux/rootReducer';
+import { fetchNewEvents } from './redux/actions';
+import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
 
 const NewEventsSection: React.FC = () => {
-  const [events, setEvents] = React.useState<EventModel[]>([]);
-  React.useEffect(() => {
-    EventService.getEvents().then((events) => setEvents(events as EventModel[]));
-  }, []);
-  return <EventsCardsSection events={[...events, ...events]} header={'New events'} onLoadMore={() => {}} />;
+  const dispatch = useDispatch();
+  const events = useSelector((state: RootState) => state.home.newEvents.state.events);
+  useFetchIfNeeded(dispatch, fetchNewEvents.request);
+  return <EventsCardsSection events={events} header={'New events'} onLoadMore={() => {}} />;
 };
 
 export default NewEventsSection;
