@@ -13,12 +13,13 @@ const DatePickerComponent: React.FC<IProps> = () => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+    console.log(startDate, endDate);
   };
 
-  const getDayClassName = (date: Date) => {
+  const getDayClassNameBySelection = (date: Date) => {
     const dayStyles = {
-      selected: `${styles.day} ${styles.selected}`,
-      unselected: `${styles.day} ${styles.unSelected}`,
+      selected: styles.selected,
+      unselected: styles.unSelected,
     };
     if (startDate === null) return dayStyles.unselected;
     if (endDate === null) {
@@ -31,6 +32,22 @@ const DatePickerComponent: React.FC<IProps> = () => {
     return dayStyles.unselected;
   };
 
+  const getDayClassNameByMonth = (date: Date) => {
+    const dayStyles = {
+      currentMonth: styles.currentMonth,
+      nextMonth: styles.nextMonth,
+    };
+    if (!startDate) return dayStyles.currentMonth;
+    if (date.getMonth() > startDate.getMonth() || date.getFullYear() > startDate.getFullYear())
+      return dayStyles.nextMonth;
+    return dayStyles.currentMonth;
+  };
+
+  const getDateString = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long' };
+    return date.toLocaleDateString('us', options);
+  };
+
   return (
     <ReactDatePicker
       selected={startDate}
@@ -39,7 +56,26 @@ const DatePickerComponent: React.FC<IProps> = () => {
       endDate={endDate}
       selectsRange
       inline
-      dayClassName={getDayClassName}
+      dayClassName={(date) => `${styles.day} ${getDayClassNameBySelection(date)} ${getDayClassNameByMonth(date)}`}
+      renderCustomHeader={({
+        date,
+        changeYear,
+        changeMonth,
+        decreaseMonth,
+        increaseMonth,
+        prevMonthButtonDisabled,
+        nextMonthButtonDisabled,
+      }) => (
+        <div className={styles.header}>
+          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+            {'<'}
+          </button>
+          <div className={styles.date}>{getDateString(date)}</div>
+          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+            {'>'}
+          </button>
+        </div>
+      )}
     />
   );
 };

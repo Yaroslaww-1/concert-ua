@@ -1,5 +1,11 @@
 @import 'src/styles/variables';
 
+:global(.react-datepicker) {
+  border-radius: 0px !important;
+  border: none !important;
+  padding: 20px;
+}
+
 .day {
   color: $colorBlack;
   background-color: $colorWhite;
@@ -15,4 +21,27 @@
     color: $colorBlack !important;
     background-color: $colorWhite !important;
   }
+
+  &.currentMonth {
+
+  }
+
+  &.nextMonth {
+    color: $colorMiddleLightGray !important;
+  }
+
+  &:hover {
+    color: $colorWhite !important;
+    background-color: $colorRed !important;
+  }
+}
+
+:global(.react-datepicker__header) {
+  background-color: $colorWhite !important;
+  border: none !important;
+}
+
+.header {
+  background-color: $colorWhite !important;
+  
 }
