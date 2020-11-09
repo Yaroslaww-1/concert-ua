@@ -10,11 +10,13 @@ interface IProps {}
 
 const DatePickerComponent: React.FC<IProps> = () => {
   const [startDate, setStartDate] = React.useState<Date | null>(new Date());
+  const [visibleMonth, setVisibleMonth] = React.useState<number>(new Date().getMonth());
   const [endDate, setEndDate] = React.useState<Date | null>(null);
   const onChange = (dates: [Date, Date]) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
+    setVisibleMonth(start.getMonth());
     console.log(startDate, endDate);
   };
 
@@ -40,7 +42,8 @@ const DatePickerComponent: React.FC<IProps> = () => {
       notCurrentMonth: styles.notCurrentMonth,
     };
     if (!startDate) return dayStyles.currentMonth;
-    if (date.getMonth() !== startDate.getMonth()) return dayStyles.notCurrentMonth;
+    console.log(date.getMonth(), visibleMonth);
+    if (date.getMonth() !== visibleMonth) return dayStyles.notCurrentMonth;
     return dayStyles.currentMonth;
   };
 
@@ -68,11 +71,29 @@ const DatePickerComponent: React.FC<IProps> = () => {
         nextMonthButtonDisabled,
       }) => (
         <div className={styles.header}>
-          <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled} className={styles.buttonPrev}>
+          <button
+            onClick={() => {
+              decreaseMonth();
+              const newDate = new Date(date);
+              newDate.setMonth(newDate.getMonth() - 1);
+              setVisibleMonth(newDate.getMonth());
+            }}
+            disabled={prevMonthButtonDisabled}
+            className={styles.buttonPrev}
+          >
             <NavigateBeforeIcon />
           </button>
           <div className={styles.date}>{getDateString(date)}</div>
-          <button onClick={increaseMonth} disabled={nextMonthButtonDisabled} className={styles.buttonNext}>
+          <button
+            onClick={() => {
+              increaseMonth();
+              const newDate = new Date(date);
+              newDate.setMonth(newDate.getMonth() + 1);
+              setVisibleMonth(newDate.getMonth());
+            }}
+            disabled={nextMonthButtonDisabled}
+            className={styles.buttonNext}
+          >
             <NavigateNextIcon />
           </button>
         </div>
