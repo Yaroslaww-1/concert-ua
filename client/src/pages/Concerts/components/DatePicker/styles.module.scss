@@ -65,6 +65,8 @@ $paddingLeftRight: 80px;
     background-color: transparent;
     border: none;
     color: $colorRed;
+    outline: none !important;
+    box-shadow: none !important;
 
     &.buttonPrev {
       position: absolute;

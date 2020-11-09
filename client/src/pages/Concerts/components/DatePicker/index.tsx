@@ -27,7 +27,8 @@ const DatePickerComponent: React.FC<IProps> = () => {
     };
     if (startDate === null) return dayStyles.unselected;
     if (endDate === null) {
-      if (startDate.getDate() === date.getDate()) return dayStyles.selected;
+      if (startDate.getDate() === date.getDate() && startDate.getMonth() === startDate.getMonth())
+        return dayStyles.selected;
       else return dayStyles.unselected;
     }
     if (date.getDate() >= startDate.getDate() && date.getDate() <= endDate.getDate()) {
