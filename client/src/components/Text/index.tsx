@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-interface IProps {
+export interface TextProps {
   fontSize?: string;
   textTransform?:
     | '-moz-initial'
@@ -48,7 +48,7 @@ interface IProps {
   letterSpacing?: string;
 }
 
-const Text: React.FC<IProps> = ({
+const Text: React.FC<TextProps> = ({
   children,
   fontSize = '1rem',
   textTransform = 'none',

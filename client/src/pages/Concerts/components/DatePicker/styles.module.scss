@@ -1,9 +1,11 @@
 @import 'src/styles/variables';
 
+$paddingLeftRight: 80px;
+
 :global(.react-datepicker) {
   border-radius: 0px !important;
   border: none !important;
-  padding: 20px 80px 20px 80px;
+  padding: 20px $paddingLeftRight 20px $paddingLeftRight;
 }
 
 .day {
@@ -79,5 +81,18 @@
     svg {
       font-size: 3rem;
     }
+  }
+}
+
+.pickingButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px $paddingLeftRight 0px $paddingLeftRight;
+  
+  .button {
+    width: 30%;
+    padding: 0px !important;
+    height: 45px !important;
   }
 }

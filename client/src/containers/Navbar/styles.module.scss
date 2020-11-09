@@ -56,6 +56,11 @@ $height: 50px;
   a[custom-attribute="main-logo"] {
     text-decoration: none;
     color: $linkColor;
+
+    h1 {
+      margin-bottom: 2.5px;
+      margin-top: -2.5px;
+    }
   }  
 
   svg {

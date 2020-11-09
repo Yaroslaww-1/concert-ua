@@ -5,6 +5,7 @@ import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import ColoredButton from 'src/components/Buttons/ColoredButton';
 
 interface IProps {}
 
@@ -17,7 +18,6 @@ const DatePickerComponent: React.FC<IProps> = () => {
     setStartDate(start);
     setEndDate(end);
     setVisibleMonth(start.getMonth());
-    console.log(startDate, endDate);
   };
 
   const getDayClassNameBySelection = (date: Date) => {
@@ -42,7 +42,6 @@ const DatePickerComponent: React.FC<IProps> = () => {
       notCurrentMonth: styles.notCurrentMonth,
     };
     if (!startDate) return dayStyles.currentMonth;
-    console.log(date.getMonth(), visibleMonth);
     if (date.getMonth() !== visibleMonth) return dayStyles.notCurrentMonth;
     return dayStyles.currentMonth;
   };
@@ -53,52 +52,74 @@ const DatePickerComponent: React.FC<IProps> = () => {
   };
 
   return (
-    <ReactDatePicker
-      selected={startDate}
-      onChange={onChange}
-      startDate={startDate}
-      endDate={endDate}
-      selectsRange
-      inline
-      dayClassName={(date) => `${styles.day} ${getDayClassNameBySelection(date)} ${getDayClassNameByMonth(date)}`}
-      renderCustomHeader={({
-        date,
-        changeYear,
-        changeMonth,
-        decreaseMonth,
-        increaseMonth,
-        prevMonthButtonDisabled,
-        nextMonthButtonDisabled,
-      }) => (
-        <div className={styles.header}>
-          <button
-            onClick={() => {
-              decreaseMonth();
-              const newDate = new Date(date);
-              newDate.setMonth(newDate.getMonth() - 1);
-              setVisibleMonth(newDate.getMonth());
-            }}
-            disabled={prevMonthButtonDisabled}
-            className={styles.buttonPrev}
-          >
-            <NavigateBeforeIcon />
-          </button>
-          <div className={styles.date}>{getDateString(date)}</div>
-          <button
-            onClick={() => {
-              increaseMonth();
-              const newDate = new Date(date);
-              newDate.setMonth(newDate.getMonth() + 1);
-              setVisibleMonth(newDate.getMonth());
-            }}
-            disabled={nextMonthButtonDisabled}
-            className={styles.buttonNext}
-          >
-            <NavigateNextIcon />
-          </button>
-        </div>
-      )}
-    />
+    <>
+      <div className={styles.pickingButtons}>
+        <ColoredButton
+          text="Tomorrow"
+          variant="gray"
+          classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
+          onClick={() => {}}
+        />
+        <ColoredButton
+          text="Next week"
+          variant="gray"
+          classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
+          onClick={() => {}}
+        />
+        <ColoredButton
+          text="Next month"
+          variant="gray"
+          classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
+          onClick={() => {}}
+        />
+      </div>
+      <ReactDatePicker
+        selected={startDate}
+        onChange={onChange}
+        startDate={startDate}
+        endDate={endDate}
+        selectsRange
+        inline
+        dayClassName={(date) => `${styles.day} ${getDayClassNameBySelection(date)} ${getDayClassNameByMonth(date)}`}
+        renderCustomHeader={({
+          date,
+          changeYear,
+          changeMonth,
+          decreaseMonth,
+          increaseMonth,
+          prevMonthButtonDisabled,
+          nextMonthButtonDisabled,
+        }) => (
+          <div className={styles.header}>
+            <button
+              onClick={() => {
+                decreaseMonth();
+                const newDate = new Date(date);
+                newDate.setMonth(newDate.getMonth() - 1);
+                setVisibleMonth(newDate.getMonth());
+              }}
+              disabled={prevMonthButtonDisabled}
+              className={styles.buttonPrev}
+            >
+              <NavigateBeforeIcon />
+            </button>
+            <div className={styles.date}>{getDateString(date)}</div>
+            <button
+              onClick={() => {
+                increaseMonth();
+                const newDate = new Date(date);
+                newDate.setMonth(newDate.getMonth() + 1);
+                setVisibleMonth(newDate.getMonth());
+              }}
+              disabled={nextMonthButtonDisabled}
+              className={styles.buttonNext}
+            >
+              <NavigateNextIcon />
+            </button>
+          </div>
+        )}
+      />
+    </>
   );
 };
 
