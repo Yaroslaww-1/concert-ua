@@ -1,14 +1,14 @@
 import React from 'react';
 
-import styles from './styles.module.scss';
 import FilterDate from '../../components/FilterDate';
 import FilterSection from '../../components/FilterSection';
+import FilterStyles from '../../components/FilterStyle';
 
 const FilterDateContainer: React.FC = () => {
   return (
     <FilterSection>
       <FilterDate />
-      <FilterDate />
+      <FilterStyles />
       <FilterDate />
     </FilterSection>
   );

@@ -16,8 +16,9 @@ interface IProps<P> {
 const FilterItem = <P extends object>({ icon, text, onSelect, renderPopoverContent }: IProps<P>) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLDivElement | null>(null);
 
-  const onOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setAnchorEl(event.currentTarget);
+  const toggleOpen = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!anchorEl) setAnchorEl(event.currentTarget);
+    else setAnchorEl(null);
   };
 
   const onClose = () => {
@@ -28,7 +29,7 @@ const FilterItem = <P extends object>({ icon, text, onSelect, renderPopoverConte
 
   return (
     <div className={`${styles.root} ${open && styles.open}`}>
-      <div className={`${styles.openButton}`} onClick={onOpen}>
+      <div className={`${styles.openButton}`} onClick={toggleOpen}>
         {icon}
         <Text color="black">{text}</Text>
         {open ? <ExpandMoreIcon /> : <ExpandLessIcon />}
