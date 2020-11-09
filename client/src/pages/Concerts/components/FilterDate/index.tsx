@@ -42,6 +42,9 @@ const FilterDate: React.FC<IProps> = ({}) => {
           vertical: 'top',
           horizontal: 'center',
         }}
+        classes={{
+          paper: styles.popoverRoot,
+        }}
       >
         <DatePicker />
       </Popover>
