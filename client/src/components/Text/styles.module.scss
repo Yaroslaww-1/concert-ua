@@ -1,0 +1,15 @@
+@import 'src/styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+:export { 
+  colorBlack: $colorBlack;
+  colorWhite: $colorWhite;
+  colorRed: $colorRed;
+  colorGray: $colorGray;
+}

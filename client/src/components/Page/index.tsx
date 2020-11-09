@@ -5,12 +5,12 @@ import Spinner from 'src/components/Spinner';
 import Navbar from 'src/containers/Navbar';
 
 interface IProps {
-  loading: boolean;
+  loading?: boolean;
   withoutNavbar?: boolean;
   className?: string;
 }
 
-const PageComponent: React.FC<IProps> = ({ loading, children, withoutNavbar = false, className = '' }) => {
+const PageComponent: React.FC<IProps> = ({ loading = false, children, withoutNavbar = false, className = '' }) => {
   return (
     <div className={`${styles.page} ${className}`}>
       {!withoutNavbar && <Navbar />}

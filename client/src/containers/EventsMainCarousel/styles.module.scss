@@ -1,18 +1,6 @@
 @import 'src/styles/variables';
 
 .carouselWrapper {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-
-  img {
-    object-fit: cover;
-    height: 100vh;
-    width: 100%;
-    min-width: 100%;
-  }
-
   .navigation {
     position: absolute;
     left: 0;
@@ -28,7 +16,7 @@
 
     li {
       button:before {
-        opacity: 0.8;
+        opacity: 1;
         color: $colorWhite;
         content: "";
         background-color: $colorWhite;

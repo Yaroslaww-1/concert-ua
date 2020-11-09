@@ -1,0 +1,17 @@
+@import 'src/styles/variables';
+
+.wrapper {
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    padding: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .textRoot {
+    font-size: 7px;
+  }
+}

@@ -1,0 +1,27 @@
+@import 'src/styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 60px;
+  width: 100%;
+  box-sizing: border-box;
+
+  .content {
+    max-width: $sectionWidth;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .header {
+      padding: 10px 0px 40px 0px;
+    }
+  }
+
+  &:nth-child(2n + 1) {
+    background-color: rgba($colorLightGray, 0.35);
+  }
+}

@@ -1,20 +1,7 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
-import { EventService } from 'src/api/services/event.service';
-import { fetchEvents } from './actions';
-
-function* fetchEventsSaga(action: ReturnType<typeof fetchEvents.requestPayload>) {
-  try {
-    const events = yield call(EventService.getEvents);
-    yield put(fetchEvents.success(events));
-  } catch (error) {
-    yield put(fetchEvents.failure(error));
-  }
-}
-
-function* watchFetchEvents() {
-  yield takeLatest(fetchEvents.types.request, fetchEventsSaga);
-}
+import { all } from 'redux-saga/effects';
+import fetchNewEventsSagas from 'src/containers/NewEvents/redux/sagas';
+import fetchPopularEventsSagas from 'src/containers/PopularEvents/redux/sagas';
 
 export default function* fetchHomeSagas() {
-  yield all([watchFetchEvents()]);
+  yield all([fetchNewEventsSagas(), fetchPopularEventsSagas()]);
 }

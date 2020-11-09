@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { createSelector } from 'reselect';
 import { RootState } from 'src/redux/rootReducer';
 import { fetchCities, fetchDates } from './redux/actions';
 
@@ -12,17 +13,28 @@ import LocationCityIcon from '@material-ui/icons/LocationCity';
 import ProfileIcon from './components/ProfileIcon';
 import DatesMenu from './components/DatesMenu';
 import CitiesDialog from './components/CitiesDialog';
+import { NavbarState } from './redux/reducer';
+import { ProfileState } from 'src/pages/Profile/redux/reducer';
+
+const navbarSelector = createSelector(
+  (state: RootState) => state.navbar.state,
+  (state: NavbarState) => ({
+    dates: state.dates,
+    cities: state.cities,
+  }),
+);
+
+const userSelector = createSelector(
+  (state: RootState) => state.profile.state,
+  (state: ProfileState) => ({
+    user: state.user,
+  }),
+);
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
-  const {
-    navbar: {
-      state: { dates, cities },
-    },
-    profile: {
-      state: { user },
-    },
-  } = useSelector((state: RootState) => ({ navbar: state.navbar, profile: state.profile }));
+  const { dates, cities } = useSelector(navbarSelector);
+  const { user } = useSelector(userSelector);
   const eventIconRef = React.useRef<SVGSVGElement>(null);
   const chooseCityRef = React.useRef<HTMLDivElement>(null);
 

@@ -1,0 +1,66 @@
+@import 'src/styles/variables';
+
+.root {
+  background-color: transparent;
+  padding: 0px 40px 0px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60px !important;
+  max-width: 210px;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  cursor: pointer;
+  text-align: center;
+
+  &.white {
+    div {
+      color: $colorWhite !important;
+    }
+    border: 2px solid $colorWhite;
+    &:hover {
+      transition: 300ms;
+      background-color: $colorWhite;
+      div {
+        color: $colorBlack !important;
+      }
+    }
+  }
+
+  &.red {
+    div {
+      color: $colorRed !important;
+    }
+    border: 2px solid $colorRed;
+    &:hover {
+      transition: 300ms;
+      background-color: $colorRed;
+      div {
+        color: $colorWhite !important;
+      }
+    }
+  }
+
+  &.appearing {
+    &:hover {
+      transition: .5s ease;
+    }
+  }
+
+  &.growCenter {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-image: linear-gradient($colorRed, $colorRed);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 300ms, color 300ms;
+
+    &:hover {
+      transition: 300ms;
+      background-size: 100% 100%;
+    }
+  }
+}
