@@ -6,18 +6,32 @@ import 'react-datepicker/dist/react-datepicker.css';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import ColoredButton from 'src/components/Buttons/ColoredButton';
+import {
+  addDaysToDate,
+  addMonthsToDate,
+  isDateEqual,
+  isDateLess,
+  subtractMonthsFromDate,
+  getFirstDateOfMonth,
+  getLastDateOfMonth,
+} from 'src/common/date/date.helper';
 
 interface IProps {}
 
 const DatePickerComponent: React.FC<IProps> = () => {
-  const [startDate, setStartDate] = React.useState<Date | null>(new Date());
+  const [startDate, setStartDate] = React.useState<Date>(new Date());
   const [visibleMonth, setVisibleMonth] = React.useState<number>(new Date().getMonth());
   const [endDate, setEndDate] = React.useState<Date | null>(null);
-  const onChange = (dates: [Date, Date]) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-    setVisibleMonth(start.getMonth());
+  const onChange = (dates: Date | [Date, Date]) => {
+    if (dates instanceof Date) {
+      setStartDate(dates);
+      setVisibleMonth(dates.getMonth());
+    } else {
+      const [start, end] = dates;
+      setStartDate(start);
+      setEndDate(end);
+      setVisibleMonth(start.getMonth());
+    }
   };
 
   const getDayClassNameBySelection = (date: Date) => {
@@ -27,11 +41,10 @@ const DatePickerComponent: React.FC<IProps> = () => {
     };
     if (startDate === null) return dayStyles.unselected;
     if (endDate === null) {
-      if (startDate.getDate() === date.getDate() && startDate.getMonth() === startDate.getMonth())
-        return dayStyles.selected;
+      if (isDateEqual(startDate, date)) return dayStyles.selected;
       else return dayStyles.unselected;
     }
-    if (date.getDate() >= startDate.getDate() && date.getDate() <= endDate.getDate()) {
+    if (isDateLess(startDate, date) && isDateLess(date, endDate)) {
       return dayStyles.selected;
     }
     return dayStyles.unselected;
@@ -48,7 +61,7 @@ const DatePickerComponent: React.FC<IProps> = () => {
   };
 
   const getDateString = (date: Date) => {
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long' };
+    const options = { year: 'numeric', month: 'long' };
     return date.toLocaleDateString('us', options);
   };
 
@@ -59,19 +72,24 @@ const DatePickerComponent: React.FC<IProps> = () => {
           text="Tomorrow"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => {}}
+          onClick={() => onChange(addDaysToDate(startDate, 1))}
         />
         <ColoredButton
           text="Next week"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => {}}
+          onClick={() => onChange([addDaysToDate(startDate, 1), addDaysToDate(startDate, 8)])}
         />
         <ColoredButton
           text="Next month"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => {}}
+          onClick={() =>
+            onChange([
+              getFirstDateOfMonth(addMonthsToDate(startDate, 1)),
+              getLastDateOfMonth(addMonthsToDate(startDate, 1)),
+            ])
+          }
         />
       </div>
       <ReactDatePicker
@@ -95,9 +113,7 @@ const DatePickerComponent: React.FC<IProps> = () => {
             <button
               onClick={() => {
                 decreaseMonth();
-                const newDate = new Date(date);
-                newDate.setMonth(newDate.getMonth() - 1);
-                setVisibleMonth(newDate.getMonth());
+                setVisibleMonth(subtractMonthsFromDate(date, 1).getMonth());
               }}
               disabled={prevMonthButtonDisabled}
               className={styles.buttonPrev}
@@ -108,9 +124,7 @@ const DatePickerComponent: React.FC<IProps> = () => {
             <button
               onClick={() => {
                 increaseMonth();
-                const newDate = new Date(date);
-                newDate.setMonth(newDate.getMonth() + 1);
-                setVisibleMonth(newDate.getMonth());
+                setVisibleMonth(addMonthsToDate(date, 1).getMonth());
               }}
               disabled={nextMonthButtonDisabled}
               className={styles.buttonNext}
