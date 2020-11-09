@@ -1,0 +1,14 @@
+@import 'src/styles/variables';
+
+.root {
+  color: $colorBlack;
+  padding: 20px 0px 20px 0px;
+
+  .openButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}

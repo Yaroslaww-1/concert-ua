@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+
+.day {
+  color: $colorBlack;
+  background-color: $colorWhite;
+  margin: 0px !important;
+  border-radius: 0px !important;
+
+  &.selected {
+    color: $colorWhite !important;
+    background-color: $colorRed !important;
+  }
+
+  &.unSelected {
+    color: $colorBlack !important;
+    background-color: $colorWhite !important;
+  }
+}
