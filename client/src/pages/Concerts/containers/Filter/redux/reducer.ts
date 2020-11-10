@@ -5,21 +5,27 @@ import { StyleModel } from 'src/api/models/style.model';
 import { addDaysToDate } from 'src/common/date/date.helper';
 import { createLoadingReducer } from 'src/redux/helpers/reducerCreator';
 
-import { fetchStyles, fetchPlaces } from './actions';
+import { fetchStyles, fetchPlaces, selectDateFilter, selectStyleFilter, selectPlaceFilter } from './actions';
+
+export interface IDateFilter {
+  dateFrom: Date;
+  dateTo: Date;
+}
+
+export interface IStyleFilter {
+  availableStyles: StyleModel[];
+  selectedStyles: StyleModel[];
+}
+
+export interface IPlaceFilter {
+  availablePlaces: PlaceModel[];
+  selectedPlaces: PlaceModel[];
+}
 
 export type FilterState = {
-  dateFilter: {
-    dateFrom: Date;
-    dateTo: Date;
-  };
-  styleFilter: {
-    availableStyles: StyleModel[];
-    selectedStyles: StyleModel[];
-  };
-  placeFilter: {
-    availablePlaces: PlaceModel[];
-    selectedPlaces: PlaceModel[];
-  };
+  dateFilter: IDateFilter;
+  styleFilter: IStyleFilter;
+  placeFilter: IPlaceFilter;
 };
 
 const state = createReducer<FilterState>(
@@ -34,6 +40,15 @@ const state = createReducer<FilterState>(
     },
     [fetchPlaces.successAction.type]: (state, action: ReturnType<typeof fetchPlaces.successPayload>) => {
       state.placeFilter.availablePlaces = action.payload.places;
+    },
+    [selectDateFilter.type]: (state, action: ReturnType<typeof selectDateFilter>) => {
+      state.dateFilter = action.payload;
+    },
+    [selectStyleFilter.type]: (state, action: ReturnType<typeof selectStyleFilter>) => {
+      state.styleFilter.selectedStyles = action.payload;
+    },
+    [selectPlaceFilter.type]: (state, action: ReturnType<typeof selectPlaceFilter>) => {
+      state.placeFilter.selectedPlaces = action.payload;
     },
   },
 );

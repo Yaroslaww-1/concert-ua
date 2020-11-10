@@ -11,7 +11,7 @@ import FilterStyles from '../../components/Filters/FilterStyle';
 import { FilterState } from './redux/reducer';
 import { PlaceModel } from 'src/api/models/place.model';
 import { StyleModel } from 'src/api/models/style.model';
-import { fetchPlaces, fetchStyles } from './redux/actions';
+import { fetchPlaces, fetchStyles, selectDateFilter, selectStyleFilter, selectPlaceFilter } from './redux/actions';
 
 const filterSelector = createSelector(
   (state: RootState) => state.concerts.filter.state,
@@ -31,14 +31,17 @@ const FilterDateContainer: React.FC = () => {
     dispatch(fetchPlaces.request());
   }, []);
 
-  const onDateSelect = ({ from, to }: { from: Date; to: Date }) => {
-    console.log('Date selected', from, to);
+  const onDateSelect = ({ from: dateFrom, to: dateTo }: { from: Date; to: Date }) => {
+    console.log('Date selected', dateFrom, dateTo);
+    dispatch(selectDateFilter({ dateFrom, dateTo }));
   };
   const onStyleSelect = (styles: StyleModel[]) => {
     console.log('Style selected', styles);
+    dispatch(selectStyleFilter(styles));
   };
   const onPlaceSelect = (places: PlaceModel[]) => {
     console.log('Place selected', places);
+    dispatch(selectPlaceFilter(places));
   };
 
   return (
