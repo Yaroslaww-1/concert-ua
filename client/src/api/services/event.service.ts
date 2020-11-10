@@ -1,6 +1,7 @@
 import { Throwable } from 'src/common/error/throwable';
 import api from '../api.helper';
 import { EventModel } from '../models/event.model';
+import { PlaceModel } from '../models/place.model';
 
 const endpoint = 'events';
 
@@ -118,9 +119,20 @@ const newEvents = [
   },
 ];
 
+export interface IEventFilter {
+  dateFrom?: Date;
+  dateTo?: Date;
+  placesIds?: string[];
+  stylesIds?: string[];
+}
+
+const isEventValid = (event: EventModel, filter: IEventFilter): boolean => {
+  return true;
+};
+
 export class EventService {
   constructor() {}
-  static async getEvents(): Promise<EventModel[] | Throwable> {
+  static async getEvents(filter: IEventFilter = {}): Promise<EventModel[] | Throwable> {
     console.log('Events fetching');
     return new Promise((resolve, reject) => {
       setTimeout(() => {

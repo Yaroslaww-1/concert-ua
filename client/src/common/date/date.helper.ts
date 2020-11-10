@@ -47,3 +47,13 @@ export const getLastDateOfMonth = (date: Date) => {
   const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   return lastDate;
 };
+
+export const getDifferenceInYears = (date1: Date, date2: Date) => {
+  const diffInMs = Math.abs(date1.getTime() - date2.getTime());
+  const msInOneYear = 1000 * 60 * 60 * 24 * 365;
+  const diffInYears = diffInMs / msInOneYear;
+  return diffInYears;
+};
+
+export const formatDate = (date: Date, options: Intl.DateTimeFormatOptions) =>
+  date.toLocaleDateString('en-US', options).replace(/\//g, '.');
