@@ -17,13 +17,14 @@ interface IProps<T extends IItem> {
   onToggle: (item: T, action: 'select' | 'unselect') => void;
   classes?: {
     root?: string;
+    checkboxRoot?: string;
   };
 }
 const CheckboxList = <T extends IItem>({
   items,
   preSelected,
   onToggle: onToggleProps,
-  classes = { root: '' },
+  classes = { root: '', checkboxRoot: '' },
 }: IProps<T>) => {
   const [selectedItems, setSelectedItems] = React.useState<T[]>(preSelected);
 
@@ -45,10 +46,11 @@ const CheckboxList = <T extends IItem>({
     <FormGroup classes={{ root: `${styles.root} ${classes.root || ''}` }}>
       {items.map((item) => (
         <FormControlLabel
+          className={styles.label}
           key={item.id}
           control={
             <Checkbox
-              className={styles.checkboxRoot}
+              className={`${styles.checkboxRoot} ${classes.checkboxRoot || ''}`}
               disableRipple
               color="default"
               checkedIcon={<span className={`${styles.icon} ${styles.checkedIcon}`} />}

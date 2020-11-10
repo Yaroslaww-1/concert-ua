@@ -3,6 +3,8 @@
 $iconSize: 20px;
 
 .checkboxRoot {
+  margin-left: 0px !important;
+
   &:hover {
     background-color: transparent;
   }
@@ -32,6 +34,10 @@ $iconSize: 20px;
       content: '""';
     };
   }
+}
+
+.label {
+  margin-left: -9px !important;
 }
 
 .styleNameText {
