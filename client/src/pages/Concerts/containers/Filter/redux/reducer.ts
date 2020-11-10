@@ -2,6 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit';
 import { PlaceModel } from 'src/api/models/place.model';
 import { StyleModel } from 'src/api/models/style.model';
+import { addDaysToDate } from 'src/common/date/date.helper';
 import { createLoadingReducer } from 'src/redux/helpers/reducerCreator';
 
 import { fetchStyles, fetchPlaces } from './actions';
@@ -23,7 +24,7 @@ export type FilterState = {
 
 const state = createReducer<FilterState>(
   {
-    dateFilter: { dateFrom: new Date(), dateTo: new Date() },
+    dateFilter: { dateFrom: new Date(), dateTo: addDaysToDate(new Date(), 1000) },
     styleFilter: { availableStyles: [], selectedStyles: [] },
     placeFilter: { availablePlaces: [], selectedPlaces: [] },
   },

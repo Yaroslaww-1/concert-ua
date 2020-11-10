@@ -31,9 +31,15 @@ const FilterDateContainer: React.FC = () => {
     dispatch(fetchPlaces.request());
   }, []);
 
-  const onDateSelect = ({ from, to }: { from: Date; to: Date }) => {};
-  const onStyleSelect = (styles: StyleModel[]) => {};
-  const onPlaceSelect = (styles: PlaceModel[]) => {};
+  const onDateSelect = ({ from, to }: { from: Date; to: Date }) => {
+    console.log('Date selected', from, to);
+  };
+  const onStyleSelect = (styles: StyleModel[]) => {
+    console.log('Style selected', styles);
+  };
+  const onPlaceSelect = (places: PlaceModel[]) => {
+    console.log('Place selected', places);
+  };
 
   return (
     <FilterSection>

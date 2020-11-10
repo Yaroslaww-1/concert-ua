@@ -1,7 +1,6 @@
-// import { all } from 'redux-saga/effects';
-// import fetchNewEventsSagas from 'src/containers/NewEvents/redux/sagas';
-// import fetchPopularEventsSagas from 'src/containers/PopularEvents/redux/sagas';
+import { all } from 'redux-saga/effects';
+import { fetchFilterSagas } from '../containers/Filter/redux/sagas';
 
-// export default function* fetchHomeSagas() {
-//   yield all([fetchNewEventsSagas(), fetchPopularEventsSagas()]);
-// }
+export function* fetchConcertsSagas() {
+  yield all([fetchFilterSagas()]);
+}

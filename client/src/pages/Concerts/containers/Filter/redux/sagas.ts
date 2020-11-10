@@ -1,34 +1,34 @@
-// import { call, put, all, takeLatest } from 'redux-saga/effects';
-// import { CityService } from 'src/api/services/city.service';
-// import { DateService } from 'src/api/services/date.service';
-// import { fetchStyles, fetchPlaces } from './actions';
+import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { StyleService } from 'src/api/services/style.service';
+import { PlaceService } from 'src/api/services/place.service';
+import { fetchStyles, fetchPlaces } from './actions';
 
-// function* fetchStylesSaga(action: ReturnType<typeof fetchStyles.requestPayload>) {
-//   try {
-//     const dates = yield call(EventS.getDates);
-//     yield put(fetchDates.success(dates));
-//   } catch (error) {
-//     yield put(fetchDates.failure(error));
-//   }
-// }
+function* fetchStylesSaga(action: ReturnType<typeof fetchStyles.requestPayload>) {
+  try {
+    const styles = yield call(StyleService.getStyles);
+    yield put(fetchStyles.success(styles));
+  } catch (error) {
+    yield put(fetchStyles.failure(error));
+  }
+}
 
-// function* watchFetchDates() {
-//   yield takeLatest(fetchDates.types.request, fetchDatesSaga);
-// }
+function* watchFetchStyles() {
+  yield takeLatest(fetchStyles.types.request, fetchStylesSaga);
+}
 
-// function* fetchCitiesSaga(action: ReturnType<typeof fetchDates.requestPayload>) {
-//   try {
-//     const cities = yield call(CityService.getCities);
-//     yield put(fetchCities.success(cities));
-//   } catch (error) {
-//     yield put(fetchCities.failure(error));
-//   }
-// }
+function* fetchPlacesSaga(action: ReturnType<typeof fetchPlaces.requestPayload>) {
+  try {
+    const places = yield call(PlaceService.getPlaces);
+    yield put(fetchPlaces.success(places));
+  } catch (error) {
+    yield put(fetchPlaces.failure(error));
+  }
+}
 
-// function* watchFetchCities() {
-//   yield takeLatest(fetchCities.types.request, fetchCitiesSaga);
-// }
+function* watchFetchPlaces() {
+  yield takeLatest(fetchPlaces.types.request, fetchPlacesSaga);
+}
 
-// export default function* fetchNavbarSagas() {
-//   yield all([watchFetchDates(), watchFetchCities()]);
-// }
+export function* fetchFilterSagas() {
+  yield all([watchFetchStyles(), watchFetchPlaces()]);
+}
