@@ -58,7 +58,7 @@ const PlacePicker: React.FC<IProps> = ({ places, preSelected, onClose, onSelect 
         </div>
       )}
       <div className={styles.confirmingButtons}>
-        <BorderlessTransparentButton onClick={onClose} text="Cancel" color="red" />
+        <BorderlessTransparentButton onClick={onClose} text="Cancel" color="gray" />
         <ColoredButton onClick={onSubmitSelect} text="Submit" />
       </div>
     </div>

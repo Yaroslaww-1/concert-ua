@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 interface IProps {
   text: string;
-  color?: 'red';
+  color?: 'red' | 'gray';
   onClick: () => void;
 }
 
@@ -13,6 +13,7 @@ const BorderlessTransparentButton: React.FC<IProps> = ({ text, onClick, color = 
   const getColorClass = () => {
     const options = {
       red: styles.red,
+      gray: styles.gray,
     };
     return options[color];
   };
