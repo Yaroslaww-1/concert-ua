@@ -5,6 +5,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { StyleModel } from 'src/api/models/style.model';
+import Text from 'src/components/Text';
 
 interface IProps {
   styles: StyleModel[];
@@ -33,8 +34,21 @@ const StylePicker: React.FC<IProps> = ({ styles, preSelected, onClose }) => {
       {styles.map((style) => (
         <FormControlLabel
           key={style.id}
-          control={<Checkbox checked={isStyleSelected(style)} onChange={() => onToggle(style)} name={style.name} />}
-          label={style.name}
+          control={
+            <Checkbox
+              className={cssStyles.checkboxRoot}
+              disableRipple
+              color="default"
+              checkedIcon={<span className={`${cssStyles.icon} ${cssStyles.checkedIcon}`} />}
+              icon={<span className={cssStyles.icon} />}
+              inputProps={{ 'aria-label': 'decorative checkbox' }}
+            />
+          }
+          label={
+            <Text textTransform="capitalize" color="black" classes={{ root: cssStyles.styleNameText }} lineHeight={1.3}>
+              {style.name}
+            </Text>
+          }
         />
       ))}
     </FormGroup>
