@@ -4,6 +4,7 @@
   color: $colorBlack;
   padding: 20px 0px 20px 0px;
   margin-left: -20px;
+  transition-duration: 0ms;
 
   * {
     margin-right: 10px;
@@ -19,6 +20,7 @@
   }
 
   &.open {
+    transition-duration: 0ms;
     background-color: $colorWhite;
     box-shadow: 0px -30px 40px 0 rgba(0,0,0,.15) !important;
     z-index: 10001;
