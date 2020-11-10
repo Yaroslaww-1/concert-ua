@@ -6,7 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 interface IProps {
   id: string;
-  label: string;
+  placeholder: string;
   onEdit: (newInput: string) => void;
   classes?: {
     root?: string;
@@ -14,7 +14,7 @@ interface IProps {
   };
 }
 
-const SearchInput: React.FC<IProps> = ({ id, label, onEdit, classes = { root: '', textField: '' } }) => {
+const SearchInput: React.FC<IProps> = ({ id, placeholder, onEdit, classes = { root: '', textField: '' } }) => {
   const [inputValue, setInputValue] = React.useState<string>('');
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { value } = event.target;
@@ -36,6 +36,7 @@ const SearchInput: React.FC<IProps> = ({ id, label, onEdit, classes = { root: ''
         }
         classes={{ root: `${styles.textFieldRoot} ${classes.textField}` }}
         labelWidth={70}
+        placeholder={placeholder}
       />
     </div>
   );
