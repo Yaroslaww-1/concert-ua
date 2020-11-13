@@ -8,8 +8,10 @@ import { createLoadingReducer } from 'src/redux/helpers/reducerCreator';
 import { fetchStyles, fetchPlaces, selectDateFilter, selectStyleFilter, selectPlaceFilter } from './actions';
 
 export interface IDateFilter {
-  dateFrom: Date;
-  dateTo: Date;
+  date: {
+    from: Date;
+    to: Date;
+  };
 }
 
 export interface IStyleFilter {
@@ -30,7 +32,7 @@ export type FilterState = {
 
 const state = createReducer<FilterState>(
   {
-    dateFilter: { dateFrom: new Date(), dateTo: addDaysToDate(new Date(), 1000) },
+    dateFilter: { date: { from: new Date(), to: addDaysToDate(new Date(), 1000) } },
     styleFilter: { availableStyles: [], selectedStyles: [] },
     placeFilter: { availablePlaces: [], selectedPlaces: [] },
   },

@@ -120,8 +120,10 @@ const newEvents = [
 ];
 
 export interface IEventFilter {
-  dateFrom?: Date;
-  dateTo?: Date;
+  date?: {
+    from: Date;
+    to: Date;
+  };
   placesIds?: string[];
   stylesIds?: string[];
 }

@@ -23,7 +23,9 @@ const FilterDate: React.FC<IProps> = ({ from, to, onSelect }) => {
       icon={<EventIcon />}
       text={getText()}
       onSelect={onSelect}
-      renderPopoverContent={(onClose, onSelect) => <DatePicker onClose={onClose} onSelect={onSelect} />}
+      renderPopoverContent={(onClose, onSelect) => (
+        <DatePicker from={from} to={to} onClose={onClose} onSelect={onSelect} />
+      )}
     />
   );
 };

@@ -54,6 +54,7 @@ const CheckboxList = <T extends IItem>({
               disableRipple
               color="default"
               checkedIcon={<span className={`${styles.icon} ${styles.checkedIcon}`} />}
+              checked={isItemSelected(item)}
               icon={<span className={styles.icon} />}
               inputProps={{ 'aria-label': 'decorative checkbox' }}
               onChange={() => onToggle(item)}

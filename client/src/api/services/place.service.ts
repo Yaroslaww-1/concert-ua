@@ -6,7 +6,7 @@ const endpoint = 'events';
 
 const places: PlaceModel[] = [...new Array(20)].map((_, index) => ({
   id: index.toString(),
-  name: `style${index}`,
+  name: `place${index}`,
   city: {
     id: index.toString(),
     name: `place${index}`,
@@ -16,7 +16,7 @@ const places: PlaceModel[] = [...new Array(20)].map((_, index) => ({
 export class PlaceService {
   constructor() {}
   static async getPlaces(): Promise<PlaceModel[] | Throwable> {
-    console.log('Styles fetching');
+    console.log('Places fetching');
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(places);

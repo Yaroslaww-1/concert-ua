@@ -18,14 +18,16 @@ import {
 import BorderlessTransparentButton from 'src/components/Buttons/BorderlessTransparentButton';
 
 interface IProps {
+  from: Date;
+  to: Date;
   onClose: () => void;
   onSelect: (payload: { from: Date; to: Date }) => void;
 }
 
-const DatePickerComponent: React.FC<IProps> = ({ onClose, onSelect }) => {
-  const [startDate, setStartDate] = React.useState<Date>(new Date());
-  const [visibleMonth, setVisibleMonth] = React.useState<number>(new Date().getMonth());
-  const [endDate, setEndDate] = React.useState<Date | null>(null);
+const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) => {
+  const [startDate, setStartDate] = React.useState<Date>(from || new Date());
+  const [visibleMonth, setVisibleMonth] = React.useState<number>((from || new Date()).getMonth());
+  const [endDate, setEndDate] = React.useState<Date | null>(to || null);
   const onChange = (dates: Date | [Date, Date]) => {
     if (dates instanceof Date) {
       setStartDate(dates);

@@ -57,3 +57,10 @@ export const getDifferenceInYears = (date1: Date, date2: Date) => {
 
 export const formatDate = (date: Date, options: Intl.DateTimeFormatOptions) =>
   date.toLocaleDateString('en-US', options).replace(/\//g, '.');
+
+export const formatDateToDayMonthYear = (date: Date, delimiter = '-') => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return day + delimiter + month + delimiter + year;
+};
