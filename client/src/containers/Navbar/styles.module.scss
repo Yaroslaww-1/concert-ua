@@ -17,10 +17,12 @@ $height: 50px;
 
   .innerNavbar {
     width: $sectionWidth;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: $height;
+    padding-right: 17px;
 
     .break {
       width: 100px;
