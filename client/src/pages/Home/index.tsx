@@ -1,6 +1,5 @@
 import React from 'react';
 
-import styles from './styles.module.scss';
 import PageComponent from 'src/components/Page';
 import EventsMainCarousel from 'src/containers/EventsMainCarousel';
 import EventsSecondaryCarousel from 'src/containers/EventsSecondaryCarousel';

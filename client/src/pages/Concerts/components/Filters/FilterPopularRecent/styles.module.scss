@@ -1,0 +1,23 @@
+@import 'src/styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-end;
+
+  .button {
+    cursor: pointer;
+    margin: 20px 0px 10px 20px;
+    
+    &.selected {
+      border-bottom: 3px solid $colorRed;
+    }
+
+    &.unSelected {
+      &:hover {
+        border-bottom: 3px solid $colorRed;
+      }
+    }
+  }
+}
