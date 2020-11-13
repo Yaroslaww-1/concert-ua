@@ -10,8 +10,7 @@ export interface IProps {
 const Header: React.FC<IProps> = ({ eventMainImageSrc, tags = [] }) => {
   return (
     <div className={styles.root}>
-      <div className={styles.imageRoot}>
-        <img src={eventMainImageSrc} alt="An image of an event" />
+      <div className={styles.imageRoot} style={{ backgroundImage: `url(${eventMainImageSrc}` }}>
         <div className={styles.tags}>
           {tags.map((tag) => (
             <div className={styles.tag} key={tag}>
