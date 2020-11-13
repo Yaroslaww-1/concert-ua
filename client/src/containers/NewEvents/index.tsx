@@ -1,6 +1,5 @@
 import React from 'react';
 
-import styles from './styles.module.scss';
 import EventsCardsSection from 'src/components/Sections/EventCardsSection';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';

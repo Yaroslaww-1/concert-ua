@@ -4,6 +4,7 @@ import { Routes } from '../common/enum/routes';
 import HomePage from './Home';
 import NotFoundPage from './NotFound';
 import Concerts from './Concerts';
+import Event from './Event';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path={Routes.DEFAULT} component={HomePage} />
         <Route exact path={Routes.CONCERTS} component={Concerts} />
+        <Route exact path={Routes.EVENT} component={Event} />
         <Route exact path={Routes.NOT_FOUND} component={NotFoundPage} />
       </Switch>
     </>
