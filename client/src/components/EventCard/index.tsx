@@ -3,15 +3,17 @@ import React from 'react';
 import styles from './styles.module.scss';
 import EventCardImageHoverOverlay from '../EventImageComponents/HoverOverlays/EventCardImageHover';
 import Text from '../Text';
+import { PlaceModel } from 'src/api/models/place.model';
+import { formatDateToDayFullMonth } from 'src/common/date/date.helper';
 
 interface IProps {
   image: {
     src: string;
     altText?: string;
   };
-  date: string;
+  date: Date;
   name: string;
-  place: string;
+  place: PlaceModel;
   price: string;
   classes?: {
     root?: string;
@@ -38,8 +40,8 @@ const EventCard: React.FC<IProps> = ({
       </div>
       <div className={styles.content}>
         <div className={styles.date}>
-          <Text fontSize="1rem" textAlign="left" textTransform="capitalize" color="black">
-            {date}
+          <Text fontSize="1.1rem" textAlign="left" textTransform="capitalize" color="black">
+            {formatDateToDayFullMonth(date)}
           </Text>
         </div>
         <div className={styles.name}>
@@ -56,7 +58,7 @@ const EventCard: React.FC<IProps> = ({
         </div>
         <div className={styles.place}>
           <Text fontSize="1rem" textAlign="left" textTransform="capitalize" color="black">
-            {place}
+            {place.name}
           </Text>
         </div>
         <div className={styles.price}>

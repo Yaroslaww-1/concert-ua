@@ -5,13 +5,15 @@ import TransparentButton from 'src/components/Buttons/TransparentButton';
 import LikeIcon from 'src/components/Icons/LikeIcon';
 import Text from 'src/components/Text';
 import { getImageColor, RgbColor } from 'src/common/images/image.helper';
+import { PlaceModel } from 'src/api/models/place.model';
+import { formatDateToDayFullMonth } from 'src/common/date/date.helper';
 
 interface IProps {
   imageSrc: string;
   imageAltText: string;
   title: string;
-  date: string;
-  place: string;
+  date: Date;
+  place: PlaceModel;
   onLike: () => void;
   onBuy: () => void;
 }
@@ -37,8 +39,8 @@ const EventCardImageHoverOverlay: React.FC<IProps> = ({
           <LikeIcon onClick={onLike} classes={{ svg: styles.icon }} />
         </div>
         <div className={styles.date}>
-          <Text fontSize={'0.75vw'} textTransform={'uppercase'}>
-            {date}
+          <Text fontSize={'1.15rem'} textTransform={'uppercase'}>
+            {formatDateToDayFullMonth(date)}
           </Text>
         </div>
         <div className={styles.title}>
@@ -47,7 +49,7 @@ const EventCardImageHoverOverlay: React.FC<IProps> = ({
           </Text>
         </div>
         <div className={styles.place}>
-          <Text fontSize={'1.25vw'}>{place}</Text>
+          <Text fontSize={'1.25rem'}>{place.name}</Text>
         </div>
         <div className={styles.buyButton}>
           <TransparentButton text={'Buy now'} onClick={onBuy} />
