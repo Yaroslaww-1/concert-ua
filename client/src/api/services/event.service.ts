@@ -18,7 +18,7 @@ const events: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/RSBQEKD.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id2',
@@ -28,7 +28,7 @@ const events: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/aeBbstI.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id3',
@@ -38,7 +38,7 @@ const events: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/rOZXIQ2.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id4',
@@ -48,7 +48,7 @@ const events: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/iqPWUCF.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
 ];
 
@@ -61,7 +61,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/RSBQEKD.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id6',
@@ -71,7 +71,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/aeBbstI.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id7',
@@ -81,7 +81,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/rOZXIQ2.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id8',
@@ -91,7 +91,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/iqPWUCF.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id9',
@@ -101,7 +101,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/RSBQEKD.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id10',
@@ -111,7 +111,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/aeBbstI.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id11',
@@ -121,7 +121,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/rOZXIQ2.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
   {
     id: 'id12',
@@ -131,7 +131,7 @@ const newEvents: EventModel[] = [
     date: new Date(),
     imageUrl: 'https://i.imgur.com/iqPWUCF.jpg',
     price: '100uah',
-    tags: [],
+    tags: [createRandomString(5), createRandomString(5)],
   },
 ];
 
