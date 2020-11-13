@@ -14,6 +14,7 @@ import {
   subtractMonthsFromDate,
   getFirstDateOfMonth,
   getLastDateOfMonth,
+  formatDateToDayMonthYear,
 } from 'src/common/date/date.helper';
 import BorderlessTransparentButton from 'src/components/Buttons/BorderlessTransparentButton';
 
@@ -66,10 +67,7 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
     return dayStyles.currentMonth;
   };
 
-  const getDateString = (date: Date) => {
-    const options = { year: 'numeric', month: 'long' };
-    return date.toLocaleDateString('us', options);
-  };
+  const getDateString = (date: Date) => formatDateToDayMonthYear(date, '.');
 
   const onSubmitSelect = () => {
     onSelect({ from: startDate, to: endDate ? endDate : startDate });

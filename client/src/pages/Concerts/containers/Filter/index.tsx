@@ -63,8 +63,8 @@ const FilterDateContainer: React.FC = () => {
     }>(urlParams);
     return {
       date: {
-        from: new Date(parsedParams.date?.from || ''),
-        to: new Date(parsedParams.date?.to || ''),
+        from: new Date(parsedParams.date?.from || new Date()),
+        to: new Date(parsedParams.date?.to || new Date()),
       },
       stylesIds: parsedParams.stylesIds,
       placesIds: parsedParams.placesIds,
