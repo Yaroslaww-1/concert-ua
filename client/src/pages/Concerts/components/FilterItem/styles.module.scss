@@ -1,0 +1,39 @@
+@import 'src/styles/variables';
+
+.root {
+  color: $colorBlack;
+  padding: 20px 0px 20px 0px;
+  margin-left: -20px;
+  margin-right: 20px;
+  transition-duration: 0ms;
+  display: flex;
+
+  * {
+    margin-right: 10px;
+    padding-left: 10px;
+  }
+  
+  .openButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &.open {
+    transition-duration: 0ms;
+    background-color: $colorWhite;
+    box-shadow: 0px -9px 10px 0 rgba(0,0,0,.15) !important;
+    z-index: 10001;
+  }
+}
+
+.popoverRoot {
+  background-color: $colorWhite !important;
+  border: none !important;
+  border-radius: 0px !important;
+  margin-top: 15px;
+  box-shadow: 0 2px 40px 0 rgba(0,0,0,.15) !important;
+  z-index: 10000;
+}

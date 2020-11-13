@@ -20,9 +20,23 @@
     }
     background-color: $colorRed;
     &:hover {
-      transition: .2s ease;
+      transition: 350ms ease;
       background-color: $colorRed;
       filter: brightness(90%);
+    }
+  }
+
+  &.gray {
+    div {
+      color: $colorBlack !important;
+    }
+    background-color: rgba($colorLightGray, 0.4);
+    &:hover {
+      transition: 350ms ease;
+      div {
+        color: $colorWhite !important;
+      }
+      background-color: $colorRed;
     }
   }
 }

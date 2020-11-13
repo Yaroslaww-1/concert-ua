@@ -13,20 +13,22 @@ interface IProps {
   onLoadMore: () => void;
 }
 
-const CardsSection: React.FC<IProps> = ({ header, events, onLoadMore }) => {
+const CardsSection: React.FC<IProps> = ({ header = null, events, onLoadMore }) => {
   return (
     <Section
       header={
-        <Text
-          fontSize="3rem"
-          fontWeight={700}
-          textTransform="uppercase"
-          textAlign="left"
-          color="black"
-          letterSpacing="-2px"
-        >
-          {header}
-        </Text>
+        header ? (
+          <Text
+            fontSize="3rem"
+            fontWeight={700}
+            textTransform="uppercase"
+            textAlign="left"
+            color="black"
+            letterSpacing="-2px"
+          >
+            {header}
+          </Text>
+        ) : undefined
       }
       classes={{ contentRoot: styles.root }}
       footer={

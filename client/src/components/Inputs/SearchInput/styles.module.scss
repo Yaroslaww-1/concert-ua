@@ -1,0 +1,40 @@
+@import 'src/styles/variables';
+
+@mixin placeholder {
+  &::-webkit-input-placeholder { @content; }
+  &:-moz-placeholder           { @content; }
+  &::-moz-placeholder          { @content; }
+  &:-ms-input-placeholder      { @content; }  
+}
+
+.root {
+  .textFieldRoot {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+
+    * {
+      color: $colorBlack;
+    }
+
+    fieldset {
+      border: 1px solid $colorMiddleLightGray !important;
+
+      legend {
+        width: 0px !important;
+      }
+    }
+
+    &:global(.Mui-focused) {
+      fieldset {
+        border: 1px solid $colorBlack !important;
+      }
+    }
+
+    * svg {
+      cursor: pointer;
+    }
+  }
+}

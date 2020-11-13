@@ -12,15 +12,17 @@ $height: 50px;
   align-items: stretch;
   top: 0;
   z-index: 1000;
-  width: calc(100% - 17px);
+  width: 100%;
   position: fixed;
 
   .innerNavbar {
     width: $sectionWidth;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: $height;
+    padding-right: 17px;
 
     .break {
       width: 100px;
@@ -56,6 +58,11 @@ $height: 50px;
   a[custom-attribute="main-logo"] {
     text-decoration: none;
     color: $linkColor;
+
+    h1 {
+      margin-bottom: 2.5px;
+      margin-top: -2.5px;
+    }
   }  
 
   svg {
