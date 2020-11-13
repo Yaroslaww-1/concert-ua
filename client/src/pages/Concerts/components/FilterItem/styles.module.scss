@@ -4,6 +4,7 @@
   color: $colorBlack;
   padding: 20px 0px 20px 0px;
   margin-left: -20px;
+  margin-right: 20px;
   transition-duration: 0ms;
   display: flex;
 
@@ -32,7 +33,7 @@
   background-color: $colorWhite !important;
   border: none !important;
   border-radius: 0px !important;
-  top: 248px !important;
+  margin-top: 15px;
   box-shadow: 0 2px 40px 0 rgba(0,0,0,.15) !important;
   z-index: 10000;
 }
