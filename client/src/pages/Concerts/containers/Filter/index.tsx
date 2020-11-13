@@ -15,6 +15,7 @@ import { fetchPlaces, fetchStyles, selectDateFilter, selectStyleFilter, selectPl
 import { IEventFilter } from 'src/api/services/event.service';
 import { parseUrlParams } from 'src/common/url/params-parser';
 import { stringifyParams } from 'src/common/url/stringify-params';
+import FilterPopularRecent from '../../components/Filters/FilterPopularRecent';
 
 const filterSelector = createSelector(
   (state: RootState) => state.concerts.filter.state,
@@ -81,6 +82,7 @@ const FilterDateContainer: React.FC = () => {
       <FilterDate from={from} to={to} onSelect={onDateSelect} />
       <FilterStyles styles={availableStyles} selectedStyles={selectedStyles} onSelect={onStyleSelect} />
       <FilterPlace places={availablePlaces} selectedPlaces={selectedPlaces} onSelect={onPlaceSelect} />
+      <FilterPopularRecent onPopularSelect={() => {}} onRecentSelect={() => {}} />
     </FilterSection>
   );
 };
