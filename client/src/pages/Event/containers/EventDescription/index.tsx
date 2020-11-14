@@ -7,7 +7,7 @@ import EventDescriptionSection from '../../components/EventDescriptionSection';
 const EventDescription: React.FC = () => {
   const event = useSelector((state: RootState) => state.event.state.event);
 
-  return <EventDescriptionSection eventDescription={event.description} />;
+  return <EventDescriptionSection event={event} />;
 };
 
 export default EventDescription;
