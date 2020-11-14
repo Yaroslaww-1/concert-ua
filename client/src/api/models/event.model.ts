@@ -9,6 +9,8 @@ export type EventModel = {
   imageUrl: string;
   price: string;
   tags: string[];
+  promoter: string;
+  hot: boolean;
 };
 
 export const defaultEvent: EventModel = {
@@ -20,4 +22,6 @@ export const defaultEvent: EventModel = {
   imageUrl: '',
   price: '',
   tags: [],
+  promoter: '',
+  hot: false,
 };

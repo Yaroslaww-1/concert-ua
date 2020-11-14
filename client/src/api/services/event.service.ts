@@ -7,132 +7,50 @@ import { defaultPlace, PlaceModel } from '../models/place.model';
 
 const endpoint = 'events';
 
-const getPlace = (): PlaceModel => ({ id: createRandomString(10), name: createRandomString(10), city: defaultCity });
+const getPlace = (): PlaceModel => ({
+  id: createRandomString(10),
+  name: createRandomString(10),
+  city: defaultCity,
+  address: 'some address, Kyiv Ukraine',
+});
+
+const eventUrls = [
+  'https://i.imgur.com/RSBQEKD.jpg',
+  'https://i.imgur.com/aeBbstI.jpg',
+  'https://i.imgur.com/rOZXIQ2.jpg',
+  'https://i.imgur.com/iqPWUCF.jpg',
+];
+let eventId = 0;
+let eventUrlIndex = -1;
+
+const getEvent = (): EventModel => {
+  eventId += 1;
+  eventUrlIndex += 1;
+  eventUrlIndex = eventUrlIndex % 4;
+  return {
+    id: `id${eventId}`,
+    name: createRandomString(10),
+    description: 'string',
+    place: getPlace(),
+    date: new Date(),
+    imageUrl: eventUrls[eventUrlIndex],
+    price: '100uah',
+    tags: [createRandomString(5), createRandomString(5)],
+    promoter: 'promoter',
+    hot: Math.random() > 0.5,
+  };
+};
 
 const events: EventModel[] = [
-  {
-    id: 'id1',
-    name: 'Stringstringstringstringstring',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/RSBQEKD.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id2',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/aeBbstI.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id3',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/rOZXIQ2.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id4',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/iqPWUCF.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
+  ...Array(4)
+    .fill(0)
+    .map(() => getEvent()),
 ];
 
 const newEvents: EventModel[] = [
-  {
-    id: 'id5',
-    name: 'Stringstringstringstringstring',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/RSBQEKD.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id6',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/aeBbstI.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id7',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/rOZXIQ2.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id8',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/iqPWUCF.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id9',
-    name: 'Stringstringstringstringstring',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/RSBQEKD.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id10',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/aeBbstI.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id11',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/rOZXIQ2.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
-  {
-    id: 'id12',
-    name: 'String',
-    description: 'string',
-    place: getPlace(),
-    date: new Date(),
-    imageUrl: 'https://i.imgur.com/iqPWUCF.jpg',
-    price: '100uah',
-    tags: [createRandomString(5), createRandomString(5)],
-  },
+  ...Array(10)
+    .fill(0)
+    .map(() => getEvent()),
 ];
 
 export interface IEventFilter {
@@ -143,10 +61,6 @@ export interface IEventFilter {
   placesIds?: string[];
   stylesIds?: string[];
 }
-
-const isEventValid = (event: EventModel, filter: IEventFilter): boolean => {
-  return true;
-};
 
 export class EventService {
   constructor() {}

@@ -11,6 +11,7 @@ const places: PlaceModel[] = [...new Array(20)].map((_, index) => ({
     id: index.toString(),
     name: `place${index}`,
   },
+  address: 'some address, Kyiv Ukraine',
 }));
 
 export class PlaceService {
