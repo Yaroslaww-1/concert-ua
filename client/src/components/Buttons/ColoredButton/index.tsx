@@ -6,7 +6,7 @@ import { TextProps } from 'src/components/Text';
 
 interface IProps {
   text: string;
-  variant?: 'red' | 'gray';
+  variant?: 'red' | 'gray' | 'green';
   onClick: () => void;
   classes?: {
     root?: string;
@@ -19,6 +19,7 @@ const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', class
     const options = {
       red: styles.red,
       gray: styles.gray,
+      green: styles.green,
     };
     return options[variant];
   };
