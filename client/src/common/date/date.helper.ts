@@ -70,3 +70,5 @@ export const formatDateToDayFullMonth = (date: Date, delimiter = '-') => {
   const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
   return formatDate(date, options, delimiter);
 };
+
+export const getTime = (date: Date) => `${date.getHours()}:${date.getMinutes()}`;

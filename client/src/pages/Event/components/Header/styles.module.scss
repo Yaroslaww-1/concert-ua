@@ -1,7 +1,10 @@
 @import 'src/styles/variables';
 
+$imageHeight: 350px;
+$buyTicketsHeaderHeight: 80px;
+
 .root {
-  height: 30%;
+  height: $imageHeight;
   width: 100%;
 
   .imageRoot {
@@ -28,6 +31,90 @@
 
         color: rgba(255, 255, 255, 0.75);
         cursor: pointer;
+      }
+    }
+  }
+
+  .buyTicketRoot {
+    position: relative;
+    top: (-$buyTicketsHeaderHeight);
+    width: 330px;
+    background-color: $colorRed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .buyTicketHeader {
+      height: $buyTicketsHeaderHeight - 15px;
+      padding-top: 15px;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      background-color: $colorRed;
+
+      svg {
+        margin: 3px 20px 20px 20px;
+      }
+
+      .date {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+    }
+
+    .buyTicketContent {
+      padding: 20px 10px 20px 10px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      background-color: $colorWhite;
+      border: 1px solid $colorMiddleLightGray;
+      border-top: none;
+      color: $colorBlack;
+
+      div {
+        padding: 5px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        .placeText {
+          padding: 0px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        svg {
+          padding: 10px;
+          color: $colorGray;
+        }
+
+        &.hot {
+          svg {
+            color: $colorRed;
+          }
+        }
+      }
+    }
+
+    .buyButton {
+      display: flex;
+      flex-direction: column;
+      justify-content: center !important;
+
+      .button {
+        padding: 0px 40px 0px 40px !important;
       }
     }
   }

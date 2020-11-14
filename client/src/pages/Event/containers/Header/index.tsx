@@ -8,7 +8,7 @@ import HeaderComponent from '../../components/Header';
 const Header: React.FC = () => {
   const event = useSelector((state: RootState) => state.event.state.event);
 
-  return <HeaderComponent eventMainImageSrc={event.imageUrl} tags={event.tags} />;
+  return <HeaderComponent event={event} />;
 };
 
 export default Header;
