@@ -9,6 +9,7 @@ import Footer from 'src/components/Footer';
 import Header from './containers/Header';
 import { fetchEvent } from './redux/actions';
 import { RouteComponentProps } from 'react-router-dom';
+import EventDescription from './containers/EventDescription';
 
 interface IProps {}
 
@@ -21,6 +22,7 @@ const Event: React.FC<IProps & RouteComponentProps<{ id: string }>> = ({ match }
   return (
     <PageComponent>
       <Header />
+      <EventDescription />
       <Subscribe onSubscribe={() => {}} />
       <Footer />
     </PageComponent>

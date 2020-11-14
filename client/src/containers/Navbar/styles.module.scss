@@ -2,10 +2,10 @@
 
 $navbarBackground: #ec174d;
 $marginTop: 12px;
-$height: 50px;
+$navbarHeight: 50px;
 
 .navbar {
-  height: $height;
+  height: $navbarHeight;
   background-color: $navbarBackground;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ $height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: $height;
+    height: $navbarHeight;
     padding-right: 17px;
 
     .break {
@@ -38,13 +38,13 @@ $height: 50px;
   }
 
   h1 {
-    height: $height;
+    height: $navbarHeight;
     font-size: 2.2rem;
     margin-top: $marginTop;
   }
 
   a:not([custom-attribute="main-logo"]) {
-    height: $height;
+    height: $navbarHeight;
     text-decoration: none;
     color: $linkColor;
     margin: 0px 25px 10px 25px;
