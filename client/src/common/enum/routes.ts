@@ -3,6 +3,6 @@ export enum Routes {
   NOT_FOUND = '/404',
   CONCERTS = '/catalog/concerts/',
   EVENT = '/event/:id/',
-  BANDS = '/wiki/bands/',
-  ALBUMS = '/wiki/albums/',
+  BANDS = NOT_FOUND,
+  ALBUMS = NOT_FOUND,
 }
