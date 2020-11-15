@@ -83,7 +83,7 @@ const events: EventModel[] = [
 ];
 
 const newEvents: EventModel[] = [
-  ...Array(10)
+  ...Array(8)
     .fill(0)
     .map(() => getEvent()),
 ];

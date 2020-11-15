@@ -46,12 +46,12 @@ const EventCard: React.FC<IProps> = ({
         </div>
         <div className={styles.name}>
           <Text
-            fontSize="2rem"
+            fontSize="3rem"
             textAlign="left"
-            fontWeight={900}
             lineHeight={1}
             textTransform="uppercase"
             color="black"
+            fontFamily="League Gothic"
           >
             {name}
           </Text>

@@ -20,11 +20,11 @@ const CardsSection: React.FC<IProps> = ({ header = null, events, onLoadMore }) =
         header ? (
           <Text
             fontSize="3rem"
-            fontWeight={700}
             textTransform="uppercase"
             textAlign="left"
             color="black"
-            letterSpacing="-2px"
+            letterSpacing="1px"
+            fontFamily="League Gothic"
           >
             {header}
           </Text>
