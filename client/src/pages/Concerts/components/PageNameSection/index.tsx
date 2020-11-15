@@ -9,14 +9,7 @@ const PageNameSection: React.FC<IProps> = ({ children }) => {
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        <Text
-          fontSize="3.375rem"
-          fontWeight={600}
-          lineHeight={1}
-          textTransform="uppercase"
-          color="black"
-          letterSpacing="-1px"
-        >
+        <Text fontSize="3.375rem" lineHeight={1} textTransform="uppercase" color="black" fontFamily="League Gothic">
           Poster and tickets
         </Text>
       </div>
