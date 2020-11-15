@@ -6,6 +6,7 @@ import BuyTicket from '../BuyTicket';
 import Text from 'src/components/Text';
 import LikeIcon from 'src/components/Icons/LikeIcon';
 import Artist from '../Artist';
+import { useScroll } from 'src/common/hooks/use-scroll';
 
 interface IProps {
   event: EventModel;
@@ -13,42 +14,60 @@ interface IProps {
 
 const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
   const { descriptionHTML } = event;
+
+  const [executeScroll, artistElementRef] = useScroll();
+
   return (
     <div className={styles.root}>
-      <div className={styles.content}>
-        <div className={styles.header}>
+      <div className={styles.navbarRoot}>
+        <div className={styles.navbarContent}>
           <Text
             color="black"
-            textAlign="left"
-            fontSize="4.5rem"
-            fontFamily="League Gothic"
-            letterSpacing="1px"
+            fontSize="1rem"
             textTransform="uppercase"
+            classes={{ root: styles.navbarLink }}
+            onClick={executeScroll}
           >
-            {event.name}
+            Artist
           </Text>
-          <LikeIcon onClick={() => {}} classes={{ root: styles.icon }} />
         </div>
-        <div className={styles.description}>
-          <Text
-            color="black"
-            textAlign="left"
-            fontSize="3rem"
-            fontFamily="League Gothic"
-            letterSpacing="1.26px"
-            textTransform="uppercase"
-          >
-            About
-          </Text>
-          <div
-            className={styles.description}
-            dangerouslySetInnerHTML={{ __html: `${descriptionHTML}${descriptionHTML}` }}
-          ></div>
-        </div>
-        <Artist artist={event.artist} />
       </div>
-      <div className={styles.buyTicketWrapper}>
-        <BuyTicket event={event} onBuy={() => {}} />
+      <div className={styles.contentRoot}>
+        <div className={styles.content}>
+          <div className={styles.header}>
+            <Text
+              color="black"
+              textAlign="left"
+              fontSize="4.5rem"
+              fontFamily="League Gothic"
+              letterSpacing="1px"
+              textTransform="uppercase"
+            >
+              {event.name}
+            </Text>
+            <LikeIcon onClick={() => {}} classes={{ root: styles.icon }} />
+          </div>
+          <div className={styles.description}>
+            <Text
+              color="black"
+              textAlign="left"
+              fontSize="3rem"
+              fontFamily="League Gothic"
+              letterSpacing="1.26px"
+              textTransform="uppercase"
+            >
+              About
+            </Text>
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{ __html: `${descriptionHTML}${descriptionHTML}` }}
+            ></div>
+          </div>
+          <Artist artist={event.artist} ref={artistElementRef} />
+        </div>
+        <div className={styles.buyTicketWrapper}>
+          <BuyTicket event={event} onBuy={() => {}} />
+        </div>
       </div>
     </div>
   );

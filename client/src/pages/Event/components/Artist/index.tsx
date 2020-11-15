@@ -7,15 +7,16 @@ import ArtistHoverOverlay from 'src/components/EventImageComponents/HoverOverlay
 
 interface IProps {
   artist: ArtistModel;
+  ref?: React.RefObject<HTMLDivElement> | null;
 }
 
-const Artist: React.FC<IProps> = ({ artist }) => {
+const Artist: React.FC<IProps> = ({ artist, ref = null }) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
 
   const onAboutClick = () => {};
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={ref}>
       <Text color="black" textAlign="left" textTransform="uppercase" fontSize="3rem" fontFamily="League Gothic">
         Artist
       </Text>

@@ -47,6 +47,7 @@ export interface TextProps {
   color?: 'white' | 'black' | 'red' | 'gray';
   letterSpacing?: string;
   fontFamily?: 'Roboto' | 'League Gothic';
+  onClick?: () => void;
 }
 
 const Text: React.FC<TextProps> = ({
@@ -63,6 +64,7 @@ const Text: React.FC<TextProps> = ({
   color = 'white',
   letterSpacing = 'normal',
   fontFamily = 'Roboto',
+  onClick = () => {},
 }) => {
   const getColor = () => {
     switch (color) {
@@ -90,7 +92,7 @@ const Text: React.FC<TextProps> = ({
     fontFamily,
   };
   return (
-    <div style={{ ...style }} className={`${styles.root} ${classes.root}`}>
+    <div style={{ ...style }} className={`${styles.root} ${classes.root}`} onClick={onClick}>
       {children}
     </div>
   );

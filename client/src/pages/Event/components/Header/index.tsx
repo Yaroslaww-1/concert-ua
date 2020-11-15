@@ -21,7 +21,6 @@ const Header: React.FC<IProps> = ({ event }) => {
           ))}
         </div>
       </div>
-      <div className={styles.nav}></div>
     </div>
   );
 };
