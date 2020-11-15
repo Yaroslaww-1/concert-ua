@@ -46,6 +46,7 @@ export interface TextProps {
   };
   color?: 'white' | 'black' | 'red' | 'gray';
   letterSpacing?: string;
+  fontFamily?: 'Roboto' | 'League Gothic';
 }
 
 const Text: React.FC<TextProps> = ({
@@ -61,6 +62,7 @@ const Text: React.FC<TextProps> = ({
   },
   color = 'white',
   letterSpacing = 'normal',
+  fontFamily = 'Roboto',
 }) => {
   const getColor = () => {
     switch (color) {
@@ -76,7 +78,7 @@ const Text: React.FC<TextProps> = ({
         return color;
     }
   };
-  const style = {
+  const style: React.CSSProperties = {
     fontSize,
     textTransform,
     lineHeight,
@@ -85,6 +87,7 @@ const Text: React.FC<TextProps> = ({
     fontWeight,
     color: getColor(),
     letterSpacing,
+    fontFamily,
   };
   return (
     <div style={{ ...style }} className={`${styles.root} ${classes.root}`}>
