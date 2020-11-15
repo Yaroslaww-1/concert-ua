@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import BuyTicket from '../BuyTicket';
 import Text from 'src/components/Text';
 import LikeIcon from 'src/components/Icons/LikeIcon';
+import Artist from '../Artist';
 
 interface IProps {
   event: EventModel;
@@ -44,7 +45,7 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
             dangerouslySetInnerHTML={{ __html: `${descriptionHTML}${descriptionHTML}` }}
           ></div>
         </div>
-        <div className={styles.artist}></div>
+        <Artist artist={event.artist} />
       </div>
       <div className={styles.buyTicketWrapper}>
         <BuyTicket event={event} onBuy={() => {}} />
