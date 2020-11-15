@@ -7,3 +7,8 @@ export const fetchEvent = createAsyncAction(type, 'EVENT', {
   request: (id: string) => ({ id }),
   success: (event: EventModel) => ({ event }),
 });
+
+export const fetchPopularEvents = createAsyncAction(type, 'POPULAR_EVENTS', {
+  request: () => ({}),
+  success: (events: EventModel[]) => ({ events }),
+});
