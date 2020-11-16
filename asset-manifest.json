@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/concert-ua/static/css/main.6ae6454d.chunk.css",
-    "main.js": "/concert-ua/static/js/main.6f1a2047.chunk.js",
-    "main.js.map": "/concert-ua/static/js/main.6f1a2047.chunk.js.map",
+    "main.js": "/concert-ua/static/js/main.220836f6.chunk.js",
+    "main.js.map": "/concert-ua/static/js/main.220836f6.chunk.js.map",
     "runtime-main.js": "/concert-ua/static/js/runtime-main.49a8fb8b.js",
     "runtime-main.js.map": "/concert-ua/static/js/runtime-main.49a8fb8b.js.map",
     "static/css/2.e6ac38db.chunk.css": "/concert-ua/static/css/2.e6ac38db.chunk.css",
     "static/js/2.dfef215d.chunk.js": "/concert-ua/static/js/2.dfef215d.chunk.js",
     "static/js/2.dfef215d.chunk.js.map": "/concert-ua/static/js/2.dfef215d.chunk.js.map",
     "index.html": "/concert-ua/index.html",
-    "precache-manifest.bced613987c4116d91d7891cb34e5480.js": "/concert-ua/precache-manifest.bced613987c4116d91d7891cb34e5480.js",
+    "precache-manifest.7335a2e03bff40bc3555399ed0a71485.js": "/concert-ua/precache-manifest.7335a2e03bff40bc3555399ed0a71485.js",
     "service-worker.js": "/concert-ua/service-worker.js",
     "static/css/2.e6ac38db.chunk.css.map": "/concert-ua/static/css/2.e6ac38db.chunk.css.map",
     "static/css/main.6ae6454d.chunk.css.map": "/concert-ua/static/css/main.6ae6454d.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.e6ac38db.chunk.css",
     "static/js/2.dfef215d.chunk.js",
     "static/css/main.6ae6454d.chunk.css",
-    "static/js/main.6f1a2047.chunk.js"
+    "static/js/main.220836f6.chunk.js"
   ]
 }
