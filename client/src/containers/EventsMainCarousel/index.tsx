@@ -10,10 +10,12 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import FullscreenImage from 'src/components/EventImageComponents/Images/FullscreenImage';
 import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
 import { fetchNewEvents } from 'src/containers/NewEvents/redux/actions';
+import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 
 const EventsMainCarousel: React.FC = () => {
   const dispatch = useDispatch();
   const events = useSelector((state: RootState) => state.home.newEvents.state.events);
+  const [drag, setDrag] = React.useState<boolean>(false);
   useFetchIfNeeded(dispatch, fetchNewEvents.request);
 
   const NextArrow = (props: any) => {
@@ -51,9 +53,16 @@ const EventsMainCarousel: React.FC = () => {
         dotsClass={`slick-dots ${styles.navigation}`}
         nextArrow={<NextArrow />}
         prevArrow={<PrevArrow />}
+        beforeChange={() => setDrag(true)}
+        afterChange={() => setDrag(false)}
       >
         {events.map((event) => (
-          <FullscreenImage key={event.id} imageSrc={event.imageUrl} imageAltText={event.name} />
+          <FullscreenImage
+            key={event.id}
+            imageSrc={event.imageUrl}
+            imageAltText={event.name}
+            onClick={(e) => !drag && redirectToEvent(event.id)}
+          />
         ))}
       </Slider>
     </div>

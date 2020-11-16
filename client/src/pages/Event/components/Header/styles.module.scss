@@ -1,0 +1,35 @@
+@import 'src/styles/variables';
+
+$imageHeight: 350px;
+
+.root {
+  width: 100%;
+
+  .imageRoot {
+    width: 100%;
+    height: $imageHeight;
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .tags {
+      width: $sectionWidth;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      .tag {
+        margin: 10px 2px 30px 2px;
+        padding: 10px 20px 10px 20px;
+        background-color: $colorGray;
+
+        color: rgba(255, 255, 255, 0.75);
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import navbarReducer from 'src/containers/Navbar/redux/reducer';
+import eventReducer from 'src/pages/Event/redux/reducer';
 import concertsReducer from 'src/pages/Concerts/redux/reducer';
 import homeReducer from 'src/pages/Home/redux/reducer';
 import profileReducer from 'src/pages/Profile/redux/reducer';
@@ -9,6 +10,7 @@ const RootReducer = combineReducers({
   navbar: navbarReducer,
   home: homeReducer,
   concerts: concertsReducer,
+  event: eventReducer,
 });
 
 export default RootReducer;

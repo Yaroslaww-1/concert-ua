@@ -11,8 +11,13 @@ interface IProps {
 }
 
 const PageComponent: React.FC<IProps> = ({ loading = false, children, withoutNavbar = false, className = '' }) => {
+  const getClassName = () => {
+    let resultedClassName = `${styles.page} ${className} `;
+    if (withoutNavbar) resultedClassName += `${styles.withoutNavbar}`;
+    return resultedClassName;
+  };
   return (
-    <div className={`${styles.page} ${className}`}>
+    <div className={getClassName()}>
       {!withoutNavbar && <Navbar />}
       {loading ? <Spinner /> : children}
     </div>

@@ -11,6 +11,7 @@ export interface IImageProps {
   imageAltText?: string;
   hoverElement?: JSX.Element;
   frontElement?: JSX.Element;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 const Image: React.FC<IImageProps> = ({
@@ -22,6 +23,7 @@ const Image: React.FC<IImageProps> = ({
   },
   hoverElement = null,
   frontElement = null,
+  onClick = (event: React.MouseEvent<HTMLDivElement>) => {},
 }) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
   return (
@@ -29,6 +31,7 @@ const Image: React.FC<IImageProps> = ({
       className={`${styles.wrapper} ${classes.root}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
     >
       <img src={imageSrc} alt={imageAltText} className={classes.image} />
       {frontElement && frontElement}

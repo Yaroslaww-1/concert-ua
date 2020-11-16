@@ -1,4 +1,9 @@
 export type CityModel = {
-  name: string;
   id: string;
+  name: string;
+};
+
+export const defaultCity = {
+  id: '',
+  name: '',
 };

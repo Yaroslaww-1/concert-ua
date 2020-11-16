@@ -1,5 +1,12 @@
+@import 'src/containers/navbar/styles.module';
+
 .page {
   margin-top: 50px;
-  height: calc(100% - 50px);
-  min-height: calc(100% - 50px);
+  height: calc(100% - #{$navbarHeight});
+  min-height: calc(100% - #{$navbarHeight});
+
+  &.withoutNavbar {
+    height: calc(100% + #{$navbarHeight});
+    margin-top: -$navbarHeight;
+  }
 }
