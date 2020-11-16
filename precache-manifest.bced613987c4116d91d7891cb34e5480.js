@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "564bba4c8eeceb475fe516bf0bd542b2",
+    "revision": "94358f24d2d28ff2be02c54b182e814b",
     "url": "/concert-ua/index.html"
   },
   {
-    "revision": "0480666d412874b8d163",
+    "revision": "2b2ca7597795f483a524",
     "url": "/concert-ua/static/css/2.e6ac38db.chunk.css"
   },
   {
-    "revision": "508561de0fad6882ae5c",
+    "revision": "acc4d0f3f4dd4d290c71",
     "url": "/concert-ua/static/css/main.6ae6454d.chunk.css"
   },
   {
-    "revision": "0480666d412874b8d163",
-    "url": "/concert-ua/static/js/2.51774217.chunk.js"
+    "revision": "2b2ca7597795f483a524",
+    "url": "/concert-ua/static/js/2.dfef215d.chunk.js"
   },
   {
     "revision": "4f28afabc50d1569baab9f9abbd7aa36",
-    "url": "/concert-ua/static/js/2.51774217.chunk.js.LICENSE.txt"
+    "url": "/concert-ua/static/js/2.dfef215d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "508561de0fad6882ae5c",
-    "url": "/concert-ua/static/js/main.5b8b9838.chunk.js"
+    "revision": "acc4d0f3f4dd4d290c71",
+    "url": "/concert-ua/static/js/main.6f1a2047.chunk.js"
   },
   {
     "revision": "20010e0381ab867f24da",
