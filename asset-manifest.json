@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/concert-ua/static/css/main.6ae6454d.chunk.css",
+    "main.js": "/concert-ua/static/js/main.ef458aca.chunk.js",
+    "main.js.map": "/concert-ua/static/js/main.ef458aca.chunk.js.map",
+    "runtime-main.js": "/concert-ua/static/js/runtime-main.49a8fb8b.js",
+    "runtime-main.js.map": "/concert-ua/static/js/runtime-main.49a8fb8b.js.map",
+    "static/css/2.e6ac38db.chunk.css": "/concert-ua/static/css/2.e6ac38db.chunk.css",
+    "static/js/2.e20fb66d.chunk.js": "/concert-ua/static/js/2.e20fb66d.chunk.js",
+    "static/js/2.e20fb66d.chunk.js.map": "/concert-ua/static/js/2.e20fb66d.chunk.js.map",
+    "index.html": "/concert-ua/index.html",
+    "precache-manifest.83c74656e56e83466a08d8e8a4141270.js": "/concert-ua/precache-manifest.83c74656e56e83466a08d8e8a4141270.js",
+    "service-worker.js": "/concert-ua/service-worker.js",
+    "static/css/2.e6ac38db.chunk.css.map": "/concert-ua/static/css/2.e6ac38db.chunk.css.map",
+    "static/css/main.6ae6454d.chunk.css.map": "/concert-ua/static/css/main.6ae6454d.chunk.css.map",
+    "static/js/2.e20fb66d.chunk.js.LICENSE.txt": "/concert-ua/static/js/2.e20fb66d.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/concert-ua/static/media/slick.f97e3bbf.svg",
+    "static/media/styles.module.scss": "/concert-ua/static/media/visa-logo.17821423.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.49a8fb8b.js",
+    "static/css/2.e6ac38db.chunk.css",
+    "static/js/2.e20fb66d.chunk.js",
+    "static/css/main.6ae6454d.chunk.css",
+    "static/js/main.ef458aca.chunk.js"
+  ]
+}
