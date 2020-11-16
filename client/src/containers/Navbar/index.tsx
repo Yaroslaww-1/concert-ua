@@ -57,17 +57,12 @@ const Navbar: React.FC = () => {
         <NavLink to={Routes.DEFAULT} custom-attribute="main-logo">
           <h1>music.ua</h1>
         </NavLink>
-        <div className={styles.break}></div>
-        <NavLink to={Routes.CONCERTS}>
-          <h3>Concerts</h3>
-        </NavLink>
-        <NavLink to={Routes.BANDS}>
-          <h3>Bands</h3>
-        </NavLink>
-        <NavLink to={Routes.ALBUMS}>
-          <h3>Albums</h3>
-        </NavLink>
-        <div className={styles.break}></div>
+        <div className={styles.links}>
+          <NavLink to={Routes.CONCERTS}>Concerts</NavLink>
+          <NavLink to={Routes.BANDS}>Bands</NavLink>
+          <NavLink to={Routes.ALBUMS}>Albums</NavLink>
+        </div>
+
         <>
           <EventIcon ref={eventIconRef}></EventIcon>
           <DatesMenu
@@ -79,10 +74,14 @@ const Navbar: React.FC = () => {
 
         <div className={styles.chooseCity} ref={chooseCityRef}>
           <LocationCityIcon />
-          <h3>Choose city</h3>
+          Choose city
           <CitiesDialog anchorEl={chooseCityRef.current} onSelect={onCitySelect} cities={cities} />
         </div>
-        {user ? <ProfileIcon profileNamePreview={user.name.toUpperCase().charAt(0)} /> : <h3>Login</h3>}
+        {user ? (
+          <ProfileIcon profileNamePreview={user.name.toUpperCase().charAt(0)} />
+        ) : (
+          <div className={styles.loginButton}>Login</div>
+        )}
       </div>
     </header>
   );

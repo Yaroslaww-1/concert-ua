@@ -16,7 +16,7 @@ const Section: React.FC<IProps> = ({ header = null, footer = null, children, cla
     <section className={`${styles.root} ${classes?.root || ''}`}>
       <div className={`${styles.content} ${classes?.contentRoot || ''}`}>
         {header && <div className={styles.header}>{header}</div>}
-        {children}
+        <div className={styles.children}>{children}</div>
         {footer && <div className={styles.footer}>{footer}</div>}
       </div>
     </section>

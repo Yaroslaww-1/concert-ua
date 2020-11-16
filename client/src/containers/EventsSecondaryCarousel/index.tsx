@@ -9,10 +9,12 @@ import SquareImage from 'src/components/EventImageComponents/Images/SquareImage'
 import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
 import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
 import { fetchPopularEvents } from 'src/containers/PopularEvents/redux/actions';
+import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 
 const EventsSecondaryCarousel: React.FC = () => {
   const dispatch = useDispatch();
   const events = useSelector((state: RootState) => state.home.popularEvents.state.events);
+  const [drag, setDrag] = React.useState<boolean>(false);
   useFetchIfNeeded(dispatch, fetchPopularEvents.request);
 
   return (
@@ -29,6 +31,8 @@ const EventsSecondaryCarousel: React.FC = () => {
         slidesToShow={2}
         slidesToScroll={1}
         dotsClass={`slick-dots ${styles.navigation}`}
+        beforeChange={() => setDrag(true)}
+        afterChange={() => setDrag(false)}
       >
         {events.map((event) => (
           <SquareImage
@@ -47,6 +51,7 @@ const EventsSecondaryCarousel: React.FC = () => {
                 imageSrc={event.imageUrl}
               />
             }
+            onClick={(e) => !drag && redirectToEvent(event.id)}
           />
         ))}
       </Slider>

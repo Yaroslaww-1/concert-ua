@@ -2,10 +2,10 @@
 
 $navbarBackground: #ec174d;
 $marginTop: 12px;
-$height: 50px;
+$navbarHeight: 50px;
 
 .navbar {
-  height: $height;
+  height: $navbarHeight;
   background-color: $navbarBackground;
   display: flex;
   justify-content: center;
@@ -14,6 +14,7 @@ $height: 50px;
   z-index: 1000;
   width: 100%;
   position: fixed;
+  font-weight: 500;
 
   .innerNavbar {
     width: $sectionWidth;
@@ -21,37 +22,38 @@ $height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: $height;
+    height: $navbarHeight;
     padding-right: 17px;
 
-    .break {
-      width: 100px;
-    }
+    .links {
+      flex: 1;
+      padding: 0px 200px 0px 200px;
 
-    h3 {
-      cursor: pointer;
-
-      &:hover {
-        opacity: 0.85;
-      }
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 
   h1 {
-    height: $height;
+    height: $navbarHeight;
     font-size: 2.2rem;
     margin-top: $marginTop;
   }
 
   a:not([custom-attribute="main-logo"]) {
-    height: $height;
+    height: $navbarHeight;
+
+    display: flex;
+    align-items: center;
+
     text-decoration: none;
     color: $linkColor;
-    margin: 0px 25px 10px 25px;
+    font-size: 1.125rem;
+    transition: box-shadow .3s ease;
 
     &:hover {
-      border-bottom: 5px solid $colorWhite;
-      margin-bottom: 5px;
+      box-shadow: inset 0 -5px 0 0 #fff;
     }
   }
 
@@ -88,6 +90,14 @@ $height: 50px;
 
     svg {
       margin: 0px 2.5px 0px 10px;
+    }
+  }
+
+  .loginButton {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
     }
   }
 }

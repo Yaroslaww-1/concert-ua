@@ -55,14 +55,20 @@ export const getDifferenceInYears = (date1: Date, date2: Date) => {
   return diffInYears;
 };
 
-export const formatDate = (date: Date, options: Intl.DateTimeFormatOptions) =>
-  date.toLocaleDateString('en-US', options).replace(/\//g, '.');
+export const formatDate = (date: Date, options: Intl.DateTimeFormatOptions, delimiter = '.') =>
+  date.toLocaleDateString('en-US', options).replace(/\//g, delimiter);
 
 export const formatDateToDayMonthYear = (date: Date, delimiter = '-') => {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   const a = day + delimiter + month + delimiter + year;
-  console.log(a);
   return a;
 };
+
+export const formatDateToDayFullMonth = (date: Date, delimiter = '-') => {
+  const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+  return formatDate(date, options, delimiter);
+};
+
+export const getTime = (date: Date) => `${date.getHours()}:${date.getMinutes()}`;

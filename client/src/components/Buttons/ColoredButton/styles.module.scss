@@ -39,4 +39,18 @@
       background-color: $colorRed;
     }
   }
+
+  &.green {
+    div {
+      color: $colorWhite !important;
+    }
+    background-color: $colorGreenDark;
+    &:hover {
+      transition: 350ms ease;
+      div {
+        color: $colorWhite !important;
+      }
+      background-color: $colorGreen;
+    }
+  }
 }

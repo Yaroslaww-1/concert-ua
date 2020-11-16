@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "http://yaroslaww-1.github.io/concert-ua",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,7 +39,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/ --ext .tsx,.ts",
-    "lint-fix": "eslint src/ --ext .tsx,.ts --fix"
+    "lint-fix": "eslint src/ --ext .tsx,.ts --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,6 +68,7 @@
     "@types/redux-saga": "^0.10.5",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
     "prettier": "^2.1.2"

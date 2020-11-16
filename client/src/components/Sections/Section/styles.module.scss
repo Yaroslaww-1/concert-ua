@@ -11,13 +11,23 @@
   box-sizing: border-box;
 
   .content {
-    max-width: $sectionWidth;
+    width: $sectionWidth;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     .header {
       padding: 10px 0px 40px 0px;
+    }
+
+    .children {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 100%;
+      height: 100%;
     }
   }
 

@@ -10,21 +10,22 @@ import Text from 'src/components/Text';
 interface IProps {
   header?: string;
   events: EventModel[];
-  onLoadMore: () => void;
+  withLoadMore?: boolean;
+  onLoadMore?: () => void;
 }
 
-const CardsSection: React.FC<IProps> = ({ header = null, events, onLoadMore }) => {
+const CardsSection: React.FC<IProps> = ({ header = null, events, withLoadMore = true, onLoadMore = () => {} }) => {
   return (
     <Section
       header={
         header ? (
           <Text
             fontSize="3rem"
-            fontWeight={700}
             textTransform="uppercase"
             textAlign="left"
             color="black"
-            letterSpacing="-2px"
+            letterSpacing="1px"
+            fontFamily="League Gothic"
           >
             {header}
           </Text>
@@ -32,21 +33,16 @@ const CardsSection: React.FC<IProps> = ({ header = null, events, onLoadMore }) =
       }
       classes={{ contentRoot: styles.root }}
       footer={
-        <div className={styles.loadMoreButtonWrapper}>
-          <TransparentButton onClick={onLoadMore} text={'Load more'} animationType={'growCenter'} color={'red'} />
-        </div>
+        withLoadMore ? (
+          <div className={styles.loadMoreButtonWrapper}>
+            <TransparentButton onClick={onLoadMore} text={'Load more'} animationType={'growCenter'} color={'red'} />
+          </div>
+        ) : undefined
       }
     >
       <div className={styles.eventsWrapper}>
         {events.map((event) => (
-          <EventCard
-            key={event.id}
-            image={{ src: event.imageUrl, altText: 'An event image' }}
-            date={event.date}
-            name={event.name}
-            place={event.place}
-            price={event.price}
-          />
+          <EventCard key={event.id} event={event} />
         ))}
       </div>
     </Section>
