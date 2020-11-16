@@ -7,10 +7,9 @@ import ArtistHoverOverlay from 'src/components/EventImageComponents/HoverOverlay
 
 interface IProps {
   artist: ArtistModel;
-  ref?: React.RefObject<HTMLDivElement> | null;
 }
 
-const Artist: React.FC<IProps> = ({ artist, ref = null }) => {
+const Artist = React.forwardRef<HTMLDivElement, IProps>(({ artist }, ref) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
 
   const onAboutClick = () => {};
@@ -36,6 +35,8 @@ const Artist: React.FC<IProps> = ({ artist, ref = null }) => {
       </div>
     </div>
   );
-};
+});
+
+Artist.displayName = 'Artist';
 
 export default Artist;
