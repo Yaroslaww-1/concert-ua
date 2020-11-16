@@ -87,11 +87,7 @@ const events: EventModel[] = [
     .map(() => getEvent()),
 ];
 
-const newEvents: EventModel[] = [
-  ...Array(8)
-    .fill(0)
-    .map(() => getEvent()),
-];
+const newEvents: EventModel[] = [...events];
 
 export interface IEventFilter {
   date?: {

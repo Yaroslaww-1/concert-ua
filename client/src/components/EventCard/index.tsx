@@ -5,6 +5,7 @@ import EventCardImageHoverOverlay from '../EventImageComponents/HoverOverlays/Ev
 import Text from '../Text';
 import { formatDateToDayFullMonth } from 'src/common/date/date.helper';
 import { EventModel } from 'src/api/models/event.model';
+import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 
 interface IProps {
   event: EventModel;
@@ -14,13 +15,17 @@ interface IProps {
 }
 
 const EventCard: React.FC<IProps> = ({ event, classes }) => {
-  const { imageUrl, date, name, place, price } = event;
+  const { imageUrl, date, name, place, price, id } = event;
   const [hovered, setHovered] = React.useState<boolean>(false);
+
+  const navigateToEvent = () => redirectToEvent(id);
+
   return (
     <div
       className={`${styles.root} ${classes?.root}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={navigateToEvent}
     >
       <div className={styles.image}>
         <img src={imageUrl} alt="Image on an event"></img>
