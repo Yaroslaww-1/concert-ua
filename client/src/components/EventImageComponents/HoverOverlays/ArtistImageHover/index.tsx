@@ -1,14 +1,15 @@
 import React from 'react';
 
+import { ArtistShortModel } from 'src/api/models/artist-short.model';
+
 import styles from './styles.module.scss';
 import TransparentButton from 'src/components/Buttons/TransparentButton';
 import Text from 'src/components/Text';
 import { getImageColor, RgbColor } from 'src/common/images/image.helper';
 import { useHover } from 'src/common/hooks/use-hover';
-import { ArtistModel } from 'src/api/models/artist.model';
 
 interface IProps {
-  artist: ArtistModel;
+  artist: ArtistShortModel;
   onAboutClick: () => void;
 }
 
