@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 
@@ -8,15 +9,19 @@ import Slider from 'react-slick';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import FullscreenImage from 'src/components/EventImageComponents/Images/FullscreenImage';
-import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
+import { useInitialFetch } from 'src/common/hooks/use-fetch-if-needed';
 import { fetchNewEvents } from 'src/containers/NewEvents/redux/actions';
 import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 
-const EventsMainCarousel: React.FC = () => {
+type IProps = {} & RouteComponentProps;
+
+const EventsMainCarousel: React.FC<IProps> = ({ history }) => {
   const dispatch = useDispatch();
   const events = useSelector((state: RootState) => state.home.newEvents.state.events);
   const [drag, setDrag] = React.useState<boolean>(false);
-  useFetchIfNeeded(dispatch, fetchNewEvents.request);
+  useInitialFetch(dispatch, fetchNewEvents.request);
+
+  const navigateToEvent = (id: string) => redirectToEvent(history, id);
 
   const NextArrow = (props: any) => {
     const { className, style, onClick } = props;
@@ -61,7 +66,7 @@ const EventsMainCarousel: React.FC = () => {
             key={event.id}
             imageSrc={event.imageUrl}
             imageAltText={event.name}
-            onClick={(e) => !drag && redirectToEvent(event.id)}
+            onClick={(e) => !drag && navigateToEvent(event.id)}
           />
         ))}
       </Slider>
@@ -69,4 +74,4 @@ const EventsMainCarousel: React.FC = () => {
   );
 };
 
-export default EventsMainCarousel;
+export default withRouter(EventsMainCarousel);

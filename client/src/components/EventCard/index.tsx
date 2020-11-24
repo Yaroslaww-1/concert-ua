@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 
 import styles from './styles.module.scss';
 import EventCardImageHoverOverlay from '../EventImageComponents/HoverOverlays/EventCardImageHover';
@@ -7,18 +8,18 @@ import { formatDateToDayFullMonth } from 'src/common/date/date.helper';
 import { EventModel } from 'src/api/models/event.model';
 import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 
-interface IProps {
+type IProps = {
   event: EventModel;
   classes?: {
     root?: string;
   };
-}
+} & RouteComponentProps;
 
-const EventCard: React.FC<IProps> = ({ event, classes }) => {
+const EventCard: React.FC<IProps> = ({ event, classes, history }) => {
   const { imageUrl, date, name, place, price, id } = event;
   const [hovered, setHovered] = React.useState<boolean>(false);
 
-  const navigateToEvent = () => redirectToEvent(id);
+  const navigateToEvent = () => redirectToEvent(history, id);
 
   return (
     <div
@@ -64,4 +65,4 @@ const EventCard: React.FC<IProps> = ({ event, classes }) => {
   );
 };
 
-export default EventCard;
+export default withRouter(EventCard);
