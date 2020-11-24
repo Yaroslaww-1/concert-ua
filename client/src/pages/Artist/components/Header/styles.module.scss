@@ -1,0 +1,18 @@
+@import 'src/styles/variables';
+
+$imageHeight: 350px;
+
+.root {
+  width: 100%;
+
+  .imageRoot {
+    width: 100%;
+    height: $imageHeight;
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
