@@ -1,21 +1,28 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import { ForwarderRefProps, withRouterAndRef } from 'src/common/hoc/with-router-and-ref';
+
+import { ArtistShortModel } from 'src/api/models/artist-short.model';
+import { redirectToArtist } from 'src/common/url/redirect-to-artist-by-id';
 
 import styles from './styles.module.scss';
 import Text from 'src/components/Text';
-import { ArtistModel } from 'src/api/models/artist.model';
 import ArtistHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/ArtistImageHover';
 
-interface IProps {
-  artist: ArtistModel;
-}
-
-const Artist = React.forwardRef<HTMLDivElement, IProps>(({ artist }, ref) => {
+type IProps = {
+  artist: ArtistShortModel;
+};
+const Artist: React.FC<IProps & RouteComponentProps & ForwarderRefProps<HTMLDivElement>> = ({
+  artist,
+  history,
+  forwardRef,
+}) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
 
-  const onAboutClick = () => {};
+  const onAboutClick = () => redirectToArtist(history, artist.id);
 
   return (
-    <div className={styles.root} ref={ref}>
+    <div className={styles.root} ref={forwardRef}>
       <Text color="black" textAlign="left" textTransform="uppercase" fontSize="3rem" fontFamily="League Gothic">
         Artist
       </Text>
@@ -35,8 +42,6 @@ const Artist = React.forwardRef<HTMLDivElement, IProps>(({ artist }, ref) => {
       </div>
     </div>
   );
-});
+};
 
-Artist.displayName = 'Artist';
-
-export default Artist;
+export default withRouterAndRef<IProps, HTMLDivElement>(Artist as React.FC<IProps>);
