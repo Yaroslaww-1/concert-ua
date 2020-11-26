@@ -2,6 +2,8 @@ import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import { fetchArtist } from './redux/actions';
+
 import PageComponent from 'src/components/Page';
 import Header from './containers/Header';
 import Subscribe from 'src/components/Subscribe';
@@ -14,6 +16,7 @@ const Artist: React.FC<IProps & RouteComponentProps<{ id: string }>> = ({ match 
 
   React.useEffect(() => {
     const artistId = match.params.id;
+    dispatch(fetchArtist.request(artistId));
   }, [match.params.id]);
 
   return (
