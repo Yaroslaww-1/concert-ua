@@ -8,11 +8,16 @@ $imageHeight: 350px;
   .imageRoot {
     width: 100%;
     height: $imageHeight;
-    background-size: cover;
-    background-position: center;
+    background-size: cover !important;
+    background-position: center !important;
     
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+
+    .name {
+      margin: auto auto;
+      width: $sectionWidth;
+    }
   }
 }

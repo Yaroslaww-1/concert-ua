@@ -13,9 +13,14 @@ const Header: React.FC<IProps> = ({ artist }) => {
   const { imageUrl, name } = artist;
   return (
     <div className={styles.root}>
-      <div className={styles.imageRoot} style={{ backgroundImage: `url(${imageUrl}` }}>
+      <div
+        className={styles.imageRoot}
+        style={{ background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${imageUrl}` }}
+      >
         <div className={styles.name}>
-          <Text>{name}</Text>
+          <Text fontSize="5rem" textTransform="uppercase" fontFamily="League Gothic" textAlign="left">
+            {name}
+          </Text>
         </div>
       </div>
     </div>
