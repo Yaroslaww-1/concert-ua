@@ -8,6 +8,7 @@ import PageComponent from 'src/components/Page';
 import Header from './containers/Header';
 import Subscribe from 'src/components/Subscribe';
 import Footer from 'src/components/Footer';
+import ArtistDescription from './containers/ArtistDescriptionSection';
 
 interface IProps {}
 
@@ -22,6 +23,7 @@ const Artist: React.FC<IProps & RouteComponentProps<{ id: string }>> = ({ match 
   return (
     <PageComponent>
       <Header />
+      <ArtistDescription />
       <Subscribe onSubscribe={() => {}} />
       <Footer />
     </PageComponent>
