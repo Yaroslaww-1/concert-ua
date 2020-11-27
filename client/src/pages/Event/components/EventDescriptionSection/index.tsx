@@ -7,6 +7,8 @@ import Text from 'src/components/Text';
 import LikeIcon from 'src/components/Icons/LikeIcon';
 import Artist from '../Artist';
 import { useScroll } from 'src/common/hooks/use-scroll';
+import WysiwygText from 'src/components/WysiwygText';
+import Section from 'src/components/Sections/Section';
 
 interface IProps {
   event: EventModel;
@@ -58,10 +60,7 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
             >
               About
             </Text>
-            <div
-              className={styles.description}
-              dangerouslySetInnerHTML={{ __html: `${descriptionHTML}${descriptionHTML}` }}
-            ></div>
+            <WysiwygText html={descriptionHTML} />
           </div>
           <Artist artist={event.artist} ref={artistElementRef} />
         </div>
