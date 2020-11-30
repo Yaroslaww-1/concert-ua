@@ -9,6 +9,7 @@ import Artist from '../Artist';
 import { useScroll } from 'src/common/hooks/use-scroll';
 import WysiwygText from 'src/components/WysiwygText';
 import Section from 'src/components/Sections/Section';
+import DescriptionHeader from 'src/components/DescriptionHeader';
 
 interface IProps {
   event: EventModel;
@@ -21,7 +22,8 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.navbarRoot}>
+      <DescriptionHeader links={[{ label: 'Artist', onClick: executeScroll }]} />
+      {/* <div className={styles.navbarRoot}>
         <div className={styles.navbarContent}>
           <Text
             color="black"
@@ -33,7 +35,7 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
             Artist
           </Text>
         </div>
-      </div>
+      </div> */}
       <div className={styles.contentRoot}>
         <div className={styles.content}>
           <div className={styles.header}>

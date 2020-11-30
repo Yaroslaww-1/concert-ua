@@ -75,7 +75,7 @@ const getEvent = (): EventModel => {
     promoter: 'promoter',
     hot: Math.random() > 0.5,
     artist: {
-      id: createRandomString(5),
+      id: `id${eventId}`,
       name: 'artist',
       imageUrl: eventUrls[eventUrlIndex],
     },

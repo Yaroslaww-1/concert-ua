@@ -6,6 +6,7 @@ import Text from 'src/components/Text';
 import { useScroll } from 'src/common/hooks/use-scroll';
 import WysiwygText from 'src/components/WysiwygText';
 import Section from 'src/components/Sections/Section';
+import DescriptionHeader from 'src/components/DescriptionHeader';
 
 interface IProps {
   artist: ArtistModel;
@@ -19,28 +20,12 @@ const EventDescriptionSection: React.FC<IProps> = ({ artist }) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.navbarRoot}>
-        <div className={styles.navbarContent}>
-          <Text
-            color="black"
-            fontSize="1rem"
-            textTransform="uppercase"
-            classes={{ root: styles.navbarLink }}
-            onClick={scrollToAbout}
-          >
-            About
-          </Text>
-          <Text
-            color="black"
-            fontSize="1rem"
-            textTransform="uppercase"
-            classes={{ root: styles.navbarLink }}
-            onClick={scrollToDates}
-          >
-            Dates
-          </Text>
-        </div>
-      </div>
+      <DescriptionHeader
+        links={[
+          { label: 'About', onClick: scrollToAbout },
+          { label: 'Dates', onClick: scrollToDates },
+        ]}
+      />
       <Section classes={{ contentRoot: styles.description }} contentAlign="flex-start">
         <div className={styles.descriptionHeader}>
           <Text
