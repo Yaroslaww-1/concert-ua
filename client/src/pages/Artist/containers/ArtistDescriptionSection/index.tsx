@@ -7,8 +7,9 @@ import ArtistDescriptionComponent from '../../components/ArtistDescriptionSectio
 
 const ArtistDescription: React.FC = () => {
   const artist = useSelector((state: RootState) => state.artist.state.artist);
+  const tickets = useSelector((state: RootState) => state.artist.state.tickets);
 
-  return <ArtistDescriptionComponent artist={artist} />;
+  return <ArtistDescriptionComponent artist={artist} tickets={tickets} />;
 };
 
 export default ArtistDescription;

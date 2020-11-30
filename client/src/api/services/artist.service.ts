@@ -1,6 +1,8 @@
 import { createRandomString } from 'src/common/string/create-random-string';
 import api from '../api.helper';
 import { ArtistModel } from '../models/artist.model';
+import { EventModel } from '../models/event.model';
+import { EventService } from './event.service';
 
 const endpoint = 'artists';
 
@@ -59,5 +61,14 @@ export class ArtistService {
         resolve(artist);
       }, 10);
     });
+  }
+
+  static async getTicketsByArtistId(artistId: string): Promise<EventModel[]> {
+    console.log('Artist tickets fetching');
+    const allEvents = await EventService.getEvents();
+    return [
+      ...allEvents.filter((event) => event.artist.id === artistId),
+      ...allEvents.filter((event) => event.artist.id === artistId),
+    ];
   }
 }

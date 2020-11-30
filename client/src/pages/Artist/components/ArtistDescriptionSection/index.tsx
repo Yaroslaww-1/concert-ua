@@ -7,12 +7,15 @@ import { useScroll } from 'src/common/hooks/use-scroll';
 import WysiwygText from 'src/components/WysiwygText';
 import Section from 'src/components/Sections/Section';
 import DescriptionHeader from 'src/components/DescriptionHeader';
+import { EventModel } from 'src/api/models/event.model';
+import BuyTicket from '../BuyTicket';
 
 interface IProps {
   artist: ArtistModel;
+  tickets: EventModel[];
 }
 
-const EventDescriptionSection: React.FC<IProps> = ({ artist }) => {
+const EventDescriptionSection: React.FC<IProps> = ({ artist, tickets }) => {
   const { descriptionHTML } = artist;
 
   const [scrollToAbout, aboutElementRef] = useScroll();
@@ -29,6 +32,7 @@ const EventDescriptionSection: React.FC<IProps> = ({ artist }) => {
       <Section classes={{ contentRoot: styles.description }} contentAlign="flex-start">
         <div className={styles.descriptionHeader}>
           <Text
+            ref={aboutElementRef}
             color="black"
             textAlign="left"
             fontSize="4.5rem"
@@ -50,6 +54,21 @@ const EventDescriptionSection: React.FC<IProps> = ({ artist }) => {
           </Text>
         </div>
         <WysiwygText html={descriptionHTML} />
+        <div className={styles.buyTickets}>
+          <Text
+            color="black"
+            textAlign="left"
+            fontSize="3rem"
+            fontFamily="League Gothic"
+            letterSpacing="1.26px"
+            textTransform="uppercase"
+          >
+            Dates
+          </Text>
+          {tickets.map((ticket) => (
+            <BuyTicket key={ticket.id} event={ticket} />
+          ))}
+        </div>
       </Section>
     </div>
   );

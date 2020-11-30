@@ -1,6 +1,6 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { ArtistService } from 'src/api/services/artist.service';
-import { fetchArtist } from './actions';
+import { fetchArtist, fetchTickets } from './actions';
 
 function* fetchArtistSaga(action: ReturnType<typeof fetchArtist.requestPayload>) {
   try {
@@ -11,10 +11,23 @@ function* fetchArtistSaga(action: ReturnType<typeof fetchArtist.requestPayload>)
   }
 }
 
-function* watchFetchEvent() {
+function* watchFetchArtist() {
   yield takeLatest(fetchArtist.types.request, fetchArtistSaga);
 }
 
+function* fetchTicketsSaga(action: ReturnType<typeof fetchTickets.requestPayload>) {
+  try {
+    const tickets = yield call(ArtistService.getTicketsByArtistId, action.payload.artistId);
+    yield put(fetchTickets.success(tickets));
+  } catch (error) {
+    yield put(fetchTickets.failure(error));
+  }
+}
+
+function* watchFetchTickets() {
+  yield takeLatest(fetchTickets.types.request, fetchTicketsSaga);
+}
+
 export function* fetchArtistSagas() {
-  yield all([watchFetchEvent()]);
+  yield all([watchFetchArtist(), watchFetchTickets()]);
 }
