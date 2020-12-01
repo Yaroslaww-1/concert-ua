@@ -9,6 +9,7 @@ import Section from 'src/components/Sections/Section';
 import DescriptionHeader from 'src/components/DescriptionHeader';
 import { EventModel } from 'src/api/models/event.model';
 import BuyTicket from '../BuyTicket';
+import ArtistGallery from '../Gallery';
 
 interface IProps {
   artist: ArtistModel;
@@ -53,9 +54,11 @@ const EventDescriptionSection: React.FC<IProps> = ({ artist, tickets }) => {
             Gallery
           </Text>
         </div>
+        <ArtistGallery artist={artist} />
         <WysiwygText html={descriptionHTML} />
         <div className={styles.buyTickets}>
           <Text
+            ref={datesElementRef}
             color="black"
             textAlign="left"
             fontSize="3rem"

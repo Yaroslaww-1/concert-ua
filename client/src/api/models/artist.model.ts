@@ -2,6 +2,7 @@ export type ArtistModel = {
   id: string;
   name: string;
   imageUrl: string;
+  galleryImagesUrls: string[];
   descriptionHTML: string;
 };
 
@@ -23,5 +24,6 @@ export const defaultArtist: ArtistModel = {
   id: '',
   name: '',
   imageUrl: '',
+  galleryImagesUrls: [],
   descriptionHTML: artistDescriptionHtml,
 };

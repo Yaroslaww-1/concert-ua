@@ -40,6 +40,10 @@
     right: 35px;
     font-size: 4.5rem;
     color: $colorRed;
+
+    * {
+      align-items: flex-start;
+    }
     
     &:before {
       content: '';
@@ -48,13 +52,22 @@
 
   &.prev {
     z-index: 200 !important;
-    left: -105px;
+    left: -25px;
     font-size: 4.5rem;
     color: $colorRed;
+
+    * {
+      align-items: flex-end;
+    }
     
     &:before {
       content: '';
     }
+  }
+
+  svg {
+    font-size: 5rem;
+    color: $colorRed;
   }
 
   .shadow {
@@ -68,17 +81,8 @@
 
     z-index: 201 !important;
 
-    &.next {
-      align-items: flex-start;
-    }
-
     &.prev {
-      align-items: flex-end;
-    }
-
-    svg {
-      font-size: 5rem;
-      color: $colorRed;
+      left: -80px;
     }
 
     &:hover {

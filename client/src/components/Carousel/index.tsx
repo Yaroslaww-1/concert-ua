@@ -13,17 +13,25 @@ type IProps = {
   }[];
   classes?: {
     image?: string;
+    nextArrow?: string;
+    prevArrow?: string;
   };
+  withDots?: boolean;
+  withArrowShadow?: boolean;
 };
 
-const Carousel: React.FC<IProps> = ({ items, classes }) => {
+const Carousel: React.FC<IProps> = ({ items, classes = {}, withDots = true, withArrowShadow = true }) => {
   const [drag, setDrag] = React.useState<boolean>(false);
 
   const NextArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
-      <div className={`${className} ${styles.arrow} ${styles.next}`} style={{ ...style }} onClick={onClick}>
-        <div className={`${styles.shadow} ${styles.next}`}>
+      <div
+        className={`${className} ${classes.nextArrow} ${styles.arrow} ${styles.next}`}
+        style={{ ...style }}
+        onClick={onClick}
+      >
+        <div className={withArrowShadow ? styles.shadow : ''}>
           <NavigateNextIcon className={`${styles.nextArrow}`} onClick={onClick} />
         </div>
       </div>
@@ -33,8 +41,12 @@ const Carousel: React.FC<IProps> = ({ items, classes }) => {
   const PrevArrow = (props: any) => {
     const { className, style, onClick } = props;
     return (
-      <div className={`${className} ${styles.arrow} ${styles.prev}`} style={{ ...style }} onClick={onClick}>
-        <div className={`${styles.shadow} ${styles.prev}`}>
+      <div
+        className={`${className} ${classes.prevArrow} ${styles.arrow} ${styles.prev}`}
+        style={{ ...style }}
+        onClick={onClick}
+      >
+        <div className={withArrowShadow ? `${styles.shadow} ${styles.prev}` : ''}>
           <NavigateBeforeIcon className={`${styles.prevArrow}`} onClick={onClick} />
         </div>
       </div>
@@ -43,7 +55,7 @@ const Carousel: React.FC<IProps> = ({ items, classes }) => {
 
   return (
     <Slider
-      dots={true}
+      dots={withDots}
       infinite={true}
       autoplay={true}
       autoplaySpeed={5000}

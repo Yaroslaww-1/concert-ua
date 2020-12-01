@@ -39,6 +39,7 @@ const getArtist = (): ArtistModel => {
     name: createRandomString(10),
     descriptionHTML,
     imageUrl: artistUrls[artistUrlIndex],
+    galleryImagesUrls: [...artistUrls],
   };
 };
 
