@@ -1,0 +1,11 @@
+@import 'src/styles/variables';
+
+.root {
+  div {
+    cursor: pointer;
+    &:hover {
+      color: $colorRed !important;
+      transition: color 0.3s ease;
+    }
+  }
+}

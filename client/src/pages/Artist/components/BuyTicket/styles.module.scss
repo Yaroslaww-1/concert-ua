@@ -1,0 +1,57 @@
+@import 'src/styles/variables';
+
+.root {
+  width: 750px;
+  padding: 25px 30px 0px 40px;
+  margin: 20px 0px 20px 0px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  
+  background: $colorLighterGray;
+  box-shadow: inset 10px 0 0 $colorRed;
+  box-sizing: border-box;
+
+  .date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    * {
+      margin-bottom: 20px;
+    }
+  }
+
+  .place {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    * {
+      margin-bottom: 5px;
+    }
+
+    .withIcon {
+      display: flex;
+      flex-direction: row;
+      svg {
+        margin-left: -5px;
+        margin-right: 10px;
+        font-size: 22px;
+        color: $colorGray;
+      }
+    }
+  }
+
+  .buyTicket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .buyTicketButton {
+      margin-bottom: 15px;
+    }
+  }
+}

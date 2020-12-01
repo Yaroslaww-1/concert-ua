@@ -50,52 +50,59 @@ export interface TextProps {
   onClick?: () => void;
 }
 
-const Text: React.FC<TextProps> = ({
-  children,
-  fontSize = '1rem',
-  textTransform = 'none',
-  lineHeight = 1.4,
-  wordBreak = 'break-all',
-  textAlign = 'center',
-  fontWeight = 400,
-  classes = {
-    root: '',
+const Text: React.FC<TextProps & { ref?: React.Ref<HTMLDivElement> }> = React.forwardRef<HTMLDivElement, TextProps>(
+  (
+    {
+      children,
+      fontSize = '1rem',
+      textTransform = 'none',
+      lineHeight = 1.4,
+      wordBreak = 'break-all',
+      textAlign = 'center',
+      fontWeight = 400,
+      classes = {
+        root: '',
+      },
+      color = 'white',
+      letterSpacing = 'normal',
+      fontFamily = 'Roboto',
+      onClick = () => {},
+    },
+    ref,
+  ) => {
+    const getColor = () => {
+      switch (color) {
+        case 'white':
+          return styles.colorWhite;
+        case 'black':
+          return styles.colorBlack;
+        case 'red':
+          return styles.colorRed;
+        case 'gray':
+          return styles.colorGray;
+        default:
+          return color;
+      }
+    };
+    const style: React.CSSProperties = {
+      fontSize,
+      textTransform,
+      lineHeight,
+      wordBreak,
+      textAlign,
+      fontWeight,
+      color: getColor(),
+      letterSpacing,
+      fontFamily,
+    };
+    return (
+      <div ref={ref} style={{ ...style }} className={`${styles.root} ${classes.root}`} onClick={onClick}>
+        {children}
+      </div>
+    );
   },
-  color = 'white',
-  letterSpacing = 'normal',
-  fontFamily = 'Roboto',
-  onClick = () => {},
-}) => {
-  const getColor = () => {
-    switch (color) {
-      case 'white':
-        return styles.colorWhite;
-      case 'black':
-        return styles.colorBlack;
-      case 'red':
-        return styles.colorRed;
-      case 'gray':
-        return styles.colorGray;
-      default:
-        return color;
-    }
-  };
-  const style: React.CSSProperties = {
-    fontSize,
-    textTransform,
-    lineHeight,
-    wordBreak,
-    textAlign,
-    fontWeight,
-    color: getColor(),
-    letterSpacing,
-    fontFamily,
-  };
-  return (
-    <div style={{ ...style }} className={`${styles.root} ${classes.root}`} onClick={onClick}>
-      {children}
-    </div>
-  );
-};
+);
+
+Text.displayName = 'TextComponent';
 
 export default Text;
