@@ -1,0 +1,19 @@
+@import 'src/styles/variables';
+
+.root {
+  display: flex;
+  flex-direction: column;
+
+  .description {
+    width: 750px;
+
+    .descriptionHeader {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .buyTickets {
+      padding: 40px 0px 0px 0px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/redux/rootReducer';
 
@@ -7,15 +8,19 @@ import styles from './styles.module.scss';
 import Slider from 'react-slick';
 import SquareImage from 'src/components/EventImageComponents/Images/SquareImage';
 import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
-import { useFetchIfNeeded } from 'src/common/hooks/use-fetch-if-needed';
+import { useInitialFetch } from 'src/common/hooks/use-fetch-if-needed';
 import { fetchPopularEvents } from 'src/containers/PopularEvents/redux/actions';
 import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 
-const EventsSecondaryCarousel: React.FC = () => {
+type IProps = {} & RouteComponentProps;
+
+const EventsSecondaryCarousel: React.FC<IProps> = ({ history }) => {
   const dispatch = useDispatch();
   const events = useSelector((state: RootState) => state.home.popularEvents.state.events);
   const [drag, setDrag] = React.useState<boolean>(false);
-  useFetchIfNeeded(dispatch, fetchPopularEvents.request);
+  useInitialFetch(dispatch, fetchPopularEvents.request);
+
+  const navigateToEvent = (id: string) => redirectToEvent(history, id);
 
   return (
     <div className={styles.carouselWrapper}>
@@ -51,7 +56,7 @@ const EventsSecondaryCarousel: React.FC = () => {
                 imageSrc={event.imageUrl}
               />
             }
-            onClick={(e) => !drag && redirectToEvent(event.id)}
+            onClick={(e) => !drag && navigateToEvent(event.id)}
           />
         ))}
       </Slider>
@@ -59,4 +64,4 @@ const EventsSecondaryCarousel: React.FC = () => {
   );
 };
 
-export default EventsSecondaryCarousel;
+export default withRouter(EventsSecondaryCarousel);

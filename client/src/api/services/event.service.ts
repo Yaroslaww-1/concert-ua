@@ -1,6 +1,7 @@
 import { Throwable } from 'src/common/error/throwable';
 import { createRandomString } from 'src/common/string/create-random-string';
 import api from '../api.helper';
+import { defaultArtist } from '../models/artist.model';
 import { defaultCity } from '../models/city.model';
 import { EventModel } from '../models/event.model';
 import { defaultPlace, PlaceModel } from '../models/place.model';
@@ -22,7 +23,7 @@ const eventUrls = [
 ];
 
 const descriptionHTML = `
-  <div class="event-simple-text wysiwyg"><p> <strong>Концерти HURTS в Києві: не пропусти 31 березня в Палаці спорту!</strong>
+  <p> <strong>Концерти HURTS в Києві: не пропусти 31 березня в Палаці спорту!</strong>
   </p>
   <h2> Чому варто піти на концерт HURTS? </h2>
   <ol>
@@ -52,7 +53,7 @@ const descriptionHTML = `
   </p>
   <h2> ДЕ КУПИТИ КВИТКИ НА HURTS В Києві? </h2>
   <p> Ти можеш купити квитки на HURTS в Києві на Concert.ua. Швидше за все оформити онлайн - після оплати квитки будуть доступні на email і в Особистому кабінеті на сайті.
-  </p></div>`;
+  </p>`;
 
 let eventId = 0;
 let eventUrlIndex = -1;
@@ -74,7 +75,7 @@ const getEvent = (): EventModel => {
     promoter: 'promoter',
     hot: Math.random() > 0.5,
     artist: {
-      id: createRandomString(5),
+      id: `id${eventId}`,
       name: 'artist',
       imageUrl: eventUrls[eventUrlIndex],
     },

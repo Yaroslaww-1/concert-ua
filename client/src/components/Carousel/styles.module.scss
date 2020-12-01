@@ -1,0 +1,95 @@
+@import 'src/styles/variables';
+
+.navigation {
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+
+  li {
+    button:before {
+      opacity: 1;
+      color: $colorWhite;
+      content: "";
+      background-color: $colorWhite;
+      border-radius: 10px;
+      width: 15px;
+      height: 15px;
+    }
+
+    &:global(.slick-active) button:before {
+      width: 60px;
+      left: -20px;
+    }
+    
+    padding: 0px 30px 20px 30px;
+    cursor: pointer;
+  }
+}
+
+.arrow {
+  &.next {
+    z-index: 200 !important;
+    right: 35px;
+    font-size: 4.5rem;
+    color: $colorRed;
+
+    * {
+      align-items: flex-start;
+    }
+    
+    &:before {
+      content: '';
+    }
+  }
+
+  &.prev {
+    z-index: 200 !important;
+    left: -25px;
+    font-size: 4.5rem;
+    color: $colorRed;
+
+    * {
+      align-items: flex-end;
+    }
+    
+    &:before {
+      content: '';
+    }
+  }
+
+  svg {
+    font-size: 5rem;
+    color: $colorRed;
+  }
+
+  .shadow {
+    height: 160px !important;
+    width: 160px !important;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+
+    z-index: 201 !important;
+
+    &.prev {
+      left: -80px;
+    }
+
+    &:hover {
+      background-color: rgba($color: $colorBlack, $alpha: 0.55);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0;
+      transition: 0.3s;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-export const useFetchIfNeeded = (
+export const useInitialFetch = (
   dispatch: (func: unknown) => void,
   fetch: (params?: any) => void,
   fetchParams?: unknown,

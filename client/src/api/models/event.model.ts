@@ -1,4 +1,4 @@
-import { ArtistModel, defaultArtist } from './artist.model';
+import { ArtistShortModel, defaultArtistShort } from './artist-short.model';
 import { defaultPlace, PlaceModel } from './place.model';
 
 export type EventModel = {
@@ -13,7 +13,7 @@ export type EventModel = {
   tags: string[];
   promoter: string;
   hot: boolean;
-  artist: ArtistModel;
+  artist: ArtistShortModel;
 };
 
 export const defaultEvent: EventModel = {
@@ -28,5 +28,5 @@ export const defaultEvent: EventModel = {
   tags: [],
   promoter: '',
   hot: false,
-  artist: defaultArtist,
+  artist: defaultArtistShort,
 };

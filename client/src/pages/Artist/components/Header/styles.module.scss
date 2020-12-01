@@ -1,0 +1,23 @@
+@import 'src/styles/variables';
+
+$imageHeight: 350px;
+
+.root {
+  width: 100%;
+
+  .imageRoot {
+    width: 100%;
+    height: $imageHeight;
+    background-size: cover !important;
+    background-position: center !important;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .name {
+      margin: auto auto;
+      width: $sectionWidth;
+    }
+  }
+}
