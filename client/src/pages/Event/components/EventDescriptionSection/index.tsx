@@ -8,7 +8,6 @@ import LikeIcon from 'src/components/Icons/LikeIcon';
 import Artist from '../Artist';
 import { useScroll } from 'src/common/hooks/use-scroll';
 import WysiwygText from 'src/components/WysiwygText';
-import Section from 'src/components/Sections/Section';
 import DescriptionHeader from 'src/components/DescriptionHeader';
 
 interface IProps {
@@ -23,19 +22,6 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
   return (
     <div className={styles.root}>
       <DescriptionHeader links={[{ label: 'Artist', onClick: executeScroll }]} />
-      {/* <div className={styles.navbarRoot}>
-        <div className={styles.navbarContent}>
-          <Text
-            color="black"
-            fontSize="1rem"
-            textTransform="uppercase"
-            classes={{ root: styles.navbarLink }}
-            onClick={executeScroll}
-          >
-            Artist
-          </Text>
-        </div>
-      </div> */}
       <div className={styles.contentRoot}>
         <div className={styles.content}>
           <div className={styles.header}>
