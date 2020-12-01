@@ -6,6 +6,7 @@ import NotFoundPage from './NotFound';
 import Concerts from './Concerts';
 import Event from './Event';
 import Artist from './Artist';
+import Artists from './Artists';
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
       <Route exact path={Routes.CONCERTS} component={Concerts} />
       <Route path={Routes.EVENT} component={Event} />
       <Route path={Routes.ARTIST} component={Artist} />
+      <Route path={Routes.BANDS} component={Artists} />
       <Route exact path={Routes.NOT_FOUND} component={NotFoundPage} />
     </Switch>
   );
