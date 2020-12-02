@@ -1,8 +1,8 @@
 import React from 'react';
 
 import EventIcon from '@material-ui/icons/Event';
-import DatePicker from '../../Pickers/DatePicker';
-import FilterItem from '../../FilterItem';
+import DatePicker from 'src/components/Pickers/DatePicker';
+import FilterItem from 'src/components/Filter/FilterItem';
 import { getDifferenceInYears, formatDateToDayMonthYear } from 'src/common/date/date.helper';
 
 interface IProps {
