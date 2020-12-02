@@ -1,0 +1,14 @@
+@import 'src/styles/variables';
+
+.root {
+  width: 100%;
+
+  .content {
+    max-width: $sectionWidth;
+    margin: 0 auto;
+    padding: 40px 0px 40px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
