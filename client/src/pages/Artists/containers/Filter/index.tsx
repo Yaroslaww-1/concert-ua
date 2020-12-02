@@ -8,12 +8,10 @@ import { StyleModel } from 'src/api/models/style.model';
 import { FilterState } from './redux/reducer';
 import { IArtistFilter } from 'src/api/services/artist.service';
 
-import FilterSection from 'src/components/Filter/FilterSection';
-import FilterStyles from 'src/components/Filter/Filters/FilterStyle';
 import { fetchStyles, selectNameFilter, selectStyleFilter } from './redux/actions';
 import { parseUrlParams } from 'src/common/url/params-parser';
 import { stringifyParams } from 'src/common/url/stringify-params';
-import SearchInput from 'src/components/Inputs/SearchInput';
+import FilterComponent from '../../components/Filter';
 
 const filterSelector = createSelector(
   (state: RootState) => state.artists.filter.state,
@@ -64,10 +62,13 @@ const FilterContainer: React.FC = () => {
   };
 
   return (
-    <FilterSection>
-      <FilterStyles styles={availableStyles} selectedStyles={selectedStyles} onSelect={onStyleSelect} />
-      <SearchInput id="artist-name-input" placeholder="artist name" onEdit={onNameSelect} />
-    </FilterSection>
+    <FilterComponent
+      availableStyles={availableStyles}
+      selectedStyles={selectedStyles}
+      onStyleSelect={onStyleSelect}
+      selectedName={name}
+      onNameSelect={onNameSelect}
+    />
   );
 };
 
