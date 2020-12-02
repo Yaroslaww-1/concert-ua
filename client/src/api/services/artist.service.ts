@@ -50,7 +50,7 @@ const artists: ArtistModel[] = [
 ];
 
 export interface IArtistFilter {
-  placesIds?: string[];
+  stylesIds?: string[];
   name?: string;
 }
 
