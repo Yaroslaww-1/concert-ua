@@ -4,10 +4,11 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'src/redux/rootReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
-import FilterDate from '../../components/Filters/FilterDate';
-import FilterPlace from '../../components/Filters/FilterPlace';
-import FilterSection from '../../components/FilterSection';
-import FilterStyles from '../../components/Filters/FilterStyle';
+import FilterDate from 'src/components/Filter/Filters/FilterDate';
+import FilterPlace from 'src/components/Filter/Filters/FilterPlace';
+import FilterSection from 'src/components/Filter/FilterSection';
+import FilterStyles from 'src/components/Filter/Filters/FilterStyle';
+import FilterPopularRecent from 'src/components/Filter/Filters/FilterPopularRecent';
 import { FilterState } from './redux/reducer';
 import { PlaceModel } from 'src/api/models/place.model';
 import { StyleModel } from 'src/api/models/style.model';
@@ -15,14 +16,13 @@ import { fetchPlaces, fetchStyles, selectDateFilter, selectStyleFilter, selectPl
 import { IEventFilter } from 'src/api/services/event.service';
 import { parseUrlParams } from 'src/common/url/params-parser';
 import { stringifyParams } from 'src/common/url/stringify-params';
-import FilterPopularRecent from '../../components/Filters/FilterPopularRecent';
 
 const filterSelector = createSelector(
   (state: RootState) => state.concerts.filter.state,
   (state: FilterState) => state,
 );
 
-const FilterDateContainer: React.FC = () => {
+const FilterContainer: React.FC = () => {
   const dispatch = useDispatch();
   const {
     dateFilter: {
@@ -87,4 +87,4 @@ const FilterDateContainer: React.FC = () => {
   );
 };
 
-export default FilterDateContainer;
+export default FilterContainer;
