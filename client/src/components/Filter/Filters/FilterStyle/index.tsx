@@ -1,9 +1,9 @@
 import React from 'react';
 
-import FilterItem from '../../FilterItem';
+import FilterItem from 'src/components/Filter/FilterItem';
 import { StyleModel } from 'src/api/models/style.model';
 import StyleIcon from '@material-ui/icons/Style';
-import StylePicker from '../../Pickers/StylePicker';
+import StylePicker from 'src/components/Pickers/StylePicker';
 
 interface IProps {
   styles: StyleModel[];

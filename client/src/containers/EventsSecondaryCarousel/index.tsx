@@ -50,7 +50,8 @@ const EventsSecondaryCarousel: React.FC<IProps> = ({ history }) => {
             }}
             frontElement={
               <SquareImageHoverOverlay
-                onBuy={() => {}}
+                bottomButtonText="Buy now"
+                onBottomButtonClick={() => {}}
                 onLike={() => {}}
                 title={event.name}
                 imageSrc={event.imageUrl}

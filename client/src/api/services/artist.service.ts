@@ -49,8 +49,22 @@ const artists: ArtistModel[] = [
     .map(() => getArtist()),
 ];
 
+export interface IArtistFilter {
+  stylesIds?: string[];
+  name?: string;
+}
+
 export class ArtistService {
   constructor() {}
+  static async getArtists(filter: IArtistFilter = {}): Promise<ArtistModel[]> {
+    console.log('Artists fetching');
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(artists);
+      }, 10);
+    });
+  }
+
   static async getArtistById(id: string): Promise<ArtistModel> {
     console.log('Artist fetching');
     return new Promise((resolve, reject) => {

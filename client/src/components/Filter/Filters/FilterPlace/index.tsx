@@ -1,9 +1,9 @@
 import React from 'react';
 
 import PlaceIcon from '@material-ui/icons/Place';
-import FilterItem from '../../FilterItem';
+import FilterItem from 'src/components/Filter/FilterItem';
 import { PlaceModel } from 'src/api/models/place.model';
-import PlacePicker from '../../Pickers/PlacePicker';
+import PlacePicker from 'src/components/Pickers/PlacePicker';
 
 interface IProps {
   places: PlaceModel[];
