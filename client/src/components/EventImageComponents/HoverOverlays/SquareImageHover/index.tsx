@@ -11,10 +11,21 @@ interface IProps {
   title: string;
   imageSrc: string;
   onLike: () => void;
-  onBuy: () => void;
+  bottomButtonText: string;
+  onBottomButtonClick: () => void;
+  classes?: {
+    titleTextRoot?: string;
+  };
 }
 
-const SquareImageHoverOverlay: React.FC<IProps> = ({ title, onLike, onBuy, imageSrc }) => {
+const SquareImageHoverOverlay: React.FC<IProps> = ({
+  title,
+  onLike,
+  bottomButtonText,
+  onBottomButtonClick,
+  imageSrc,
+  classes = {},
+}) => {
   const [backgroundColor, setBackgroundColor] = React.useState<RgbColor>([0, 0, 0]);
   React.useEffect(() => {
     getImageColor(imageSrc).then((color) => setBackgroundColor(color));
@@ -27,12 +38,18 @@ const SquareImageHoverOverlay: React.FC<IProps> = ({ title, onLike, onBuy, image
           <LikeIcon onClick={onLike} />
         </div>
         <div className={styles.title}>
-          <Text fontSize={'5vw'} textTransform={'uppercase'} lineHeight={1} fontWeight={900}>
+          <Text
+            fontSize={'5vw'}
+            textTransform={'uppercase'}
+            lineHeight={1}
+            fontFamily="League Gothic"
+            classes={{ root: classes.titleTextRoot || '' }}
+          >
             {title}
           </Text>
         </div>
-        <div className={styles.buyButton}>
-          <TransparentButton text={'Buy now'} onClick={onBuy} />
+        <div className={styles.bottomButton}>
+          <TransparentButton text={bottomButtonText} onClick={onBottomButtonClick} />
         </div>
       </div>
     </div>

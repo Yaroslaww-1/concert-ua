@@ -1,0 +1,22 @@
+@import 'src/styles/variables';
+
+.root {
+  width: 100%;
+  .cardsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    width: calc(100% + 20px);
+    height: 100%;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+
+.loadMoreButtonWrapper {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}

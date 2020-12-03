@@ -1,0 +1,19 @@
+@import 'src/styles/variables';
+
+.imageRoot {
+  width: ($sectionWidth - 20px) / 2;
+  height: ($sectionWidth - 20px) / 2;
+  margin: 10px;
+
+  img {
+    filter: brightness(60%);
+  }
+
+  .artistName {
+    z-index: 202;
+  }
+
+  .titleTextRoot {
+    font-size: 7rem !important;
+  }
+}
