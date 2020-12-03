@@ -6,12 +6,14 @@ import styles from './styles.module.scss';
 import SquareImage from 'src/components/EventImageComponents/Images/SquareImage';
 import Text from 'src/components/Text';
 import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
+import { redirectToArtist } from 'src/common/url/redirect-to-artist-by-id';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-interface IProps {
+type IProps = {
   artist: ArtistModel;
-}
+} & RouteComponentProps;
 
-const Artist: React.FC<IProps> = ({ artist }) => {
+const Artist: React.FC<IProps> = ({ artist, history }) => {
   return (
     <SquareImage
       imageSrc={artist.imageUrl}
@@ -29,7 +31,7 @@ const Artist: React.FC<IProps> = ({ artist }) => {
           imageSrc={artist.imageUrl}
           onLike={() => {}}
           bottomButtonText="About"
-          onBottomButtonClick={() => {}}
+          onBottomButtonClick={() => redirectToArtist(history, artist.id)}
           classes={{ titleTextRoot: styles.titleTextRoot }}
         />
       }
@@ -37,4 +39,4 @@ const Artist: React.FC<IProps> = ({ artist }) => {
   );
 };
 
-export default Artist;
+export default withRouter(Artist);
