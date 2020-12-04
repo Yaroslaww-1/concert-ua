@@ -22,7 +22,7 @@ const state = createReducer<ProfileState>(
 
 const profileReducer = combineReducers({
   state,
-  loading: createLoadingReducer(fetchUser),
+  loading: createLoadingReducer(fetchUser, true),
 });
 
 export default profileReducer;

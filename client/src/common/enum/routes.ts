@@ -7,5 +7,6 @@ export enum Routes {
   BANDS = '/artists',
   LOGIN = '/login',
   REGISTER = '/register',
+  PROFILE = '/profile',
   ALBUMS = NOT_FOUND,
 }
