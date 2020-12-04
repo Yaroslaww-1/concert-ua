@@ -14,7 +14,13 @@ function LoginForm<P extends object>({ onClickRegister, ...props }: ILoginFormPr
       <Text color="black" textTransform="uppercase" fontSize="2.25rem" fontFamily="League Gothic">
         Login
       </Text>
-      <ValidatingForm<P> {...props} />
+      <ValidatingForm<P>
+        {...props}
+        fields={props.fields.map((field) => ({
+          ...field,
+          classes: { root: styles.inputRoot },
+        }))}
+      />
       <div className={styles.registerButtonRoot}>
         <Link onClick={onClickRegister} text="Register" />
       </div>
