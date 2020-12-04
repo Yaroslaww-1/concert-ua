@@ -8,7 +8,8 @@ export interface IValidationInputProps {
   label: string;
   type?: 'search' | 'password';
   onEdit?: (newInput: string) => void;
-  validateInput: (newInput: string) => Error | null;
+  defaultValue?: string;
+  validateInput?: (newInput: string) => Error | null;
   classes?: {
     root?: string;
     textField?: string;
@@ -20,12 +21,18 @@ const ValidationInput: React.FC<IValidationInputProps> = ({
   label,
   type = 'text',
   onEdit = () => {},
-  validateInput,
+  validateInput = () => null,
+  defaultValue = '',
   classes = { root: '', textField: '' },
 }) => {
   const [inputValue, setInputValue] = React.useState<string>('');
   const [focused, setFocused] = React.useState<boolean>(false);
   const [error, setError] = React.useState<Error | null>(null);
+
+  React.useEffect(() => {
+    setInputValue(defaultValue);
+  }, [defaultValue]);
+
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const { value } = event.target;
     setInputValue(value);

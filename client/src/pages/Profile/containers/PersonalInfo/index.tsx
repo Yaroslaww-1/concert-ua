@@ -7,7 +7,6 @@ import PersonalInfoComponent from '../../components/PersonalInfo';
 
 const PersonalInfo: React.FC = () => {
   const user = useSelector((state: RootState) => state.profile.state.user);
-  console.log(user);
   return <PersonalInfoComponent user={user!} />;
 };
 
