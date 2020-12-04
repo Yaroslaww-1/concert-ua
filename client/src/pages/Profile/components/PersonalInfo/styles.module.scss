@@ -20,16 +20,20 @@
       color: $colorGray;
     }
 
-    * {
-      margin-right: 20px;
+    .formDescription {
+      display: inherit;
+      * {
+        margin-right: 20px;
+      }
     }
-    
-    .formContent {
-      display: flex;
-      flex-direction: column;
 
+    .formContent {
+      width: 290px;
       margin-top: -10px;
       margin-left: 100px;
+
+      display: flex;
+      flex-direction: column;
     }
   }
 }
