@@ -3,11 +3,11 @@ import React from 'react';
 import styles from './styles.module.scss';
 import { TextField } from '@material-ui/core';
 
-interface IProps {
+export interface IValidationInputProps {
   id: string;
   label: string;
   type?: 'search' | 'password';
-  onEdit: (newInput: string) => void;
+  onEdit?: (newInput: string) => void;
   validateInput: (newInput: string) => Error | null;
   classes?: {
     root?: string;
@@ -15,11 +15,11 @@ interface IProps {
   };
 }
 
-const ValidationInput: React.FC<IProps> = ({
+const ValidationInput: React.FC<IValidationInputProps> = ({
   id,
   label,
   type = 'text',
-  onEdit,
+  onEdit = () => {},
   validateInput,
   classes = { root: '', textField: '' },
 }) => {

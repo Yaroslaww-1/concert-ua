@@ -11,7 +11,6 @@ import Artist from '../../components/Artists';
 const ArtistsSection: React.FC = () => {
   const dispatch = useDispatch();
   const artists = useSelector((state: RootState) => state.artists.artists.state.artists);
-  console.log(artists);
   useInitialFetch(dispatch, fetchArtists.request);
   return (
     <CardsSection onLoadMore={() => {}}>

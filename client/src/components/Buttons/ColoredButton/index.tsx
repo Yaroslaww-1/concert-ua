@@ -7,6 +7,7 @@ import { TextProps } from 'src/components/Text';
 interface IProps {
   text: string;
   variant?: 'red' | 'gray' | 'green';
+  disabled?: boolean;
   onClick: () => void;
   classes?: {
     root?: string;
@@ -14,7 +15,7 @@ interface IProps {
   };
 }
 
-const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', classes }) => {
+const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', disabled = false, classes }) => {
   const getColorClass = () => {
     const options = {
       red: styles.red,
@@ -25,7 +26,7 @@ const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', class
   };
 
   return (
-    <div className={`${styles.root} ${getColorClass()} ${classes?.root || ''}`} onClick={onClick}>
+    <div className={`${styles.root} ${getColorClass()} ${classes?.root || ''}`} onClick={() => !disabled && onClick()}>
       <Text
         textTransform={classes?.text?.textTransform || 'uppercase'}
         fontSize={classes?.text?.fontSize || '1rem'}
