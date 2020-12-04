@@ -26,7 +26,10 @@ const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', disab
   };
 
   return (
-    <div className={`${styles.root} ${getColorClass()} ${classes?.root || ''}`} onClick={() => !disabled && onClick()}>
+    <div
+      className={`${styles.root} ${getColorClass()} ${classes?.root || ''} ${disabled && styles.disabled}`}
+      onClick={() => !disabled && onClick()}
+    >
       <Text
         textTransform={classes?.text?.textTransform || 'uppercase'}
         fontSize={classes?.text?.fontSize || '1rem'}

@@ -14,7 +14,7 @@
     flex-direction: row;
     align-items: flex-start;
 
-    margin-top: 20px;
+    margin-top: 60px;
 
     svg {
       color: $colorGray;
@@ -22,6 +22,8 @@
 
     .formDescription {
       display: inherit;
+      width: 250px;
+
       * {
         margin-right: 20px;
       }
@@ -30,10 +32,15 @@
     .formContent {
       width: 290px;
       margin-top: -10px;
-      margin-left: 100px;
+      margin-left: 10px;
 
       display: flex;
       flex-direction: column;
+
+      .saveButtonRoot {
+        margin-top: 20px;
+        max-width: 100%;
+      }
     }
   }
 }

@@ -6,9 +6,11 @@ import styles from './styles.module.scss';
 import Section from 'src/components/Sections/Section';
 import Text from 'src/components/Text';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import LockIcon from '@material-ui/icons/Lock';
 import FormInput from 'src/components/Inputs/FormInput';
 import validatePhone from 'src/common/validations/validate-phone';
 import GetEmailsSwitch from '../GetEmailsSwitch';
+import ColoredButton from 'src/components/Buttons/ColoredButton';
 
 interface IProps {
   user: UserModel;
@@ -39,6 +41,25 @@ const PersonalInfo: React.FC<IProps> = ({ user }) => {
             <FormInput id="email" label="Email" defaultValue={user.email} />
             <FormInput id="phone" label="Phone number" defaultValue={user.phoneNumber} validateInput={validatePhone} />
             <GetEmailsSwitch defaultValue={true} onChange={() => {}} />
+          </div>
+        </div>
+        <div className={styles.formSection}>
+          <div className={styles.formDescription}>
+            <LockIcon />
+            <Text color="black" fontSize="1.125rem" fontWeight={700} textTransform="capitalize">
+              Change password
+            </Text>
+          </div>
+          <div className={styles.formContent}>
+            <FormInput id="password" label="New password" type="password" />
+            <FormInput id="passwordRepeat" label="Repeat password" type="password" />
+            <ColoredButton
+              text="Save"
+              variant="gray"
+              onClick={() => {}}
+              classes={{ root: styles.saveButtonRoot }}
+              disabled={true}
+            />
           </div>
         </div>
       </div>
