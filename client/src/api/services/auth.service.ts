@@ -9,9 +9,24 @@ export interface ILoginDto {
   password: string;
 }
 
+export interface IRegisterDto {
+  firstName: string;
+  lastName: string;
+  login: string;
+  password: string;
+}
+
 export class AuthService {
   constructor() {}
   static async login(loginData: ILoginDto): Promise<UserModel | null | Throwable> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(defaultUser);
+      }, 1000);
+    });
+  }
+
+  static async register(registerData: IRegisterDto): Promise<UserModel | null | Throwable> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(defaultUser);

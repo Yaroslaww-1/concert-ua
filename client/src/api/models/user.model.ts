@@ -1,9 +1,15 @@
 export type UserModel = {
   id: string;
-  name: string;
+  email: string;
+  phoneNumber: string;
+  firstName: string;
+  lastName: string;
 };
 
-export const defaultUser = {
+export const defaultUser: UserModel = {
   id: '',
-  name: '',
+  email: '',
+  phoneNumber: '',
+  firstName: '',
+  lastName: '',
 };

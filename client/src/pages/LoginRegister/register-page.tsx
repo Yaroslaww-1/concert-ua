@@ -2,13 +2,13 @@ import React from 'react';
 
 import PageComponent from 'src/components/Page';
 import LogoHeader from './components/LogoHeader';
-import LoginForm from './containers/LoginForm';
+import RegisterForm from './containers/RegisterForm';
 
 const RegisterPage: React.FC = () => {
   return (
-    <PageComponent>
+    <PageComponent withoutNavbar={true}>
       <LogoHeader />
-      <LoginForm />
+      <RegisterForm />
     </PageComponent>
   );
 };

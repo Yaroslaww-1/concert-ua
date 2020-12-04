@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
           <CitiesDialog anchorEl={chooseCityRef.current} onSelect={onCitySelect} cities={cities} />
         </div>
         {user ? (
-          <ProfileIcon profileNamePreview={user.name.toUpperCase().charAt(0)} />
+          <ProfileIcon profileNamePreview={user.firstName.toUpperCase().charAt(0)} />
         ) : (
           <div className={styles.loginButton}>Login</div>
         )}
