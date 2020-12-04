@@ -2,7 +2,8 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import ColoredButton from '../Buttons/ColoredButton';
-import ValidationInput, { IValidationInputProps } from '../Inputs/ValidationInput';
+import { IValidationInputProps } from '../Inputs/ValidationInput';
+import FormInput from '../Inputs/FormInput';
 
 export interface IValidatingFormProps<P> {
   fields: IValidationInputProps[];
@@ -26,12 +27,7 @@ function ValidationForm<P extends object>({ fields, submitButtonText, onSubmit }
   return (
     <div className={styles.root}>
       {fields.map((field) => (
-        <ValidationInput
-          classes={{ root: styles.inputRoot }}
-          key={field.id}
-          {...field}
-          onEdit={updateState(field.id)}
-        />
+        <FormInput classes={{ root: styles.inputRoot }} key={field.id} {...field} onEdit={updateState(field.id)} />
       ))}
       <div className={styles.submitButtonRoot}>
         <ColoredButton
