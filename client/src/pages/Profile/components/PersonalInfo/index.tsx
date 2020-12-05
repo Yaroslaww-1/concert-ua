@@ -11,12 +11,54 @@ import FormInput from 'src/components/Inputs/FormInput';
 import validatePhone from 'src/common/validations/validate-phone';
 import GetEmailsSwitch from '../GetEmailsSwitch';
 import ColoredButton from 'src/components/Buttons/ColoredButton';
+import { IUpdateUserDto } from 'src/api/services/user.service';
+import validateEmail from 'src/common/validations/validate-email';
+import { validatePassword } from 'src/common/validations/validate-passwords';
 
 interface IProps {
   user: UserModel;
+  onSubmit: (newUser: IUpdateUserDto) => void;
 }
 
-const PersonalInfo: React.FC<IProps> = ({ user }) => {
+interface IPersonalInfoFormState {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  password: string;
+  passwordRepeat: string;
+}
+
+const PersonalInfo: React.FC<IProps> = ({ user, onSubmit: onSubmitProps }) => {
+  const [formState, setFormState] = React.useState<IPersonalInfoFormState>({
+    ...user,
+    password: '',
+    passwordRepeat: '',
+  });
+  const [isValid, setIsValid] = React.useState<boolean>(false);
+
+  const updateFormState = (formFieldId: keyof IPersonalInfoFormState) => (isValid: boolean, newValue: string) => {
+    setFormState({ ...formState, [formFieldId]: newValue });
+  };
+
+  React.useEffect(() => {
+    const validationErrors = [
+      validatePhone(formState.phoneNumber),
+      validateEmail(formState.email),
+      validatePassword(formState.password)(formState.passwordRepeat),
+    ];
+    if (validationErrors.some((e) => e instanceof Error)) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+    console.log(validationErrors);
+  }, [formState]);
+
+  const onSubmit = () => {
+    onSubmitProps({ ...user, ...formState });
+  };
+
   return (
     <Section>
       <div className={styles.header}>
@@ -36,10 +78,32 @@ const PersonalInfo: React.FC<IProps> = ({ user }) => {
             </Text>
           </div>
           <div className={styles.formContent}>
-            <FormInput id="firstName" label="First name" defaultValue={user.firstName} />
-            <FormInput id="lastName" label="Last name" defaultValue={user.lastName} />
-            <FormInput id="email" label="Email" defaultValue={user.email} />
-            <FormInput id="phone" label="Phone number" defaultValue={user.phoneNumber} validateInput={validatePhone} />
+            <FormInput
+              id="firstName"
+              label="First name"
+              defaultValue={user.firstName}
+              onEdit={updateFormState('firstName')}
+            />
+            <FormInput
+              id="lastName"
+              label="Last name"
+              defaultValue={user.lastName}
+              onEdit={updateFormState('lastName')}
+            />
+            <FormInput
+              id="email"
+              label="Email"
+              validateInput={validateEmail}
+              defaultValue={user.email}
+              onEdit={updateFormState('email')}
+            />
+            <FormInput
+              id="phoneNumber"
+              label="Phone number"
+              defaultValue={user.phoneNumber}
+              validateInput={validatePhone}
+              onEdit={updateFormState('phoneNumber')}
+            />
             <GetEmailsSwitch defaultValue={true} onChange={() => {}} />
           </div>
         </div>
@@ -51,14 +115,19 @@ const PersonalInfo: React.FC<IProps> = ({ user }) => {
             </Text>
           </div>
           <div className={styles.formContent}>
-            <FormInput id="password" label="New password" type="password" />
-            <FormInput id="passwordRepeat" label="Repeat password" type="password" />
+            <FormInput id="password" label="New password" type="password" onEdit={updateFormState('password')} />
+            <FormInput
+              id="passwordRepeat"
+              label="Repeat password"
+              type="password"
+              onEdit={updateFormState('passwordRepeat')}
+            />
             <ColoredButton
               text="Save"
-              variant="gray"
-              onClick={() => {}}
+              variant="red"
+              onClick={onSubmit}
               classes={{ root: styles.saveButtonRoot }}
-              disabled={true}
+              disabled={!isValid}
             />
           </div>
         </div>

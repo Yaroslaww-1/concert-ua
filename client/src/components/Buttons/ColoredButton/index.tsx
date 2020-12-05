@@ -22,7 +22,7 @@ const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', disab
       gray: styles.gray,
       green: styles.green,
     };
-    return options[variant];
+    return disabled ? options['gray'] : options[variant];
   };
 
   return (

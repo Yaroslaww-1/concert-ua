@@ -7,7 +7,7 @@ export interface IValidationInputProps {
   id: string;
   label: string;
   type?: 'search' | 'password';
-  onEdit?: (newInput: string) => void;
+  onEdit?: (isValid: boolean, newInput: string) => void;
   defaultValue?: string;
   validateInput?: (newInput: string) => Error | null;
   classes?: {
@@ -38,9 +38,7 @@ const ValidationInput: React.FC<IValidationInputProps> = ({
     setInputValue(value);
     const error = validateInput(value);
     setError(error);
-    if (!error) {
-      onEdit(value);
-    }
+    onEdit(error === null, value);
   };
 
   return (
@@ -51,6 +49,7 @@ const ValidationInput: React.FC<IValidationInputProps> = ({
         type={type}
         variant="outlined"
         classes={{ root: `${styles.textFieldRoot} ${classes.textField}` }}
+        value={inputValue}
         onChange={onChange}
         error={error && !focused ? true : false}
         helperText={error && !focused ? error.message : ''}

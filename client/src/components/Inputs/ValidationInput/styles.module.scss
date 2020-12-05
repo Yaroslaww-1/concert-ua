@@ -22,14 +22,14 @@
     * [aria-invalid=true] {
       border: 1px solid $colorRed;
       @include placeholder {
-        color: $colorBlack;
+        color: $colorGray;
         opacity: 1;
       }
     }
     * [aria-invalid=false] {
       border: 1px solid $colorMiddleLightGray;
       @include placeholder {
-        color: $colorBlack;
+        color: $colorGray;
         opacity: 1;
       }
     }
