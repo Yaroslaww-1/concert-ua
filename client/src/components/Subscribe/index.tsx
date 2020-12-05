@@ -28,7 +28,7 @@ const Subscribe: React.FC<IProps> = ({ onSubscribe: onSubscribeProps }) => {
         </div>
         <div className={styles.form}>
           <ValidationInput
-            onEdit={setEmail}
+            onEdit={(isValid, newInput) => isValid && setEmail(newInput)}
             validateInput={validateEmail}
             id={'subscribe-email-input'}
             label={'Your email'}

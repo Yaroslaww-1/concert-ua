@@ -1,20 +1,7 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
-import { UserService } from 'src/api/services/user.service';
-import { fetchUser } from './actions';
+import { all } from 'redux-saga/effects';
+import { fetchUserLikedEventsSagas } from '../containers/LikedEventsByUser/redux/sagas';
+import fetchUserSagas from '../containers/PersonalInfo/redux/sagas';
 
-function* fetchUserSaga(action: ReturnType<typeof fetchUser.requestPayload>) {
-  try {
-    const user = yield call(UserService.getUser);
-    yield put(fetchUser.success(user));
-  } catch (error) {
-    yield put(fetchUser.failure(error));
-  }
-}
-
-function* watchFetchUser() {
-  yield takeLatest(fetchUser.types.request, fetchUserSaga);
-}
-
-export default function* fetchUserSagas() {
-  yield all([watchFetchUser()]);
+export function* fetchProfileSagas() {
+  yield all([fetchUserSagas(), fetchUserLikedEventsSagas()]);
 }

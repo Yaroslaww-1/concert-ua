@@ -7,9 +7,9 @@ export type UserModel = {
 };
 
 export const defaultUser: UserModel = {
-  id: '',
-  email: '',
-  phoneNumber: '',
-  firstName: '',
-  lastName: '',
+  id: 'userid-312',
+  email: 'useremail@gmail.com',
+  phoneNumber: '+380555553535',
+  firstName: 'kappa',
+  lastName: 'Keepo',
 };
