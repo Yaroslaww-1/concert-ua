@@ -1,13 +1,21 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { IUpdateUserDto } from 'src/api/services/user.service';
 import { RootState } from 'src/redux/rootReducer';
 
 import PersonalInfoComponent from '../../components/PersonalInfo';
+import { updateUser } from '../../redux/actions';
 
 const PersonalInfo: React.FC = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.profile.state.user);
-  return <PersonalInfoComponent user={user!} />;
+
+  const onUserUpdate = (userDate: IUpdateUserDto) => {
+    dispatch(updateUser.request(userDate));
+  };
+
+  return <PersonalInfoComponent user={user!} onSubmit={onUserUpdate} />;
 };
 
 export default PersonalInfo;
