@@ -22,11 +22,14 @@ const ColoredButton: React.FC<IProps> = ({ text, onClick, variant = 'red', disab
       gray: styles.gray,
       green: styles.green,
     };
-    return options[variant];
+    return disabled ? options['gray'] : options[variant];
   };
 
   return (
-    <div className={`${styles.root} ${getColorClass()} ${classes?.root || ''}`} onClick={() => !disabled && onClick()}>
+    <div
+      className={`${styles.root} ${getColorClass()} ${classes?.root || ''} ${disabled && styles.disabled}`}
+      onClick={() => !disabled && onClick()}
+    >
       <Text
         textTransform={classes?.text?.textTransform || 'uppercase'}
         fontSize={classes?.text?.fontSize || '1rem'}

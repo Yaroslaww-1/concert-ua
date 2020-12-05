@@ -2,7 +2,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { AsyncFunction } from './actionCreator';
 
-export const createLoadingReducer = (asyncActions: AsyncFunction | AsyncFunction[]) => {
+export const createLoadingReducer = (
+  asyncActions: AsyncFunction | AsyncFunction[],
+  defaultLoading: boolean = false,
+) => {
   if (!Array.isArray(asyncActions)) asyncActions = [asyncActions];
   const actionsMap: Record<string, any> = {};
   for (const asyncAction of asyncActions) {
@@ -22,6 +25,6 @@ export const createLoadingReducer = (asyncActions: AsyncFunction | AsyncFunction
       state.isLoading = false;
     };
   }
-  const loading = createReducer<{ isLoading: boolean }>({ isLoading: false }, actionsMap);
+  const loading = createReducer<{ isLoading: boolean }>({ isLoading: defaultLoading }, actionsMap);
   return loading;
 };

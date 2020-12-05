@@ -4,17 +4,17 @@ import { defaultUser, UserModel } from '../models/user.model';
 
 const endpoint = 'auth';
 
-export interface ILoginDto {
+export type ILoginDto = {
   login: string;
   password: string;
-}
+};
 
-export interface IRegisterDto {
+export type IRegisterDto = {
   firstName: string;
   lastName: string;
   login: string;
   password: string;
-}
+};
 
 export class AuthService {
   constructor() {}

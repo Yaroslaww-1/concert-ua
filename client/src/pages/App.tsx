@@ -9,6 +9,7 @@ import Artist from './Artist';
 import Artists from './Artists';
 import LoginPage from './LoginRegister/login-page';
 import RegisterPage from './LoginRegister/register-page';
+import ProfilePage from './Profile';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
       <Route path={Routes.BANDS} component={Artists} />
       <Route path={Routes.LOGIN} component={LoginPage} />
       <Route path={Routes.REGISTER} component={RegisterPage} />
+      <Route path={Routes.PROFILE} component={ProfilePage} />
       <Route exact path={Routes.NOT_FOUND} component={NotFoundPage} />
     </Switch>
   );
