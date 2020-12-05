@@ -26,7 +26,6 @@ const RegisterFormContainer: React.FC<RouteComponentProps> = ({ history }) => {
         { id: 'lastName', label: 'Last name', validateInput: noValidate, type: 'search' },
         { id: 'login', label: 'Login', validateInput: validateEmail, type: 'search' },
         { id: 'password', label: 'Password', validateInput: noValidate, type: 'password' },
-        { id: 'password-repeat', label: 'Repeat password', validateInput: noValidate, type: 'password' },
       ]}
       submitButtonText="Register"
       onSubmit={onRegister}
