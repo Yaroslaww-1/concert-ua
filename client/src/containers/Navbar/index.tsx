@@ -14,7 +14,7 @@ import ProfileIcon from './components/ProfileIcon';
 import DatesMenu from './components/DatesMenu';
 import CitiesDialog from './components/CitiesDialog';
 import { NavbarState } from './redux/reducer';
-import { ProfileState } from 'src/pages/Profile/redux/reducer';
+import { ProfileUserState } from 'src/pages/Profile/containers/PersonalInfo/redux/reducer';
 
 const navbarSelector = createSelector(
   (state: RootState) => state.navbar.state,
@@ -25,8 +25,8 @@ const navbarSelector = createSelector(
 );
 
 const userSelector = createSelector(
-  (state: RootState) => state.profile.state,
-  (state: ProfileState) => ({
+  (state: RootState) => state.profile.user.state,
+  (state: ProfileUserState) => ({
     user: state.user,
   }),
 );
