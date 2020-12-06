@@ -6,6 +6,8 @@ import Text from 'src/components/Text';
 import CloseIcon from '@material-ui/icons/Close';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
+import Contacts from 'src/components/Footer/components/Contacts';
+import SocialLinks from 'src/components/Footer/components/SocialLinks';
 
 interface IProps {
   isOpen: boolean;
@@ -52,6 +54,10 @@ const DrawerComponent: React.FC<IProps & RouteComponentProps> = ({ isOpen, onClo
         <Text color="black" onClick={() => history.push(Routes.CONCERTS)} textAlign="left" fontSize="1.25rem">
           Tickets
         </Text>
+      </div>
+      <Contacts />
+      <div className={styles.socialLinks}>
+        <SocialLinks />
       </div>
     </Drawer>
   );
