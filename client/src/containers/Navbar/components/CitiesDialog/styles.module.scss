@@ -30,6 +30,12 @@
         background-color: $colorRed;
         color: $colorWhite;
       }
+
+      @media (max-width: $desktopBreakpoint) {
+        * {
+          font-size: $small;
+        }
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ import { chunks } from 'src/common/array/split-into-chunks';
 
 interface IProps {
   cities: CityModel[];
-  anchorEl: HTMLDivElement | null;
+  anchorEl: HTMLDivElement | SVGSVGElement | null;
   onSelect: (id: string) => void;
 }
 
