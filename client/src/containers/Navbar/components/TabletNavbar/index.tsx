@@ -12,6 +12,7 @@ import DatesMenu from '../DatesMenu';
 import CitiesDialog from '../CitiesDialog';
 import { CityModel } from 'src/api/models/city.model';
 import MenuIcon from '@material-ui/icons/Menu';
+import Drawer from '../Drawer';
 
 interface IProps {
   dates: DateModel[];
@@ -22,12 +23,18 @@ interface IProps {
 }
 
 const TabletNavbar: React.FC<IProps> = ({ dates, user, cities, onDateSelect, onCitySelect }) => {
+  const [drawerOpened, setDrawerOpened] = React.useState<boolean>(false);
   const eventIconRef = React.useRef<SVGSVGElement>(null);
   const chooseCityRef = React.useRef<SVGSVGElement>(null);
 
+  const toggleDrawerOpen = () => {
+    setDrawerOpened((opened) => !opened);
+  };
+
   return (
     <header className={styles.navbar}>
-      <MenuIcon />
+      <Drawer isOpen={drawerOpened} onClose={toggleDrawerOpen} />
+      <MenuIcon onClick={toggleDrawerOpen} />
       <div className={styles.logo}>
         <NavLink to={Routes.DEFAULT} custom-attribute="main-logo">
           <h1>music.ua</h1>
