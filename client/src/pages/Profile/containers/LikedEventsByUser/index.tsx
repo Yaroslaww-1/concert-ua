@@ -13,6 +13,7 @@ const LikedEventsByUser: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(fetchUserLikedEvents.request(userId));
+    console.log('test');
   }, [userId]);
 
   return <LikedEventsByUserComponent likedEvents={likedEvents} />;
