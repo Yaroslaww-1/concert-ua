@@ -10,7 +10,7 @@ interface IProps {
   onSubscribe: (email: string) => void;
 }
 
-const Subscribe: React.FC<IProps> = ({ onSubscribe: onSubscribeProps }) => {
+const SubscribeComponent: React.FC<IProps> = ({ onSubscribe: onSubscribeProps }) => {
   const [email, setEmail] = React.useState<string>('');
   const onSubscribe = () => {
     if (email) {
@@ -41,4 +41,4 @@ const Subscribe: React.FC<IProps> = ({ onSubscribe: onSubscribeProps }) => {
   );
 };
 
-export default Subscribe;
+export default SubscribeComponent;

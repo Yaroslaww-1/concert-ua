@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PageComponent from 'src/components/Page';
-import Subscribe from 'src/components/Subscribe';
 import Footer from 'src/components/Footer';
 import Filter from './containers/Filter';
 import PageNameSection from './components/PageNameSection';
 import ArtistsSection from './containers/ArtistsSection';
+import SubscribeContainer from 'src/containers/Subscribe';
 
 const Artists: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const Artists: React.FC = () => {
       <PageNameSection />
       <Filter />
       <ArtistsSection />
-      <Subscribe onSubscribe={() => {}} />
+      <SubscribeContainer />
       <Footer />
     </PageComponent>
   );
