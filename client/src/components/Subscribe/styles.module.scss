@@ -6,6 +6,9 @@
   
   .innerRoot {
     width: $sectionWidth;
+    @media (max-width: $desktopBreakpoint) {
+      width: calc(100% - 40px);
+    }
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -16,12 +19,18 @@
 
     .form {
       width: 50%;
+      @media (max-width: $desktopBreakpoint) {
+        width: 55%;
+      }
       display: flex;
       flex-direction: row;
       justify-content: space-between;
 
       .inputRoot {
         width: 65%;
+        @media (max-width: $desktopBreakpoint) {
+          width: 58%;
+        }
 
         .inputTextField {
           input {
