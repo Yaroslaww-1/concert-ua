@@ -1,0 +1,35 @@
+@import 'src/styles/variables';
+
+$navbarBackground: #ec174d;
+$marginTop: 12px;
+$navbarHeight: 50px;
+
+.navbar {
+  height: $navbarHeight;
+  background-color: $navbarBackground;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  font-weight: 500;
+
+  svg {
+    margin: 0px 10px 0px 10px;
+    font-size: $mediumLarge;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  .logo {
+    flex: 1 1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PageComponent from 'src/components/Page';
-import Subscribe from 'src/components/Subscribe';
 import Footer from 'src/components/Footer';
 import Filter from './containers/Filter';
 import PageNameSection from './components/PageNameSection';
 import EventsSection from './containers/EventsSection';
+import SubscribeContainer from 'src/containers/Subscribe';
 
 const Concerts: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const Concerts: React.FC = () => {
       <PageNameSection />
       <Filter />
       <EventsSection />
-      <Subscribe onSubscribe={() => {}} />
+      <SubscribeContainer />
       <Footer />
     </PageComponent>
   );

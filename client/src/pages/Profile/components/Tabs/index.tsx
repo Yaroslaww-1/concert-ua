@@ -3,7 +3,7 @@ import DescriptionHeader from 'src/components/DescriptionHeader';
 
 enum Tabs {
   PERSONAL_INFO,
-  LIKES,
+  LIKED_EVENTS,
 }
 
 interface IProps {
@@ -23,7 +23,7 @@ const TabsComponent: React.FC<IProps> = ({ items }) => {
       <DescriptionHeader
         links={[
           { label: 'Personal info', onClick: () => setActiveTab(Tabs.PERSONAL_INFO) },
-          { label: 'Likes', onClick: () => setActiveTab(Tabs.LIKES) },
+          { label: 'Liked events', onClick: () => setActiveTab(Tabs.LIKED_EVENTS) },
         ]}
       />
       {getActiveElement()}

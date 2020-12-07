@@ -2,13 +2,14 @@ import React from 'react';
 
 import { CityModel } from 'src/api/models/city.model';
 
-import { Dialog, DialogTitle, List, ListItem, Typography } from '@material-ui/core';
+import { Dialog, DialogTitle, List, ListItem } from '@material-ui/core';
 import styles from './styles.module.scss';
 import { chunks } from 'src/common/array/split-into-chunks';
+import Text from 'src/components/Text';
 
 interface IProps {
   cities: CityModel[];
-  anchorEl: HTMLDivElement | null;
+  anchorEl: HTMLDivElement | SVGSVGElement | null;
   onSelect: (id: string) => void;
 }
 
@@ -44,18 +45,18 @@ const CitiesDialog: React.FC<IProps> = ({ cities, onSelect: propsOnSelect, ancho
       maxWidth={false}
     >
       <DialogTitle id="choose-city-title" classes={{ root: styles.dialogTitle }}>
-        <Typography variant="h3" component="h1" classes={{ root: styles.dialogTitleText }}>
+        <Text color="black" fontSize="3rem" fontFamily="League Gothic" textAlign="left" textTransform="uppercase">
           Choose city
-        </Typography>
+        </Text>
       </DialogTitle>
       <div className={styles.dialogInner}>
         {getColumns(cities).map((columnOfCities, index) => (
           <List key={index}>
             {columnOfCities.map((city) => (
               <ListItem key={city.id} onClick={() => onClose(city.id)} classes={{ root: styles.listItem }}>
-                <Typography variant="h6" component="h1">
+                <Text color="black" fontSize="1.2rem">
                   {city.name}
-                </Typography>
+                </Text>
               </ListItem>
             ))}
           </List>

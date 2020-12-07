@@ -6,6 +6,9 @@ $paddingLeftRight: 80px;
   border-radius: 0px !important;
   border: none !important;
   padding: 20px $paddingLeftRight 20px $paddingLeftRight;
+  @media (max-width: $desktopBreakpoint) {
+    padding: 10px 40px 10px 40px;
+  }
 }
 
 .day {

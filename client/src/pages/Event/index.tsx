@@ -3,12 +3,12 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import PageComponent from 'src/components/Page';
-import Subscribe from 'src/components/Subscribe';
 import Footer from 'src/components/Footer';
 import Header from './containers/Header';
 import { fetchEvent, fetchPopularEvents } from './redux/actions';
 import EventDescription from './containers/EventDescription';
 import PopularEvents from './containers/PopularEvents';
+import SubscribeContainer from 'src/containers/Subscribe';
 
 interface IProps {}
 
@@ -26,7 +26,7 @@ const Event: React.FC<IProps & RouteComponentProps<{ id: string }>> = ({ match }
       <Header />
       <EventDescription />
       <PopularEvents />
-      <Subscribe onSubscribe={() => {}} />
+      <SubscribeContainer />
       <Footer />
     </PageComponent>
   );

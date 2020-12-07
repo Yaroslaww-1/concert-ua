@@ -5,6 +5,9 @@
 
   .content {
     max-width: $sectionWidth;
+    @media (max-width: $desktopBreakpoint) {
+      width: calc(100% - 40px);
+    }
     margin: 0 auto;
     padding: 40px 0px 40px 0px;
     display: flex;
