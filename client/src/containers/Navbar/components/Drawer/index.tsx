@@ -35,7 +35,7 @@ const DrawerComponent: React.FC<IProps & RouteComponentProps> = ({ isOpen, onClo
         <Text color="black" onClick={() => history.push(Routes.CONCERTS)} textAlign="left" fontSize="1.25rem">
           Events
         </Text>
-        <Text color="black" onClick={() => history.push(Routes.CONCERTS)} textAlign="left" fontSize="1.25rem">
+        <Text color="black" onClick={() => history.push(Routes.BANDS)} textAlign="left" fontSize="1.25rem">
           Bands
         </Text>
       </div>
@@ -48,7 +48,7 @@ const DrawerComponent: React.FC<IProps & RouteComponentProps> = ({ isOpen, onClo
         </Text>
       </div>
       <div className={styles.linkGroup}>
-        <Text color="black" onClick={() => history.push(Routes.PROFILE)} textAlign="left" fontSize="1.25rem">
+        <Text color="black" onClick={() => history.push(Routes.NOT_FOUND)} textAlign="left" fontSize="1.25rem">
           Offices
         </Text>
         <Text color="black" onClick={() => history.push(Routes.CONCERTS)} textAlign="left" fontSize="1.25rem">

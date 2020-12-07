@@ -2,7 +2,7 @@ import React from 'react';
 
 import { CityModel } from 'src/api/models/city.model';
 
-import { Dialog, DialogTitle, List, ListItem, Typography } from '@material-ui/core';
+import { Dialog, DialogTitle, List, ListItem } from '@material-ui/core';
 import styles from './styles.module.scss';
 import { chunks } from 'src/common/array/split-into-chunks';
 import Text from 'src/components/Text';

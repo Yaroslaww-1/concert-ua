@@ -8,7 +8,7 @@ import Text from 'src/components/Text';
 import SquareImageHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/SquareImageHover';
 import { redirectToArtist } from 'src/common/url/redirect-to-artist-by-id';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useIsDesktop } from 'src/common/hooks/media-hooks';
+import { useIsDesktop, useIsTablet } from 'src/common/hooks/media-hooks';
 
 type IProps = {
   artist: ArtistModel;
@@ -16,10 +16,14 @@ type IProps = {
 
 const Artist: React.FC<IProps> = ({ artist, history }) => {
   const isDesktop = useIsDesktop();
+  const isTablet = useIsTablet();
   const artistNameFontSize = isDesktop ? '7rem' : '5rem';
+
+  const onClick = () => redirectToArtist(history, artist.id);
 
   return (
     <SquareImage
+      onClick={() => isTablet && onClick()}
       imageSrc={artist.imageUrl}
       classes={{ root: styles.imageRoot }}
       frontElement={
@@ -35,7 +39,7 @@ const Artist: React.FC<IProps> = ({ artist, history }) => {
           imageSrc={artist.imageUrl}
           onLike={() => {}}
           bottomButtonText="About"
-          onBottomButtonClick={() => redirectToArtist(history, artist.id)}
+          onBottomButtonClick={onClick}
           classes={{ titleTextRoot: styles.titleTextRoot }}
         />
       }
