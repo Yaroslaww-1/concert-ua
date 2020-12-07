@@ -10,6 +10,9 @@ $navbarHeight: 50px;
   margin-top: -180px;
 
   width: 330px;
+  @media (max-width: $desktopBreakpoint) {
+    width: 250px;
+  }
   background-color: $colorRed;
 
   display: flex;
