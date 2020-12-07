@@ -8,8 +8,8 @@ import { fetchCities, fetchDates } from './redux/actions';
 import { NavbarState } from './redux/reducer';
 import { ProfileUserState } from 'src/pages/Profile/containers/PersonalInfo/redux/reducer';
 import DesktopNavbar from './components/DesktopNavbar';
-import { useMediaQuery } from 'react-responsive';
 import TabletNavbar from './components/TabletNavbar';
+import { useIsDesktop } from 'src/common/hooks/media-hooks';
 
 const navbarSelector = createSelector(
   (state: RootState) => state.navbar.state,
@@ -36,9 +36,7 @@ const Navbar: React.FC = () => {
     dispatch(fetchCities.request());
   }, []);
 
-  const isDesktop = useMediaQuery({
-    query: `(min-device-width: 1200px)`,
-  });
+  const isDesktop = useIsDesktop();
 
   const onDateSelect = (id: string) => {
     console.log(`Selected date id in navbar: ${id}`);
