@@ -31,7 +31,7 @@ const Contacts: React.FC<IProps> = ({}) => {
         <Text color="gray">+38 (066) 555 35 35</Text>
       </div>
       <div className={styles.contactUs}>
-        <Text color="gray" textAlign="left">
+        <Text color="gray" textAlign="left" wordBreak="break-word">
           Contact us and we will answer your questions
         </Text>
       </div>

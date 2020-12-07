@@ -5,14 +5,11 @@ import Text from 'src/components/Text';
 import TextLink from '../TextLink';
 import Contacts from './components/Contacts';
 import SocialLinks from './components/SocialLinks';
+import { Routes } from 'src/common/enum/routes';
 
 interface IProps {}
 
 const Footer: React.FC<IProps> = ({}) => {
-  const getLinks = () => {
-    const linkElement = <TextLink to={''} text={'Profile Profile'} />;
-    return new Array(18).fill(linkElement);
-  };
   return (
     <div className={styles.root}>
       <div className={styles.innerRoot}>
@@ -23,7 +20,12 @@ const Footer: React.FC<IProps> = ({}) => {
                 Music.ua
               </Text>
             </div>
-            <div className={styles.links}>{getLinks()}</div>
+            <div className={styles.links}>
+              <TextLink to={Routes.CONCERTS} text={'Events'} />
+              <TextLink to={Routes.BANDS} text={'Bands'} />
+              <TextLink to={Routes.ALBUMS} text={'Albums'} />
+              <TextLink to={Routes.PROFILE} text={'Profile'} />
+            </div>
           </div>
           <div className={styles.info}>
             <SocialLinks />
