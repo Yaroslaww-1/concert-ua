@@ -6,6 +6,9 @@
 
   .description {
     width: 750px;
+    @media (max-width: $desktopBreakpoint) {
+      width: calc(100% - 40px);
+    }
 
     .descriptionHeader {
       display: flex;

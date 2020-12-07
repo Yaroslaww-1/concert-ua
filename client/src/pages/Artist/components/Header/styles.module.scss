@@ -18,6 +18,9 @@ $imageHeight: 350px;
     .name {
       margin: auto auto;
       width: $sectionWidth;
+      @media (max-width: $desktopBreakpoint) {
+        width: calc(100% - 40px);
+      }
     }
   }
 }
