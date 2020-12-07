@@ -3,7 +3,8 @@ import React from 'react';
 import EventIcon from '@material-ui/icons/Event';
 import DatePicker from 'src/components/Pickers/DatePicker';
 import FilterItem from 'src/components/Filter/FilterItem';
-import { getDifferenceInYears, formatDateToDayMonthYear } from 'src/common/date/date.helper';
+import { getDifferenceInYears, formatDateToDayMonthYear, formatDateToDayMonth } from 'src/common/date/date.helper';
+import { useIsDesktop } from 'src/common/hooks/media-hooks';
 
 interface IProps {
   from: Date;
@@ -12,9 +13,13 @@ interface IProps {
 }
 
 const FilterDate: React.FC<IProps> = ({ from, to, onSelect }) => {
+  const isDesktop = useIsDesktop();
+
   const getText = () => {
     if (getDifferenceInYears(from, to) >= 1) return 'All dates';
-    return `${formatDateToDayMonthYear(from, '.')} - ${formatDateToDayMonthYear(to, '.')}`;
+    return isDesktop
+      ? `${formatDateToDayMonthYear(from, '.')} - ${formatDateToDayMonthYear(to, '.')}`
+      : `${formatDateToDayMonth(from, '.')} - ${formatDateToDayMonth(to, '.')}`;
   };
 
   return (

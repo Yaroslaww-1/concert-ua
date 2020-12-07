@@ -6,6 +6,9 @@
 
   .contentRoot {
     width: $sectionWidth;
+    @media (max-width: $desktopBreakpoint) {
+      width: calc(100% - 40px);
+    }
     margin: 0 auto;
 
     display: flex;

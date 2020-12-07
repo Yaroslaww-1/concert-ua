@@ -6,9 +6,9 @@ import { fetchArtist, fetchTickets } from './redux/actions';
 
 import PageComponent from 'src/components/Page';
 import Header from './containers/Header';
-import Subscribe from 'src/components/Subscribe';
 import Footer from 'src/components/Footer';
 import ArtistDescription from './containers/ArtistDescriptionSection';
+import SubscribeContainer from 'src/containers/Subscribe';
 
 interface IProps {}
 
@@ -25,7 +25,7 @@ const Artist: React.FC<IProps & RouteComponentProps<{ id: string }>> = ({ match 
     <PageComponent>
       <Header />
       <ArtistDescription />
-      <Subscribe onSubscribe={() => {}} />
+      <SubscribeContainer />
       <Footer />
     </PageComponent>
   );

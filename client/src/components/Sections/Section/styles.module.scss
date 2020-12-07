@@ -2,6 +2,9 @@
 
 .root {
   width: $sectionWidth;
+  @media (max-width: $desktopBreakpoint) {
+    width: calc(100% - 40px);
+  }
   margin: 0 auto;
 
   display: flex;
@@ -14,6 +17,10 @@
 
   .content {
     width: $sectionWidth;
+    @media (max-width: $desktopBreakpoint) {
+      width: 100%;
+    }
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

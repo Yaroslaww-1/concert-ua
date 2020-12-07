@@ -62,8 +62,13 @@ export const formatDateToDayMonthYear = (date: Date, delimiter = '-') => {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
-  const a = day + delimiter + month + delimiter + year;
-  return a;
+  return day + delimiter + month + delimiter + year;
+};
+
+export const formatDateToDayMonth = (date: Date, delimiter = '-') => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  return day + delimiter + month;
 };
 
 export const formatDateToDayFullMonth = (date: Date, delimiter = '-') => {

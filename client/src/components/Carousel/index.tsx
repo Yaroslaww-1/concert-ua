@@ -18,9 +18,16 @@ type IProps = {
   };
   withDots?: boolean;
   withArrowShadow?: boolean;
+  withArrows?: boolean;
 };
 
-const Carousel: React.FC<IProps> = ({ items, classes = {}, withDots = true, withArrowShadow = true }) => {
+const Carousel: React.FC<IProps> = ({
+  items,
+  classes = {},
+  withDots = true,
+  withArrowShadow = true,
+  withArrows = true,
+}) => {
   const [drag, setDrag] = React.useState<boolean>(false);
 
   const NextArrow = (props: any) => {
@@ -63,8 +70,8 @@ const Carousel: React.FC<IProps> = ({ items, classes = {}, withDots = true, with
       slidesToShow={1}
       slidesToScroll={1}
       dotsClass={`slick-dots ${styles.navigation}`}
-      nextArrow={<NextArrow />}
-      prevArrow={<PrevArrow />}
+      nextArrow={withArrows ? <NextArrow /> : undefined}
+      prevArrow={withArrows ? <PrevArrow /> : undefined}
       beforeChange={() => setDrag(true)}
       afterChange={() => setDrag(false)}
     >

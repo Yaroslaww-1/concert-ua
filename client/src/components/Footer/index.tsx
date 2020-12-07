@@ -3,21 +3,13 @@ import React from 'react';
 import styles from './styles.module.scss';
 import Text from 'src/components/Text';
 import TextLink from '../TextLink';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import TelegramIcon from '@material-ui/icons/Telegram';
-import HomeIcon from '@material-ui/icons/Home';
-import PhoneIcon from '@material-ui/icons/Phone';
-import { style } from '@material-ui/system';
+import Contacts from './components/Contacts';
+import SocialLinks from './components/SocialLinks';
+import { Routes } from 'src/common/enum/routes';
 
 interface IProps {}
 
 const Footer: React.FC<IProps> = ({}) => {
-  const getLinks = () => {
-    const linkElement = <TextLink to={''} text={'Profile Profile'} />;
-    return new Array(18).fill(linkElement);
-  };
   return (
     <div className={styles.root}>
       <div className={styles.innerRoot}>
@@ -28,42 +20,16 @@ const Footer: React.FC<IProps> = ({}) => {
                 Music.ua
               </Text>
             </div>
-            <div className={styles.links}>{getLinks()}</div>
+            <div className={styles.links}>
+              <TextLink to={Routes.CONCERTS} text={'Events'} />
+              <TextLink to={Routes.BANDS} text={'Bands'} />
+              <TextLink to={Routes.ALBUMS} text={'Albums'} />
+              <TextLink to={Routes.PROFILE} text={'Profile'} />
+            </div>
           </div>
           <div className={styles.info}>
-            <div className={styles.socialIcons}>
-              <InstagramIcon />
-              <FacebookIcon />
-              <YouTubeIcon />
-              <TelegramIcon />
-            </div>
-            <div className={styles.contacts}>
-              <div className={styles.contact}>
-                <HomeIcon />
-                <Text color="red">+38 (066) 555 35 35</Text>
-              </div>
-              <div className={styles.contact}>
-                <HomeIcon />
-                <Text color="red">+38 (066) 555 35 35</Text>
-              </div>
-              <div className={styles.contact}>
-                <PhoneIcon />
-                <Text color="red">+38 (066) 555 35 35</Text>
-              </div>
-              <div className={styles.contact}>
-                <PhoneIcon />
-                <Text color="red">+38 (066) 555 35 35</Text>
-              </div>
-              <div className={styles.contact}>
-                <PhoneIcon />
-                <Text color="red">+38 (066) 555 35 35</Text>
-              </div>
-              <div className={styles.contactUs}>
-                <Text color="gray" textAlign="left">
-                  Contact us and we will answer your questions
-                </Text>
-              </div>
-            </div>
+            <SocialLinks />
+            <Contacts />
           </div>
         </div>
         <div className={styles.bottomFooter}>

@@ -8,6 +8,7 @@ import { redirectToArtist } from 'src/common/url/redirect-to-artist-by-id';
 import styles from './styles.module.scss';
 import Text from 'src/components/Text';
 import ArtistHoverOverlay from 'src/components/EventImageComponents/HoverOverlays/ArtistImageHover';
+import { useIsTablet } from 'src/common/hooks/media-hooks';
 
 type IProps = {
   artist: ArtistShortModel;
@@ -18,11 +19,12 @@ const Artist: React.FC<IProps & RouteComponentProps & ForwarderRefProps<HTMLDivE
   forwardRef,
 }) => {
   const [hovered, setHovered] = React.useState<boolean>(false);
+  const isTablet = useIsTablet();
 
   const onAboutClick = () => redirectToArtist(history, artist.id);
 
   return (
-    <div className={styles.root} ref={forwardRef}>
+    <div className={styles.root} ref={forwardRef} onClick={() => isTablet && onAboutClick()}>
       <Text color="black" textAlign="left" textTransform="uppercase" fontSize="3rem" fontFamily="League Gothic">
         Artist
       </Text>

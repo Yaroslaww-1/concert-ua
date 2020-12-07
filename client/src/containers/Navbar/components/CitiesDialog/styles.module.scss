@@ -2,10 +2,6 @@
 
 .dialogTitle {
   margin: 0px 0px -30px 0px !important;
-
-  .dialogTitleText {
-    font-weight: 700;
-  }
 }
 
 .dialog {
@@ -29,6 +25,12 @@
       &:hover {
         background-color: $colorRed;
         color: $colorWhite;
+      }
+
+      @media (max-width: $desktopBreakpoint) {
+        * {
+          font-size: $small;
+        }
       }
     }
   }

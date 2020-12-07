@@ -8,9 +8,9 @@ import PageComponent from 'src/components/Page';
 import TabsHeader from './components/Tabs';
 import PersonalInfo from './containers/PersonalInfo';
 import Spinner from 'src/components/Spinner';
-import Subscribe from 'src/components/Subscribe';
 import Footer from 'src/components/Footer';
 import LikedEventsByUser from './containers/LikedEventsByUser';
+import SubscribeContainer from 'src/containers/Subscribe';
 
 const ProfilePage: React.FC = () => {
   const loading = useSelector((state: RootState) => state.profile.user.loading.isLoading);
@@ -32,7 +32,7 @@ const ProfilePage: React.FC = () => {
               { index: 1, child: <LikedEventsByUser /> },
             ]}
           />
-          <Subscribe onSubscribe={() => {}} />
+          <SubscribeContainer />
           <Footer />
         </PageComponent>
       )}

@@ -1,7 +1,7 @@
 @import 'src/styles/variables';
-@import 'src/containers/Navbar/styles.module';
 
 $buyTicketsHeaderHeight: 80px;
+$navbarHeight: 50px;
 
 .root {
   position: sticky;
@@ -10,6 +10,9 @@ $buyTicketsHeaderHeight: 80px;
   margin-top: -180px;
 
   width: 330px;
+  @media (max-width: $desktopBreakpoint) {
+    width: 250px;
+  }
   background-color: $colorRed;
 
   display: flex;

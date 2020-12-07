@@ -1,20 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Routes } from 'src/common/enum/routes';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { RootState } from 'src/redux/rootReducer';
 import { fetchCities, fetchDates } from './redux/actions';
 
-import styles from './styles.module.scss';
-import EventIcon from '@material-ui/icons/Event';
-import LocationCityIcon from '@material-ui/icons/LocationCity';
-import ProfileIcon from './components/ProfileIcon';
-import DatesMenu from './components/DatesMenu';
-import CitiesDialog from './components/CitiesDialog';
 import { NavbarState } from './redux/reducer';
 import { ProfileUserState } from 'src/pages/Profile/containers/PersonalInfo/redux/reducer';
+import DesktopNavbar from './components/DesktopNavbar';
+import TabletNavbar from './components/TabletNavbar';
+import { useIsDesktop } from 'src/common/hooks/media-hooks';
 
 const navbarSelector = createSelector(
   (state: RootState) => state.navbar.state,
@@ -35,13 +30,13 @@ const Navbar: React.FC = () => {
   const dispatch = useDispatch();
   const { dates, cities } = useSelector(navbarSelector);
   const { user } = useSelector(userSelector);
-  const eventIconRef = React.useRef<SVGSVGElement>(null);
-  const chooseCityRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     dispatch(fetchDates.request());
     dispatch(fetchCities.request());
   }, []);
+
+  const isDesktop = useIsDesktop();
 
   const onDateSelect = (id: string) => {
     console.log(`Selected date id in navbar: ${id}`);
@@ -52,38 +47,25 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className={styles.navbar}>
-      <div className={styles.innerNavbar}>
-        <NavLink to={Routes.DEFAULT} custom-attribute="main-logo">
-          <h1>music.ua</h1>
-        </NavLink>
-        <div className={styles.links}>
-          <NavLink to={Routes.CONCERTS}>Concerts</NavLink>
-          <NavLink to={Routes.BANDS}>Bands</NavLink>
-          <NavLink to={Routes.ALBUMS}>Albums</NavLink>
-        </div>
-
-        <>
-          <EventIcon ref={eventIconRef}></EventIcon>
-          <DatesMenu
-            dates={dates}
-            anchorEl={(eventIconRef.current as unknown) as HTMLElement}
-            onSelect={onDateSelect}
-          />
-        </>
-
-        <div className={styles.chooseCity} ref={chooseCityRef}>
-          <LocationCityIcon />
-          Choose city
-          <CitiesDialog anchorEl={chooseCityRef.current} onSelect={onCitySelect} cities={cities} />
-        </div>
-        {user ? (
-          <ProfileIcon profileNamePreview={user.firstName.toUpperCase().charAt(0)} />
-        ) : (
-          <div className={styles.loginButton}>Login</div>
-        )}
-      </div>
-    </header>
+    <>
+      {isDesktop ? (
+        <DesktopNavbar
+          cities={cities}
+          dates={dates}
+          user={user!}
+          onDateSelect={onDateSelect}
+          onCitySelect={onCitySelect}
+        />
+      ) : (
+        <TabletNavbar
+          cities={cities}
+          dates={dates}
+          user={user!}
+          onDateSelect={onDateSelect}
+          onCitySelect={onCitySelect}
+        />
+      )}
+    </>
   );
 };
 
