@@ -26,6 +26,7 @@ export class ServerApplication {
     const document = SwaggerModule.createDocument(app, options);
     SwaggerModule.setup('api', app, document);
 
+    app.setGlobalPrefix('api');
     await app.listen(this.port, this.host);
 
     Logger.log(`Server started on host: ${this.host}; port: ${this.port};`, ServerApplication.name);
