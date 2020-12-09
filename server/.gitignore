@@ -2,7 +2,7 @@
 /dist
 /build
 /node_modules
-
+/.unit-test
 # Logs
 logs
 *.log

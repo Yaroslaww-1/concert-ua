@@ -2,14 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import * as dotenv from 'dotenv';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 dotenv.config();
-import { RootModule } from './di/root.module';
-import { ServerApplicationConfig } from '@infrastructure/config/server-application.config';
+import { RootModule } from '@application/modules/root.module';
+import ServerApplicationConfig from '@config/server-application.config';
 
 export class ServerApplication {
-  private readonly host: string = ServerApplicationConfig.HOST;
-
-  private readonly port: number = ServerApplicationConfig.PORT;
+  private readonly host: string = ServerApplicationConfig.host;
+  private readonly port = ServerApplicationConfig.port;
 
   public static new(): ServerApplication {
     return new ServerApplication();
@@ -18,11 +18,13 @@ export class ServerApplication {
   public async run(): Promise<void> {
     const app: NestExpressApplication = await NestFactory.create<NestExpressApplication>(RootModule);
 
-    app.enableCors({
-      origin: ServerApplicationConfig.APP_CLIENT_URL,
-      optionsSuccessStatus: 200,
-    });
-    app.setGlobalPrefix('api');
+    const options = new DocumentBuilder()
+      .setTitle('Api example')
+      .setDescription('The API description')
+      .setVersion('1.0')
+      .build();
+    const document = SwaggerModule.createDocument(app, options);
+    SwaggerModule.setup('api', app, document);
 
     await app.listen(this.port, this.host);
 
