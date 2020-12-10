@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from 'reselect';
 import { RootState } from 'src/redux/rootReducer';
-import { fetchCities, fetchDates } from './redux/actions';
+import { fetchCities } from './redux/actions';
 
 import { NavbarState } from './redux/reducer';
 import { ProfileUserState } from 'src/pages/Profile/containers/PersonalInfo/redux/reducer';
@@ -14,7 +14,6 @@ import { useIsDesktop } from 'src/common/hooks/media-hooks';
 const navbarSelector = createSelector(
   (state: RootState) => state.navbar.state,
   (state: NavbarState) => ({
-    dates: state.dates,
     cities: state.cities,
   }),
 );
@@ -28,11 +27,11 @@ const userSelector = createSelector(
 
 const Navbar: React.FC = () => {
   const dispatch = useDispatch();
-  const { dates, cities } = useSelector(navbarSelector);
+  const dates = ['Today', 'Tomorrow', 'This week', 'This weekend', 'This month'];
+  const { cities } = useSelector(navbarSelector);
   const { user } = useSelector(userSelector);
 
   React.useEffect(() => {
-    dispatch(fetchDates.request());
     dispatch(fetchCities.request());
   }, []);
 

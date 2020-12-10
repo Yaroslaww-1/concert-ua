@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
 
-import { DateModel } from 'src/api/models/date.model';
 import { UserModel } from 'src/api/models/user.model';
 
 import styles from './styles.module.scss';
@@ -15,7 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '../Drawer';
 
 interface IProps {
-  dates: DateModel[];
+  dates: string[];
   user: UserModel;
   cities: CityModel[];
   onDateSelect: (dateId: string) => void;
