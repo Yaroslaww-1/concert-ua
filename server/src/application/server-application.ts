@@ -18,6 +18,12 @@ export class ServerApplication {
   public async run(): Promise<void> {
     const app: NestExpressApplication = await NestFactory.create<NestExpressApplication>(RootModule);
 
+    app.enableCors({
+      origin: ServerApplicationConfig.appClientUrl,
+      optionsSuccessStatus: 200,
+    });
+    app.setGlobalPrefix('api');
+
     const options = new DocumentBuilder()
       .setTitle('Api example')
       .setDescription('The API description')
@@ -26,11 +32,6 @@ export class ServerApplication {
     const document = SwaggerModule.createDocument(app, options);
     SwaggerModule.setup('api', app, document);
 
-    app.enableCors({
-      origin: ServerApplicationConfig.appClientUrl,
-      optionsSuccessStatus: 200,
-    });
-    app.setGlobalPrefix('api');
     await app.listen(this.port, this.host);
 
     Logger.log(`Server started on host: ${this.host}; port: ${this.port};`, ServerApplication.name);
