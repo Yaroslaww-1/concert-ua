@@ -26,6 +26,10 @@ export class ServerApplication {
     const document = SwaggerModule.createDocument(app, options);
     SwaggerModule.setup('api', app, document);
 
+    app.enableCors({
+      origin: ServerApplicationConfig.appClientUrl,
+      optionsSuccessStatus: 200,
+    });
     app.setGlobalPrefix('api');
     await app.listen(this.port, this.host);
 
