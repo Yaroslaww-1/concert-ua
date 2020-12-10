@@ -1,7 +1,9 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import { Connection } from 'typeorm';
+import { Factory, Seeder } from 'typeorm-seeding';
 
-export class seedStylesTable1607622105682 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
+export class seedStylesTable1607622105682 implements Seeder {
+  public async run(factory: Factory, connection: Connection): Promise<void> {
+    await connection.query('TRUNCATE TABLE styles CASCADE;');
     const styles = [
       'Alternative rock',
       'Ambient',
@@ -48,15 +50,11 @@ export class seedStylesTable1607622105682 implements MigrationInterface {
       'Trip-hop',
       'dnb',
     ].map(styleName => ({ name: styleName }));
-    queryRunner.manager
+    await connection
       .createQueryBuilder()
       .insert()
       .into('styles')
       .values(styles)
       .execute();
-  }
-
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.clearTable('styles');
   }
 }

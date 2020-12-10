@@ -42,10 +42,9 @@ export class createPlacesTable1607616954236 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('cities');
+    const table = await queryRunner.getTable('places');
     const foreignKey = table.foreignKeys.find(fk => fk.columnNames.indexOf('cityId') !== -1);
-    await queryRunner.dropForeignKey('cities', foreignKey);
-    await queryRunner.dropColumn('cities', 'cityId');
+    await queryRunner.dropForeignKey('places', foreignKey);
 
     await queryRunner.dropTable('places');
   }

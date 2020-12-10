@@ -1,7 +1,9 @@
-import { MigrationInterface, QueryRunner } from 'typeorm';
+import { Connection } from 'typeorm';
+import { Factory, Seeder } from 'typeorm-seeding';
 
-export class seedCitiesTable1607547568996 implements MigrationInterface {
-  public async up(queryRunner: QueryRunner): Promise<void> {
+export default class seedCitiesTable1607547568996 implements Seeder {
+  public async run(factory: Factory, connection: Connection): Promise<void> {
+    await connection.query('TRUNCATE TABLE cities CASCADE;');
     const cities = [
       'Kyiv',
       'Odesa',
@@ -40,15 +42,11 @@ export class seedCitiesTable1607547568996 implements MigrationInterface {
       'Zaporizhia',
       'Zhytomyr',
     ].map(cityName => ({ name: cityName }));
-    queryRunner.manager
+    await connection
       .createQueryBuilder()
       .insert()
       .into('cities')
       .values(cities)
       .execute();
-  }
-
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.clearTable('cities');
   }
 }

@@ -23,9 +23,7 @@
     "migration:create": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:create -f src/config/typeorm.config -d src/database/migrations -n",
     "migration:generate": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:generate -f src/config/typeorm.config -d src/database/migrations -n",
     "migration:revert": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:revert -f src/config/typeorm.config",
-    "seed:run": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:run -f src/config/typeorm.config -c seed",
-    "seed:create": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:create -f src/config/typeorm.config -d src/database/seeds -c seed -n",
-    "seed:revert": "ts-node -r tsconfig-paths/register node_modules/typeorm/cli.js migration:revert -f src/config/typeorm.config -c seed"
+    "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js -n src/config/typeorm.config.js seed"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
@@ -41,8 +39,9 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
     "swagger-ui-express": "^4.1.4",
+    "ts-node": "9.0.0",
     "typeorm": "^0.2.28",
-    "ts-node": "9.0.0"
+    "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
@@ -50,6 +49,7 @@
     "@nestjs/testing": "^7.0.0",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.3",
+    "@types/faker": "^5.1.5",
     "@types/jest": "26.0.10",
     "@types/node": "^13.9.1",
     "@types/supertest": "^2.0.8",
