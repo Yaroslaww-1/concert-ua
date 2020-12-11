@@ -1,9 +1,11 @@
+import { ArtistImageModel, defaultArtistImage } from './artist-image.model';
+
 export type ArtistModel = {
   id: string;
   name: string;
-  imageUrl: string;
-  galleryImagesUrls: string[];
   descriptionHTML: string;
+  mainImage: ArtistImageModel;
+  galleryImages: ArtistImageModel[];
 };
 
 const artistDescriptionHtml = `
@@ -23,7 +25,7 @@ const artistDescriptionHtml = `
 export const defaultArtist: ArtistModel = {
   id: '',
   name: '',
-  imageUrl: '',
-  galleryImagesUrls: [],
   descriptionHTML: artistDescriptionHtml,
+  mainImage: defaultArtistImage,
+  galleryImages: [],
 };

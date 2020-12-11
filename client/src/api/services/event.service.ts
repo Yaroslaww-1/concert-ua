@@ -77,7 +77,10 @@ const getEvent = (): EventModel => {
     artist: {
       id: `id${eventId}`,
       name: 'artist',
-      imageUrl: eventUrls[eventUrlIndex],
+      mainImage: {
+        id: '1',
+        url: eventUrls[eventUrlIndex],
+      },
     },
   };
 };

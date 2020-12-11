@@ -13,7 +13,13 @@ interface IProps {
   onAboutClick: () => void;
 }
 
-const ArtistHoverOverlay: React.FC<IProps> = ({ artist: { imageUrl, name }, onAboutClick }) => {
+const ArtistHoverOverlay: React.FC<IProps> = ({
+  artist: {
+    mainImage: { url: imageUrl },
+    name,
+  },
+  onAboutClick,
+}) => {
   const [backgroundColor, setBackgroundColor] = React.useState<RgbColor>([0, 0, 0]);
   React.useEffect(() => {
     getImageColor(imageUrl).then((color) => setBackgroundColor(color));

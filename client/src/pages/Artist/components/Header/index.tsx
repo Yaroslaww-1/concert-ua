@@ -10,7 +10,10 @@ export interface IProps {
 }
 
 const Header: React.FC<IProps> = ({ artist }) => {
-  const { imageUrl, name } = artist;
+  const {
+    mainImage: { url: imageUrl },
+    name,
+  } = artist;
   return (
     <div className={styles.root}>
       <div
