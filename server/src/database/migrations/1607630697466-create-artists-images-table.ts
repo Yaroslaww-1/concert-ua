@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
-export class createArtistImagesTable1607630697466 implements MigrationInterface {
+export class createArtistsImagesTable1607630697466 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'ArtistImages',
+        name: 'ArtistsImages',
         columns: [
           {
             name: 'id',
@@ -18,6 +18,10 @@ export class createArtistImagesTable1607630697466 implements MigrationInterface 
             type: 'varchar(200)',
           },
           {
+            name: 'isMain',
+            type: 'bool',
+          },
+          {
             name: 'artistId',
             type: 'int',
           },
@@ -27,7 +31,7 @@ export class createArtistImagesTable1607630697466 implements MigrationInterface 
     );
 
     await queryRunner.createForeignKey(
-      'ArtistImages',
+      'ArtistsImages',
       new TableForeignKey({
         columnNames: ['artistId'],
         referencedColumnNames: ['id'],
@@ -38,10 +42,10 @@ export class createArtistImagesTable1607630697466 implements MigrationInterface 
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('ArtistImages');
+    const table = await queryRunner.getTable('ArtistsImages');
     const foreignKey = table.foreignKeys.find(fk => fk.columnNames.indexOf('artistId') !== -1);
-    await queryRunner.dropForeignKey('ArtistImages', foreignKey);
+    await queryRunner.dropForeignKey('ArtistsImages', foreignKey);
 
-    await queryRunner.dropTable('ArtistImages');
+    await queryRunner.dropTable('ArtistsImages');
   }
 }

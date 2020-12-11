@@ -1,9 +1,8 @@
 import { IEntity } from '@application/common/types/entity.type';
-import { CityEntity } from '@application/modules/city/entities/city.entity';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { ArtistEntity } from './artist.entity';
 
-@Entity({ name: 'ArtistImages' })
+@Entity({ name: 'ArtistsImages' })
 export class ArtistImageEntity implements IEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,5 +17,6 @@ export class ArtistImageEntity implements IEntity {
     () => ArtistEntity,
     artist => artist.galleryImages || artist.mainImage,
   )
-  artist: CityEntity;
+  @JoinColumn({ name: 'artistId' })
+  artist: ArtistEntity;
 }
