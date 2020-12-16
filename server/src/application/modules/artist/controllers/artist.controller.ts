@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { ArtistDto } from '../dtos/artist.dto';
 import { CreateArtistDto } from '../dtos/create-artist.dto';
@@ -13,6 +13,13 @@ export class ArtistController {
   async getArtists(): Promise<ArtistDto[]> {
     const artists = await this.artistService.findAll();
     return artists;
+  }
+
+  @Get(':id')
+  @ApiResponse({ status: 200, description: 'artist', type: ArtistDto })
+  async getArtist(@Param('id', new ParseIntPipe()) id: number): Promise<ArtistDto> {
+    const artist = await this.artistService.findOne(id);
+    return artist;
   }
 
   @Post()

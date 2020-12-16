@@ -18,14 +18,32 @@ export class ArtistRepository extends BaseRepository<ArtistEntity, CreateArtistD
     super(artistRepository);
   }
 
-  async findAll(): Promise<ArtistEntity[]> {
-    const artists = await this.artistRepository.find({ relations: ['mainImage', 'galleryImages'] });
-    return artists;
+  // TODO: switch to filtering by ORM
+  private filterArtist(artist: ArtistEntity): ArtistEntity {
+    return {
+      ...artist,
+      galleryImages: artist.galleryImages.filter(image => image.isMain === false),
+    };
   }
 
-  async findOne(): Promise<ArtistEntity> {
-    const artist = await this.artistRepository.findOne({ relations: ['mainImage', 'galleryImages'] });
-    return artist;
+  private getCommonQuery() {
+    return this.artistRepository
+      .createQueryBuilder('artists')
+      .leftJoinAndSelect('artists.mainImage', 'mainImage')
+      .leftJoinAndSelect('artists.galleryImages', 'galleryImages')
+      .groupBy('artists.id, artists.name, mainImage.id, galleryImages.id');
+  }
+
+  async findAll(): Promise<ArtistEntity[]> {
+    const artists = await this.getCommonQuery().getMany();
+    return artists.map(artist => this.filterArtist(artist));
+  }
+
+  async findOne(id: number): Promise<ArtistEntity> {
+    const artist = await this.getCommonQuery()
+      .where('artists.id = :id', { id })
+      .getOne();
+    return this.filterArtist(artist);
   }
 
   async save(artist: CreateArtistDto): Promise<ArtistEntity> {

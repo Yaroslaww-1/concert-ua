@@ -22,6 +22,7 @@ export class ArtistEntity implements IEntity {
   @OneToMany(
     () => ArtistImageEntity,
     artistImage => artistImage.artist,
+    // { eager: true },
   )
   galleryImages: ArtistImageEntity[];
 }
