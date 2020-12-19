@@ -5,7 +5,7 @@ import { EventModel } from '../models/event.model';
 const endpoint = 'artists';
 
 export interface IArtistFilter {
-  stylesIds?: string[];
+  stylesIds?: number[];
   name?: string;
 }
 

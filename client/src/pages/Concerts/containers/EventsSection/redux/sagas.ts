@@ -1,12 +1,10 @@
-import { call, put, all, takeLatest, select } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { fetchEvents } from './actions';
 import { EventService } from 'src/api/services/event.service';
-import { RootState } from 'src/redux/rootReducer';
 
 function* fetchEventsSaga(action: ReturnType<typeof fetchEvents.requestPayload>) {
   try {
-    const filter = yield select((state: RootState) => state.concerts.filter.state);
-    const events = yield call(EventService.getEvents, filter);
+    const events = yield call(EventService.getEvents, action.payload.filter);
     yield put(fetchEvents.success(events));
   } catch (error) {
     yield put(fetchEvents.failure(error));

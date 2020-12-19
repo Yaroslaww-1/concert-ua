@@ -8,8 +8,10 @@ export interface IEventFilter {
     from: Date;
     to: Date;
   };
-  placesIds?: string[];
-  stylesIds?: string[];
+  placesIds?: number[];
+  stylesIds?: number[];
+  offset?: number;
+  limit?: number;
 }
 
 export class EventService {
@@ -21,7 +23,7 @@ export class EventService {
     } as EventModel;
   }
 
-  static async getEvents(filter: IEventFilter = {}): Promise<EventModel[]> {
+  static async getEvents(filter: IEventFilter = { offset: 0, limit: 8 }): Promise<EventModel[]> {
     const events = (await api.get<EventModel[]>(endpoint)) as EventModel[];
     return events.map(EventService.transformEvent);
   }
