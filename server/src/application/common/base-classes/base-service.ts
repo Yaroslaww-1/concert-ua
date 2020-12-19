@@ -1,7 +1,7 @@
 import { IRepository } from '@application/common/types/repository.type';
 import { IService } from '../types/service.type';
 
-export class BaseService<Dto, CreatingDto, UpdatingDto = CreatingDto>
+export class BaseService<Dto, CreatingDto = unknown, UpdatingDto = CreatingDto>
   implements IService<Dto, CreatingDto, UpdatingDto> {
   constructor(private readonly repository: IRepository<unknown, CreatingDto, UpdatingDto>) {}
 

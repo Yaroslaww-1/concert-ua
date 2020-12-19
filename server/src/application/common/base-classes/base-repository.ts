@@ -2,7 +2,7 @@ import { IRepository } from '@application/common/types/repository.type';
 import { NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
-export class BaseRepository<Entity, CreatingDto, UpdatingDto = CreatingDto>
+export class BaseRepository<Entity, CreatingDto = unknown, UpdatingDto = CreatingDto>
   implements IRepository<Entity, CreatingDto, UpdatingDto> {
   constructor(private readonly entityRepository: Repository<Entity>) {}
 
