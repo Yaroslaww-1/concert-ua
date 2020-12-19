@@ -1,14 +1,14 @@
 import { CityModel, defaultCity } from './city.model';
 
 export type PlaceModel = {
-  id: string;
+  id: number;
   name: string;
   address: string;
   city: CityModel;
 };
 
 export const defaultPlace = {
-  id: '',
+  id: 0,
   name: '',
   address: '',
   city: defaultCity,

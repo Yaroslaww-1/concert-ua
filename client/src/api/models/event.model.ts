@@ -3,7 +3,7 @@ import { EventTagModel } from './event-tag.model';
 import { defaultPlace, PlaceModel } from './place.model';
 
 export type EventModel = {
-  id: string;
+  id: number;
   name: string;
   description: string;
   descriptionHTML: string;
@@ -18,7 +18,7 @@ export type EventModel = {
 };
 
 export const defaultEvent: EventModel = {
-  id: '',
+  id: 0,
   name: '',
   description: '',
   descriptionHTML: '',

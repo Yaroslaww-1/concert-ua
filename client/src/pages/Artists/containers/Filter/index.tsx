@@ -48,7 +48,7 @@ const FilterContainer: React.FC = () => {
   const parseFilterUrlParams = (urlParams = window.location.search): IArtistFilter => {
     const parsedParams = parseUrlParams<{
       name?: string;
-      stylesIds?: string[];
+      stylesIds?: number[];
     }>(urlParams);
     return {
       stylesIds: parsedParams.stylesIds,

@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
     console.log(`Selected date id in navbar: ${id}`);
   };
 
-  const onCitySelect = (id: string) => {
+  const onCitySelect = (id: number) => {
     console.log(`Selected city id in navbar: ${id}`);
   };
 

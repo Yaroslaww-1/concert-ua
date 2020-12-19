@@ -1,7 +1,7 @@
 import { ArtistImageModel, defaultArtistImage } from './artist-image.model';
 
 export type ArtistModel = {
-  id: string;
+  id: number;
   name: string;
   descriptionHTML: string;
   mainImage: ArtistImageModel;
@@ -23,7 +23,7 @@ const artistDescriptionHtml = `
   <p>Купити квитки на концерти Hurts ви завжди можете на Concert.ua. Простий і зручний сервіс – і квитки вже у кишені!</p>`;
 
 export const defaultArtist: ArtistModel = {
-  id: '',
+  id: 0,
   name: '',
   descriptionHTML: artistDescriptionHtml,
   mainImage: defaultArtistImage,

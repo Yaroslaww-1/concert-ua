@@ -1,9 +1,9 @@
 export type EventTagModel = {
-  id: string;
+  id: number;
   name: string;
 };
 
 export const defaultEvent: EventTagModel = {
-  id: '',
+  id: 0,
   name: '',
 };

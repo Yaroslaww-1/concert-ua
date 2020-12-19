@@ -17,7 +17,7 @@ interface IProps {
   user: UserModel;
   cities: CityModel[];
   onDateSelect: (dateId: string) => void;
-  onCitySelect: (cityId: string) => void;
+  onCitySelect: (cityId: number) => void;
 }
 
 const DesktopNavbar: React.FC<IProps> = ({ dates, user, cities, onDateSelect, onCitySelect }) => {

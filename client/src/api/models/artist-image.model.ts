@@ -1,9 +1,9 @@
 export type ArtistImageModel = {
-  id: string;
+  id: number;
   url: string;
 };
 
 export const defaultArtistImage: ArtistImageModel = {
-  id: '',
+  id: 0,
   url: '',
 };

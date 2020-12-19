@@ -1,13 +1,13 @@
 import { ArtistImageModel, defaultArtistImage } from './artist-image.model';
 
 export type ArtistShortModel = {
-  id: string;
+  id: number;
   name: string;
   mainImage: ArtistImageModel;
 };
 
 export const defaultArtistShort: ArtistShortModel = {
-  id: '',
+  id: 0,
   name: '',
   mainImage: defaultArtistImage,
 };
