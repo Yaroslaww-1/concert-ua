@@ -31,8 +31,8 @@ const FilterContainer: React.FC = () => {
         from: new Date(parsedFilterFromUrl.date.from),
         to: new Date(parsedFilterFromUrl.date.to),
       },
-      stylesIds: parsedFilterFromUrl.stylesIds,
-      placesIds: parsedFilterFromUrl.placesIds,
+      stylesIds: ([] as number[]).concat(parsedFilterFromUrl.stylesIds || []),
+      placesIds: ([] as number[]).concat(parsedFilterFromUrl.placesIds || []),
       offset: parsedFilterFromUrl.offset,
       limit: parsedFilterFromUrl.limit,
     };

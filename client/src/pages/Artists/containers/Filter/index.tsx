@@ -9,8 +9,8 @@ import { FilterState } from './redux/reducer';
 import { IArtistFilter } from 'src/api/services/artist.service';
 
 import { fetchStyles, selectNameFilter, selectStyleFilter } from './redux/actions';
-import { parseUrlParams } from 'src/common/url/params-parser';
-import { stringifyParams } from 'src/common/url/stringify-params';
+import { parseUrlParams } from 'src/common/url/qs-helper';
+import { stringifyParams } from 'src/common/url/qs-helper';
 import FilterComponent from '../../components/Filter';
 
 const filterSelector = createSelector(

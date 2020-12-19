@@ -1,6 +1,6 @@
 import React from 'react';
-import { parseUrlParams } from 'src/common/url/params-parser';
-import { stringifyParams } from '../url/stringify-params';
+import { parseUrlParams } from 'src/common/url/qs-helper';
+import { stringifyParams } from '../url/qs-helper';
 import { usePath } from './use-path';
 
 export const useFilter = <F>({
