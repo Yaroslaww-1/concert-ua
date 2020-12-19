@@ -11,7 +11,7 @@ const repositories = [ArtistImageRepository, ArtistRepository];
 const services = [ArtistService];
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ArtistEntity, ArtistImageEntity])],
+  imports: [TypeOrmModule.forFeature([ArtistImageEntity, ArtistEntity])],
   controllers: [ArtistController],
   providers: [...repositories, ...services],
 })

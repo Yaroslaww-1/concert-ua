@@ -13,10 +13,7 @@ export class ArtistImageEntity implements IEntity {
   @Column('bool')
   isMain: boolean;
 
-  @OneToOne(
-    () => ArtistEntity,
-    artist => [...artist.galleryImages, artist.mainImage],
-  )
+  @OneToOne(() => ArtistEntity)
   @JoinColumn({ name: 'artistId' })
   artist: ArtistEntity;
 }
