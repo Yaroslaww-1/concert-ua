@@ -1,4 +1,5 @@
 import { IEntity } from '@application/common/types/entity.type';
+import { EventEntity } from '@application/modules/event/entities/event.entity';
 import { StyleEntity } from '@application/modules/style/entities/style.entity';
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { ArtistImageEntity } from './artist-image.entity';
@@ -33,4 +34,10 @@ export class ArtistEntity implements IEntity {
     inverseJoinColumn: { name: 'styleId', referencedColumnName: 'id' },
   })
   styles: StyleEntity[];
+
+  @OneToMany(
+    () => EventEntity,
+    event => event.artist,
+  )
+  events: EventEntity[];
 }

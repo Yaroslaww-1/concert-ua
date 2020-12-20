@@ -22,7 +22,7 @@ export interface IEventFilter {
 
 export class EventService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private static transformEvent(event: Record<string, any>): EventModel {
+  static transformEvent(event: Record<string, any>): EventModel {
     return {
       ...event,
       date: new Date(event.date),

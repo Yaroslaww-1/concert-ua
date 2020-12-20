@@ -1,6 +1,7 @@
 import api from '../api.helper';
 import { ArtistModel } from '../models/artist.model';
-import { EventModel } from '../models/event.model';
+import { EventShortModel } from '../models/event-short.model';
+import { EventService } from './event.service';
 
 const endpoint = 'artists';
 
@@ -21,13 +22,8 @@ export class ArtistService {
     return artist as ArtistModel;
   }
 
-  static async getTicketsByArtistId(artistId: string): Promise<EventModel[]> {
-    return [];
-    // console.log('Artist tickets fetching');
-    // const allEvents = await EventService.getEvents();
-    // return [
-    //   ...allEvents.filter((event) => event.artist.id === artistId),
-    //   ...allEvents.filter((event) => event.artist.id === artistId),
-    // ];
+  static async getTicketsByArtistId(artistId: string): Promise<EventShortModel[]> {
+    const events = (await api.get<EventShortModel[]>(`${endpoint}/${artistId}/tickets`)) as EventShortModel[];
+    return events.map(EventService.transformEvent) as EventShortModel[];
   }
 }

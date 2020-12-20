@@ -1,5 +1,5 @@
 import { ArtistModel } from 'src/api/models/artist.model';
-import { EventModel } from 'src/api/models/event.model';
+import { EventShortModel } from 'src/api/models/event-short.model';
 import { createAsyncAction } from 'src/redux/helpers/actionCreator';
 
 const type = 'ARTIST';
@@ -11,5 +11,5 @@ export const fetchArtist = createAsyncAction(type, 'fetchArtist', {
 
 export const fetchTickets = createAsyncAction(type, 'fetchTickets', {
   request: (artistId: string) => ({ artistId }),
-  success: (tickets: EventModel[]) => ({ tickets }),
+  success: (tickets: EventShortModel[]) => ({ tickets }),
 });

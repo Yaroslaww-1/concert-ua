@@ -1,9 +1,11 @@
 import { BaseRepository } from '@application/common/base-classes/base-repository';
 import { IRepository } from '@application/common/types/repository.type';
+import { EventEntity } from '@application/modules/event/entities/event.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { FilterArtistDto } from '../dtos/filter-artist.dto';
+import { ArtistEventDto } from '../entities/artist-event.dto';
 import { ArtistEntity } from '../entities/artist.entity';
 import { ArtistImageRepository } from './artist-image.repository';
 
@@ -44,6 +46,16 @@ export class ArtistRepository extends BaseRepository<ArtistEntity> implements IR
     }
     const artists = await query.orderBy('artists.name').getMany();
     return artists;
+  }
+
+  async findArtistTickets(artistId: number): Promise<ArtistEventDto[]> {
+    const artistWithEvents = await this.getCommonQuery()
+      .leftJoinAndSelect('artists.events', 'events')
+      .leftJoinAndSelect('events.place', 'place')
+      .addGroupBy('events.id, place.id')
+      .where('artists.id = :id', { id: artistId })
+      .getOne();
+    return artistWithEvents.events;
   }
 
   async findOne(id: number): Promise<ArtistEntity> {
