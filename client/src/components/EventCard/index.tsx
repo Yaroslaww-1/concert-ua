@@ -39,12 +39,13 @@ const EventCard: React.FC<IProps> = ({ event, classes, history }) => {
         </div>
         <div className={styles.name}>
           <Text
-            fontSize="3rem"
+            fontSize="2.5vw"
             textAlign="left"
             lineHeight={1}
             textTransform="uppercase"
             color="black"
             fontFamily="League Gothic"
+            wordBreak={'break-word'}
           >
             {name}
           </Text>
