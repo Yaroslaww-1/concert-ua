@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
 
 import { UserModel } from 'src/api/models/user.model';
@@ -11,6 +11,7 @@ import ProfileIcon from '../ProfileIcon';
 import DatesMenu from '../DatesMenu';
 import CitiesDialog from '../CitiesDialog';
 import { CityModel } from 'src/api/models/city.model';
+import { redirectToLogin } from 'src/common/url/redirect-to-login';
 
 interface IProps {
   dates: string[];
@@ -20,7 +21,14 @@ interface IProps {
   onCitySelect: (cityId: number) => void;
 }
 
-const DesktopNavbar: React.FC<IProps> = ({ dates, user, cities, onDateSelect, onCitySelect }) => {
+const DesktopNavbar: React.FC<IProps & RouteComponentProps> = ({
+  dates,
+  user,
+  cities,
+  onDateSelect,
+  onCitySelect,
+  history,
+}) => {
   const eventIconRef = React.useRef<SVGSVGElement>(null);
   const chooseCityRef = React.useRef<HTMLDivElement>(null);
 
@@ -53,11 +61,13 @@ const DesktopNavbar: React.FC<IProps> = ({ dates, user, cities, onDateSelect, on
         {user ? (
           <ProfileIcon profileNamePreview={user.firstName.toUpperCase().charAt(0)} />
         ) : (
-          <div className={styles.loginButton}>Login</div>
+          <div className={styles.loginButton} onClick={() => redirectToLogin(history)}>
+            Login
+          </div>
         )}
       </div>
     </header>
   );
 };
 
-export default DesktopNavbar;
+export default withRouter(DesktopNavbar);
