@@ -29,7 +29,7 @@ const Artist: React.FC<IProps & RouteComponentProps & ForwarderRefProps<HTMLDivE
         Artist
       </Text>
       <div className={styles.content} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
-        <img src={artist.imageUrl} alt="An artist image"></img>
+        <img src={artist.mainImage.url} alt="An artist image"></img>
         {!hovered && (
           <Text
             textTransform="uppercase"

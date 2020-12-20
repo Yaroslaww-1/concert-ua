@@ -13,7 +13,7 @@ const ArtistsSection: React.FC = () => {
   const artists = useSelector((state: RootState) => state.artists.artists.state.artists);
   useInitialFetch(dispatch, fetchArtists.request);
   return (
-    <CardsSection onLoadMore={() => {}}>
+    <CardsSection withLoadMore={false}>
       {artists.map((artist) => (
         <Artist key={artist.id} artist={artist} />
       ))}

@@ -20,7 +20,7 @@ const EventsSecondaryCarousel: React.FC<IProps> = ({ history }) => {
   const [drag, setDrag] = React.useState<boolean>(false);
   useInitialFetch(dispatch, fetchPopularEvents.request);
 
-  const navigateToEvent = (id: string) => redirectToEvent(history, id);
+  const navigateToEvent = (id: number) => redirectToEvent(history, id);
 
   return (
     <div className={styles.carouselWrapper}>

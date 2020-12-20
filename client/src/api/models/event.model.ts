@@ -1,8 +1,9 @@
 import { ArtistShortModel, defaultArtistShort } from './artist-short.model';
+import { EventTagModel } from './event-tag.model';
 import { defaultPlace, PlaceModel } from './place.model';
 
 export type EventModel = {
-  id: string;
+  id: number;
   name: string;
   description: string;
   descriptionHTML: string;
@@ -10,14 +11,14 @@ export type EventModel = {
   date: Date;
   imageUrl: string;
   price: string;
-  tags: string[];
+  tags: EventTagModel[];
   promoter: string;
   hot: boolean;
   artist: ArtistShortModel;
 };
 
 export const defaultEvent: EventModel = {
-  id: '',
+  id: 0,
   name: '',
   description: '',
   descriptionHTML: '',

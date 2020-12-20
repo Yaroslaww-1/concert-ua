@@ -15,8 +15,8 @@ const Header: React.FC<IProps> = ({ event }) => {
       <div className={styles.imageRoot} style={{ backgroundImage: `url(${imageUrl}` }}>
         <div className={styles.tags}>
           {tags.map((tag) => (
-            <div className={styles.tag} key={tag}>
-              {tag}
+            <div className={styles.tag} key={tag.id}>
+              {tag.name}
             </div>
           ))}
         </div>

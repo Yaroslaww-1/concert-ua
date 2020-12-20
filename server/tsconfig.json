@@ -12,10 +12,8 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@core/*": ["src/core/*"],
-      "@infrastructure/*": ["src/infrastructure/*"],
+      "@config/*": ["src/config/*"],
       "@application/*": ["src/application/*"],
-      "@test/*": ["test/*"]
     },
   }
 }

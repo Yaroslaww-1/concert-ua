@@ -1,9 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit';
 import { EventModel } from 'src/api/models/event.model';
+import { createPaginationReducer } from 'src/redux/helpers/paginationHelperCreator';
 import { createLoadingReducer } from 'src/redux/helpers/reducerCreator';
 
-import { fetchPopularEvents } from './actions';
+import { fetchPopularEvents, paginationActions } from './actions';
 
 export type PopularEventsState = {
   events: EventModel[];
@@ -21,6 +22,7 @@ const state = createReducer<PopularEventsState>(
 const popularEventsReducer = combineReducers({
   state,
   loading: createLoadingReducer(fetchPopularEvents),
+  pagination: createPaginationReducer({ actions: paginationActions, defaultOffset: 0, defaultLimit: 8, step: 8 }),
 });
 
 export default popularEventsReducer;

@@ -1,9 +1,11 @@
+import { ArtistImageModel, defaultArtistImage } from './artist-image.model';
+
 export type ArtistModel = {
-  id: string;
+  id: number;
   name: string;
-  imageUrl: string;
-  galleryImagesUrls: string[];
   descriptionHTML: string;
+  mainImage: ArtistImageModel;
+  galleryImages: ArtistImageModel[];
 };
 
 const artistDescriptionHtml = `
@@ -21,9 +23,9 @@ const artistDescriptionHtml = `
   <p>Купити квитки на концерти Hurts ви завжди можете на Concert.ua. Простий і зручний сервіс – і квитки вже у кишені!</p>`;
 
 export const defaultArtist: ArtistModel = {
-  id: '',
+  id: 0,
   name: '',
-  imageUrl: '',
-  galleryImagesUrls: [],
   descriptionHTML: artistDescriptionHtml,
+  mainImage: defaultArtistImage,
+  galleryImages: [],
 };
