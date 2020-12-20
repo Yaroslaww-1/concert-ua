@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 import { ApiResponseError } from 'src/common/error/api-response.error';
 import { Throwable } from 'src/common/error/throwable';
+import { stringifyParams } from 'src/common/url/qs-helper';
 
 const BASE_URL = process.env.REACT_APP_API_URL || '/api';
 
@@ -8,7 +9,7 @@ class Api {
   private readonly instance: AxiosInstance;
   private readonly commonHeaders: {
     [key in string]: string;
-  }[];
+  };
   constructor() {
     this.instance = axios.create({
       baseURL: BASE_URL,
@@ -16,14 +17,14 @@ class Api {
         'Content-Type': 'application/json',
       },
     });
-    this.commonHeaders = [];
+    this.commonHeaders = { 'Content-Type': 'application/json' };
   }
 
   async get<Response = unknown, Params = unknown>(url: string, params?: Params): Promise<Response | Throwable> {
     const response = await this.instance
-      .get<Response>(url, {
+      .get<Response>(`${url}?${stringifyParams(params)}`, {
         headers: this.commonHeaders,
-        params,
+        data: {},
       })
       .then(({ data }) => data)
       .catch(this.handleError);

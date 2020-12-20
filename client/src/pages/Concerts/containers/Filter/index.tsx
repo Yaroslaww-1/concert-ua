@@ -49,7 +49,7 @@ const FilterContainer: React.FC = () => {
   }, []);
 
   const {
-    date: { from = new Date(), to = addDaysToDate(new Date(), 10) } = {},
+    date: { from = new Date(), to = addDaysToDate(new Date(), 1000) } = {},
     stylesIds = [],
     placesIds = [],
   } = filter;

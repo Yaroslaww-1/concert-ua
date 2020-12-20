@@ -24,7 +24,7 @@ export class EventService {
   }
 
   static async getEvents(filter: IEventFilter = { offset: 0, limit: 8 }): Promise<EventModel[]> {
-    const events = (await api.get<EventModel[]>(endpoint)) as EventModel[];
+    const events = (await api.get<EventModel[]>(endpoint, filter)) as EventModel[];
     return events.map(EventService.transformEvent);
   }
 

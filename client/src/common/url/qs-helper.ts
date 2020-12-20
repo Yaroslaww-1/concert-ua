@@ -1,10 +1,11 @@
 import qs from 'qs';
 
 export const stringifyParams = (params: unknown) =>
-  qs.stringify(params, { arrayFormat: 'indices', encodeValuesOnly: true, encode: false });
+  qs.stringify(params, { arrayFormat: 'comma', encodeValuesOnly: true, encode: false });
 
 export const parseUrlParams = <T>(params: string): T => {
   const parsed = qs.parse(params, {
+    comma: true,
     ignoreQueryPrefix: true,
     decoder(value) {
       if (/^(\d+|\d*\.\d+)$/.test(value)) {
