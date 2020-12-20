@@ -3,7 +3,7 @@ import { IRepository } from '@application/common/types/repository.type';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FilterEventDto } from '../dtos/filter-event.dto';
+import { EventFilterOrderBy, FilterEventDto } from '../dtos/filter-event.dto';
 import { EventEntity } from '../entities/event.entity';
 
 @Injectable()
@@ -25,8 +25,19 @@ export class EventRepository extends BaseRepository<EventEntity> implements IRep
       .groupBy('events.id, artist.id, place.id, artist.mainImage.id, tags.id');
   }
 
+  private getOrderBy(orderBy: EventFilterOrderBy): [string, 'ASC' | 'DESC'] {
+    let order: [string, 'ASC' | 'DESC'] = ['events.date', 'ASC'];
+    if (orderBy.date) {
+      order = ['events.date', orderBy.date];
+    }
+    if (orderBy.popularity) {
+      order = ['events.hot', orderBy.popularity];
+    }
+    return order;
+  }
+
   async findAll(filter: FilterEventDto = {}): Promise<EventEntity[]> {
-    const { stylesIds, placesIds, date, offset = 0, limit = 8 } = filter;
+    const { stylesIds, placesIds, date, offset = 0, limit = 8, orderBy = {} } = filter;
     const query = this.getCommonQuery();
     if (stylesIds && stylesIds.length > 0) {
       query.leftJoin('events.styles', 'styles').andWhere('styles.id IN (:...stylesIds)', { stylesIds });
@@ -38,7 +49,7 @@ export class EventRepository extends BaseRepository<EventEntity> implements IRep
       query.andWhere('events.date BETWEEN (:from) AND (:to)', { from: date.from, to: date.to });
     }
     const events = await query
-      .orderBy('events.date')
+      .orderBy(...this.getOrderBy(orderBy))
       .offset(offset)
       .take(limit)
       .getMany();

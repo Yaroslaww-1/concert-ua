@@ -16,6 +16,25 @@ class DateFilterEventDto {
   }
 }
 
+export enum OrderBy {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export class EventFilterOrderBy {
+  @IsNumber()
+  @IsOptional()
+  readonly date?: OrderBy;
+
+  @IsNumber()
+  @IsOptional()
+  readonly popularity?: OrderBy;
+
+  constructor(props: EventFilterOrderBy) {
+    Object.assign(this, props);
+  }
+}
+
 export class FilterEventDto {
   @Transform(fromStringToNumberArray)
   @IsNumber({}, { each: true })
@@ -38,4 +57,12 @@ export class FilterEventDto {
   @IsNumber()
   @IsOptional()
   readonly limit?: number;
+
+  @ValidateNested()
+  @IsOptional()
+  readonly orderBy?: EventFilterOrderBy;
+
+  constructor(props: FilterEventDto) {
+    Object.assign(this, props);
+  }
 }

@@ -29,12 +29,12 @@ export class EventService {
   }
 
   static async getNewEvents(): Promise<EventModel[]> {
-    const events = (await api.get<EventModel[]>(endpoint)) as EventModel[];
+    const events = (await api.get<EventModel[]>(`${endpoint}/new`)) as EventModel[];
     return events.map(EventService.transformEvent);
   }
 
   static async getPopularEvents(): Promise<EventModel[]> {
-    const events = (await api.get<EventModel[]>(endpoint)) as EventModel[];
+    const events = (await api.get<EventModel[]>(`${endpoint}/popular`)) as EventModel[];
     return events.map(EventService.transformEvent);
   }
 
