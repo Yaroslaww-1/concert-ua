@@ -57,7 +57,7 @@ const EventCard: React.FC<IProps> = ({ event, classes, history }) => {
         </div>
         <div className={styles.price}>
           <Text fontSize="1.25rem" textAlign="left" fontWeight={900} color="black">
-            {price}
+            {price} UAN
           </Text>
         </div>
       </div>
