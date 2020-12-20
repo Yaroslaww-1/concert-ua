@@ -3,12 +3,10 @@ import { IRepository } from '@application/common/types/repository.type';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreatePlaceDto } from '../dtos/create-place.dto';
 import { PlaceEntity } from '../entities/place.entity';
 
 @Injectable()
-export class PlaceRepository extends BaseRepository<PlaceEntity, CreatePlaceDto>
-  implements IRepository<PlaceEntity, CreatePlaceDto> {
+export class PlaceRepository extends BaseRepository<PlaceEntity> implements IRepository<PlaceEntity> {
   constructor(
     @InjectRepository(PlaceEntity)
     private readonly placeRepository: Repository<PlaceEntity>,
