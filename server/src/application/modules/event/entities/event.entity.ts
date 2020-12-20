@@ -1,6 +1,7 @@
 import { IEntity } from '@application/common/types/entity.type';
 import { ArtistEntity } from '@application/modules/artist/entities/artist.entity';
 import { PlaceEntity } from '@application/modules/place/entities/place.entity';
+import { StyleEntity } from '@application/modules/style/entities/style.entity';
 import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { EventTagEntity } from './event-tag.entity';
 
@@ -37,10 +38,7 @@ export class EventEntity implements IEntity {
   @Column('bool')
   hot: boolean;
 
-  @ManyToMany(
-    () => EventTagEntity,
-    eventTag => eventTag.event,
-  )
+  @ManyToMany(() => EventTagEntity)
   @JoinTable({
     name: 'events_tags',
     joinColumn: { name: 'eventId', referencedColumnName: 'id' },
@@ -51,4 +49,12 @@ export class EventEntity implements IEntity {
   @ManyToOne(() => ArtistEntity)
   @JoinColumn({ name: 'artistId' })
   artist: ArtistEntity;
+
+  @ManyToMany(() => StyleEntity)
+  @JoinTable({
+    name: 'events_styles',
+    joinColumn: { name: 'eventId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'styleId', referencedColumnName: 'id' },
+  })
+  styles: StyleEntity[];
 }
