@@ -23,19 +23,6 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
   return (
     <div className={styles.root}>
       <DescriptionHeader links={[{ label: 'Artist', onClick: executeScroll }]} />
-      {/* <div className={styles.navbarRoot}>
-        <div className={styles.navbarContent}>
-          <Text
-            color="black"
-            fontSize="1rem"
-            textTransform="uppercase"
-            classes={{ root: styles.navbarLink }}
-            onClick={executeScroll}
-          >
-            Artist
-          </Text>
-        </div>
-      </div> */}
       <div className={styles.contentRoot}>
         <div className={styles.content}>
           <div className={styles.header}>
@@ -46,6 +33,7 @@ const EventDescriptionSection: React.FC<IProps> = ({ event }) => {
               fontFamily="League Gothic"
               letterSpacing="1px"
               textTransform="uppercase"
+              wordBreak="break-word"
             >
               {event.name}
             </Text>

@@ -21,7 +21,13 @@ const Header: React.FC<IProps> = ({ artist }) => {
         style={{ background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${imageUrl}` }}
       >
         <div className={styles.name}>
-          <Text fontSize="5rem" textTransform="uppercase" fontFamily="League Gothic" textAlign="left">
+          <Text
+            fontSize="5rem"
+            textTransform="uppercase"
+            fontFamily="League Gothic"
+            textAlign="left"
+            wordBreak="break-word"
+          >
             {name}
           </Text>
         </div>
