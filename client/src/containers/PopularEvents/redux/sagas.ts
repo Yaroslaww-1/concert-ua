@@ -1,6 +1,7 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { EventService } from 'src/api/services/event.service';
-import { fetchPopularEvents } from './actions';
+import { createPaginationSagas } from 'src/redux/helpers/paginationHelperCreator';
+import { fetchPopularEvents, paginationActions } from './actions';
 
 function* fetchPopularEventsSaga(action: ReturnType<typeof fetchPopularEvents.requestPayload>) {
   try {
@@ -15,6 +16,13 @@ function* watchFetchPopularEvents() {
   yield takeLatest(fetchPopularEvents.types.request, fetchPopularEventsSaga);
 }
 
+const { watchPagination } = createPaginationSagas({
+  loadMoreAction: paginationActions.loadMore,
+  getCurrentPaginationState: (state) => state.home.popularEvents.pagination,
+  fetchItems: (paginationFilter) => EventService.getPopularEvents(paginationFilter),
+  fetchItemsAction: fetchPopularEvents,
+});
+
 export default function* fetchPopularEventsSagas() {
-  yield all([watchFetchPopularEvents()]);
+  yield all([watchFetchPopularEvents(), watchPagination()]);
 }

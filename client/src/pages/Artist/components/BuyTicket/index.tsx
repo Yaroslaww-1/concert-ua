@@ -1,5 +1,5 @@
 import React from 'react';
-import { EventModel } from 'src/api/models/event.model';
+import { EventShortModel } from 'src/api/models/event-short.model';
 import { getWeekdayName } from 'src/common/date/date.helper';
 
 import styles from './styles.module.scss';
@@ -11,12 +11,14 @@ import ColoredButton from 'src/components/Buttons/ColoredButton';
 import Link from 'src/components/Link';
 import { redirectToEvent } from 'src/common/url/redirect-to-event-by-id';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { ArtistModel } from 'src/api/models/artist.model';
 
 type IProps = {
-  event: EventModel;
+  ticket: EventShortModel;
+  artist: ArtistModel;
 } & RouteComponentProps;
 
-const BuyTicket: React.FC<IProps> = ({ event, history }) => {
+const BuyTicket: React.FC<IProps> = ({ ticket: event, artist, history }) => {
   const getDateNumber = () => `${event.date.getDate()}/${event.date.getMonth() + 1}`;
 
   return (
@@ -31,7 +33,7 @@ const BuyTicket: React.FC<IProps> = ({ event, history }) => {
       </div>
       <div className={styles.place}>
         <Text color="black" fontSize="2rem" fontFamily="League Gothic" lineHeight={1.1875} textTransform="uppercase">
-          {event.artist.name}
+          {artist.name}
         </Text>
         <div className={styles.withIcon}>
           <PlaceIcon />

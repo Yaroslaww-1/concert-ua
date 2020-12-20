@@ -18,7 +18,7 @@ const EventsMainCarousel: React.FC<IProps> = ({ history }) => {
   const events = useSelector((state: RootState) => state.home.newEvents.state.events);
   useInitialFetch(dispatch, fetchNewEvents.request);
 
-  const navigateToEvent = (id: string) => redirectToEvent(history, id);
+  const navigateToEvent = (id: number) => redirectToEvent(history, id);
 
   const isDesktop = useIsDesktop();
 

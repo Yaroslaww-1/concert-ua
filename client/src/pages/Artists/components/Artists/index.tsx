@@ -24,7 +24,7 @@ const Artist: React.FC<IProps> = ({ artist, history }) => {
   return (
     <SquareImage
       onClick={() => isTablet && onClick()}
-      imageSrc={artist.imageUrl}
+      imageSrc={artist.mainImage.url}
       classes={{ root: styles.imageRoot }}
       frontElement={
         <div className={styles.artistName}>
@@ -36,7 +36,7 @@ const Artist: React.FC<IProps> = ({ artist, history }) => {
       hoverElement={
         <SquareImageHoverOverlay
           title={artist.name}
-          imageSrc={artist.imageUrl}
+          imageSrc={artist.mainImage.url}
           onLike={() => {}}
           bottomButtonText="About"
           onBottomButtonClick={onClick}

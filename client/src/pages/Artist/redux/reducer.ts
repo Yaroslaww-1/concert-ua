@@ -1,14 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit';
 import { ArtistModel, defaultArtist } from 'src/api/models/artist.model';
-import { EventModel } from 'src/api/models/event.model';
+import { EventShortModel } from 'src/api/models/event-short.model';
 import { createLoadingReducer } from 'src/redux/helpers/reducerCreator';
 
 import { fetchArtist, fetchTickets } from './actions';
 
 export type ArtistState = {
   artist: ArtistModel;
-  tickets: EventModel[];
+  tickets: EventShortModel[];
 };
 
 const state = createReducer<ArtistState>(

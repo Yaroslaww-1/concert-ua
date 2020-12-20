@@ -4,14 +4,13 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'src/redux/rootReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { StyleModel } from 'src/api/models/style.model';
 import { FilterState } from './redux/reducer';
 import { IArtistFilter } from 'src/api/services/artist.service';
 
-import { fetchStyles, selectNameFilter, selectStyleFilter } from './redux/actions';
-import { parseUrlParams } from 'src/common/url/params-parser';
-import { stringifyParams } from 'src/common/url/stringify-params';
+import { fetchStyles } from './redux/actions';
 import FilterComponent from '../../components/Filter';
+import { fetchArtists } from '../ArtistsSection/redux/actions';
+import { useFilter } from 'src/common/hooks/use-filter';
 
 const filterSelector = createSelector(
   (state: RootState) => state.artists.filter.state,
@@ -20,54 +19,35 @@ const filterSelector = createSelector(
 
 const FilterContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const {
-    nameFilter: { name },
-    styleFilter: { availableStyles, selectedStyles },
-  } = useSelector(filterSelector);
+  const { availableStyles } = useSelector(filterSelector);
+
+  const parseFilterUrlParams = (parsedFilterFromUrl: IArtistFilter): IArtistFilter => {
+    return {
+      stylesIds: ([] as number[]).concat(parsedFilterFromUrl.stylesIds || []),
+      name: parsedFilterFromUrl.name,
+    };
+  };
+
+  const { filter, updateFilterUrlParam } = useFilter<IArtistFilter>({
+    fetchItems: () => {
+      dispatch(fetchArtists.request());
+    },
+    parseFilter: parseFilterUrlParams,
+  });
 
   React.useEffect(() => {
     dispatch(fetchStyles.request());
   }, []);
 
-  React.useEffect(() => {
-    if (availableStyles.length > 0) {
-      const { stylesIds, name } = parseFilterUrlParams();
-      if (stylesIds) dispatch(selectStyleFilter(availableStyles.filter((style) => stylesIds.includes(style.id))));
-      if (name) dispatch(selectNameFilter(name));
-    }
-  }, [availableStyles]);
-
-  const onStyleSelect = (styles: StyleModel[]) => {
-    updateFilterUrlParams({ ...parseFilterUrlParams(), stylesIds: styles.map((style) => style.id) });
-  };
-
-  const onNameSelect = (name: string) => {
-    updateFilterUrlParams({ ...parseFilterUrlParams(), name });
-  };
-
-  const parseFilterUrlParams = (urlParams = window.location.search): IArtistFilter => {
-    const parsedParams = parseUrlParams<{
-      name?: string;
-      stylesIds?: string[];
-    }>(urlParams);
-    return {
-      stylesIds: parsedParams.stylesIds,
-      name: parsedParams.name,
-    };
-  };
-
-  const updateFilterUrlParams = (filter: IArtistFilter) => {
-    const newUrlParams = stringifyParams(filter);
-    window.location.search = newUrlParams;
-  };
+  const { stylesIds = [], name = '' } = filter;
 
   return (
     <FilterComponent
       availableStyles={availableStyles}
-      selectedStyles={selectedStyles}
-      onStyleSelect={onStyleSelect}
+      selectedStyles={availableStyles.filter((style) => stylesIds.includes(style.id))}
+      onStyleSelect={(styles) => updateFilterUrlParam('stylesIds')(styles.map((style) => style.id))}
       selectedName={name}
-      onNameSelect={onNameSelect}
+      onNameSelect={updateFilterUrlParam('name')}
     />
   );
 };

@@ -10,7 +10,7 @@ import Text from 'src/components/Text';
 interface IProps {
   cities: CityModel[];
   anchorEl: HTMLDivElement | SVGSVGElement | null;
-  onSelect: (id: string) => void;
+  onSelect: (id: number) => void;
 }
 
 const CitiesDialog: React.FC<IProps> = ({ cities, onSelect: propsOnSelect, anchorEl: rootElement }): JSX.Element => {
@@ -24,7 +24,7 @@ const CitiesDialog: React.FC<IProps> = ({ cities, onSelect: propsOnSelect, ancho
     }
   }, [rootElement]);
 
-  const onClose = (id: string | null) => {
+  const onClose = (id: number | null) => {
     if (id) {
       propsOnSelect(id);
     }

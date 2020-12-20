@@ -1,11 +1,10 @@
 import React from 'react';
-import { DateModel } from 'src/api/models/date.model';
-
 import { Menu, MenuItem } from '@material-ui/core';
 import styles from './styles.module.scss';
+import Text from 'src/components/Text';
 
 interface IProps {
-  dates: DateModel[];
+  dates: string[];
   anchorEl: HTMLElement | null;
   onSelect: (id: string) => void;
 }
@@ -38,8 +37,10 @@ const DatesMenu: React.FC<IProps> = ({ dates, anchorEl: rootElement, onSelect: p
       classes={{ paper: styles.menuRoot, list: styles.menuList }}
     >
       {dates.map((date) => (
-        <MenuItem onClick={() => onClose(date.id)} key={date.id} classes={{ root: styles.menuItemRoot }}>
-          {date.date}
+        <MenuItem onClick={() => onClose(date)} key={date} classes={{ root: styles.menuItemRoot }}>
+          <Text color="black" fontSize="2.375rem" lineHeight={1} textTransform="uppercase" fontFamily="League Gothic">
+            {date}
+          </Text>
         </MenuItem>
       ))}
     </Menu>

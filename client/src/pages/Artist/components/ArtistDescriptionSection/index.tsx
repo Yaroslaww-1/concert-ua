@@ -7,13 +7,13 @@ import { useScroll } from 'src/common/hooks/use-scroll';
 import WysiwygText from 'src/components/WysiwygText';
 import Section from 'src/components/Sections/Section';
 import DescriptionHeader from 'src/components/DescriptionHeader';
-import { EventModel } from 'src/api/models/event.model';
+import { EventShortModel } from 'src/api/models/event-short.model';
 import BuyTicket from '../BuyTicket';
 import ArtistGallery from '../Gallery';
 
 interface IProps {
   artist: ArtistModel;
-  tickets: EventModel[];
+  tickets: EventShortModel[];
 }
 
 const EventDescriptionSection: React.FC<IProps> = ({ artist, tickets }) => {
@@ -69,7 +69,7 @@ const EventDescriptionSection: React.FC<IProps> = ({ artist, tickets }) => {
             Dates
           </Text>
           {tickets.map((ticket) => (
-            <BuyTicket key={ticket.id} event={ticket} />
+            <BuyTicket key={ticket.id} ticket={ticket} artist={artist} />
           ))}
         </div>
       </Section>

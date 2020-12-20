@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Routes } from 'src/common/enum/routes';
 
-import { DateModel } from 'src/api/models/date.model';
 import { UserModel } from 'src/api/models/user.model';
 
 import styles from './styles.module.scss';
@@ -14,11 +13,11 @@ import CitiesDialog from '../CitiesDialog';
 import { CityModel } from 'src/api/models/city.model';
 
 interface IProps {
-  dates: DateModel[];
+  dates: string[];
   user: UserModel;
   cities: CityModel[];
   onDateSelect: (dateId: string) => void;
-  onCitySelect: (cityId: string) => void;
+  onCitySelect: (cityId: number) => void;
 }
 
 const DesktopNavbar: React.FC<IProps> = ({ dates, user, cities, onDateSelect, onCitySelect }) => {

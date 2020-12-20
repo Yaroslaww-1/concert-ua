@@ -13,7 +13,7 @@ const ArtistGallery: React.FC<IProps> = ({ artist }) => {
   return (
     <div className={styles.root}>
       <Carousel
-        items={artist.galleryImagesUrls.map((url) => ({ url }))}
+        items={artist.galleryImages.map(({ url }) => ({ url }))}
         withDots={false}
         withArrowShadow={false}
         classes={{ nextArrow: styles.nextArrow, prevArrow: styles.prevArrow }}

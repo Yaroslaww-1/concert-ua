@@ -10,13 +10,15 @@
 .menuList {
   background-color: $colorWhite;
   color: $colorBlack;
+  padding: 15px !important;
 }
 
 .menuItemRoot {
-  font-size: $mediumLarge !important;
-  font-weight: 700;
+  margin: 10px 0px 15px 0px !important;
 
-  &:hover {
-    color: $colorRed;
+  * {
+    &:hover {
+      color: $colorRed !important;
+    }
   }
 }
