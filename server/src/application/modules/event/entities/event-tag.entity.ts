@@ -1,6 +1,5 @@
 import { IEntity } from '@application/common/types/entity.type';
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { EventEntity } from './event.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'event_tags' })
 export class EventTagEntity implements IEntity {
@@ -9,10 +8,4 @@ export class EventTagEntity implements IEntity {
 
   @Column({ length: 100 })
   name: string;
-
-  @ManyToMany(
-    () => EventEntity,
-    event => event.tags,
-  )
-  event: EventTagEntity[];
 }

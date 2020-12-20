@@ -3,13 +3,8 @@ import { IRepository } from '@application/common/types/repository.type';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { FilterEventDto } from '../dtos/filter-event.dto';
 import { EventEntity } from '../entities/event.entity';
-
-export interface IEventFilter {
-  name?: string;
-  offset?: number;
-  limit?: number;
-}
 
 @Injectable()
 export class EventRepository extends BaseRepository<EventEntity> implements IRepository<EventEntity> {
@@ -30,10 +25,19 @@ export class EventRepository extends BaseRepository<EventEntity> implements IRep
       .groupBy('events.id, artist.id, place.id, artist.mainImage.id, tags.id');
   }
 
-  async findAll(filter: IEventFilter = {}): Promise<EventEntity[]> {
-    const { name = '', offset = 0, limit = 8 } = filter;
-    const events = await this.getCommonQuery()
-      .where('events.name ILIKE :name', { name: `%${name}` })
+  async findAll(filter: FilterEventDto = {}): Promise<EventEntity[]> {
+    const { stylesIds, placesIds, date, offset = 0, limit = 8 } = filter;
+    const query = this.getCommonQuery();
+    if (stylesIds) {
+      query.leftJoin('events.styles', 'styles').andWhere('styles.id IN (:...stylesIds)', { stylesIds });
+    }
+    if (placesIds) {
+      query.andWhere('place.id IN (:...placesIds)', { placesIds });
+    }
+    if (date) {
+      query.andWhere('events.date BETWEEN (:from) AND (:to)', { from: date.from, to: date.to });
+    }
+    const events = await query
       .offset(offset)
       .take(limit)
       .getMany();

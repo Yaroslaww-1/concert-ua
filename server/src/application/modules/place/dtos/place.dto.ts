@@ -1,36 +1,22 @@
 import { CityDto } from '@application/modules/city/dtos/city.dto';
-import { ApiProperty } from '@nestjs/swagger';
+import { Expose } from 'class-transformer';
+import { IsNumber, IsString, ValidateNested } from 'class-validator';
 
+@Expose()
 export class PlaceDto {
-  @ApiProperty({
-    description: 'id of place',
-    minimum: 0,
-    type: Number,
-  })
+  @IsNumber()
   readonly id: number;
 
-  @ApiProperty({
-    description: 'name of place',
-    type: String,
-  })
+  @IsString()
   readonly name: string;
 
-  @ApiProperty({
-    description: 'address of place',
-    type: String,
-  })
+  @IsString()
   readonly address: string;
 
-  @ApiProperty({
-    description: 'city where place is located',
-    type: String,
-  })
+  @ValidateNested()
   readonly city: CityDto;
 
-  constructor({ id, name, address, city }: { id: number; name: string; address: string; city: CityDto }) {
-    this.id = id;
-    this.name = name;
-    this.address = address;
-    this.city = city;
+  constructor(props: PlaceDto) {
+    Object.assign(this, props);
   }
 }
