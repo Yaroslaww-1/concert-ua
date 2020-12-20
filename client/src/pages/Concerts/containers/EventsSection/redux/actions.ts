@@ -1,10 +1,12 @@
 import { createAsyncAction } from 'src/redux/helpers/actionCreator';
 import { EventModel } from 'src/api/models/event.model';
-import { IEventFilter } from 'src/api/services/event.service';
+import { createPaginationActions } from 'src/redux/helpers/paginationHelperCreator';
 
 const type = 'CONCERTS/EVENTS';
 
 export const fetchEvents = createAsyncAction(type, 'EVENTS', {
-  request: (filter: IEventFilter) => ({ filter }),
+  request: () => ({}),
   success: (events: EventModel[]) => ({ events }),
 });
+
+export const paginationActions = createPaginationActions(type);

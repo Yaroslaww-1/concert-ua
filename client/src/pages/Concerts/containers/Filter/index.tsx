@@ -13,7 +13,7 @@ import { FilterState } from './redux/reducer';
 import { fetchPlaces, fetchStyles } from './redux/actions';
 import { IEventFilter } from 'src/api/services/event.service';
 import { useFilter } from 'src/common/hooks/use-filter';
-import { fetchEvents } from '../EventsSection/redux/actions';
+import { fetchEvents, paginationActions } from '../EventsSection/redux/actions';
 import { addDaysToDate } from 'src/common/date/date.helper';
 
 const filterSelector = createSelector(
@@ -39,7 +39,10 @@ const FilterContainer: React.FC = () => {
   };
 
   const { filter, updateFilterUrlParam } = useFilter<IEventFilter>({
-    fetchItems: (filter) => dispatch(fetchEvents.request(filter)),
+    fetchItems: () => {
+      dispatch(fetchEvents.request());
+      dispatch(paginationActions.reset());
+    },
     parseFilter: parseFilterUrlParams,
   });
 

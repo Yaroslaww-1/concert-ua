@@ -28,16 +28,17 @@ export class EventRepository extends BaseRepository<EventEntity> implements IRep
   async findAll(filter: FilterEventDto = {}): Promise<EventEntity[]> {
     const { stylesIds, placesIds, date, offset = 0, limit = 8 } = filter;
     const query = this.getCommonQuery();
-    if (stylesIds) {
+    if (stylesIds && stylesIds.length > 0) {
       query.leftJoin('events.styles', 'styles').andWhere('styles.id IN (:...stylesIds)', { stylesIds });
     }
-    if (placesIds) {
+    if (placesIds && placesIds.length > 0) {
       query.andWhere('place.id IN (:...placesIds)', { placesIds });
     }
     if (date) {
       query.andWhere('events.date BETWEEN (:from) AND (:to)', { from: date.from, to: date.to });
     }
     const events = await query
+      .orderBy('events.date')
       .offset(offset)
       .take(limit)
       .getMany();

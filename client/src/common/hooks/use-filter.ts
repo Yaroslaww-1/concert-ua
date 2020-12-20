@@ -1,13 +1,12 @@
 import React from 'react';
-import { parseUrlParams } from 'src/common/url/qs-helper';
-import { stringifyParams } from '../url/qs-helper';
+import { parseUrlParams, updateQuerystringParams, updateQuerystringParam } from 'src/common/url/qs-helper';
 import { usePath } from './use-path';
 
 export const useFilter = <F>({
   fetchItems,
   parseFilter,
 }: {
-  fetchItems: (_filter: F) => void;
+  fetchItems: () => void;
   parseFilter: (parsedFilterFromUrl: F) => F;
 }) => {
   const parseFilterUrlParams = (urlParams: string): F => {
@@ -30,20 +29,16 @@ export const useFilter = <F>({
   }, [path]);
 
   React.useEffect(() => {
-    fetchItems(filter);
+    fetchItems();
   }, [filter]);
 
   const updateFilterUrlParams = (_filter: F) => {
-    const newUrlParams = stringifyParams(_filter);
-    window.history.replaceState(null, '', `?${newUrlParams}`);
+    updateQuerystringParams(_filter);
     onUpdateFilter();
   };
 
   const updateFilterUrlParam = (propertyName: keyof F) => (newValue: F[keyof F]) => {
-    updateFilterUrlParams({
-      ...filter,
-      [propertyName]: newValue,
-    });
+    updateQuerystringParam(propertyName as string, newValue);
     onUpdateFilter();
   };
 

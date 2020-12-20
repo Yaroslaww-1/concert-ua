@@ -27,3 +27,14 @@ export const parseUrlParams = <T>(params: string): T => {
   });
   return (parsed as unknown) as T;
 };
+
+export const updateQuerystringParams = (params: unknown) => {
+  const newUrlParams = stringifyParams(params);
+  window.history.replaceState(null, '', `?${newUrlParams}`);
+};
+
+export const updateQuerystringParam = (key: string, value: unknown) => {
+  const oldParams = parseUrlParams<Record<string, unknown>>(window.location.search);
+  const newUrlParams = stringifyParams({ ...oldParams, [key]: value });
+  window.history.replaceState(null, '', `?${newUrlParams}`);
+};
