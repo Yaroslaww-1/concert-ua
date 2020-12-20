@@ -12,8 +12,8 @@ export interface IArtistFilter {
 export class ArtistService {
   constructor() {}
   static async getArtists(filter: IArtistFilter = {}): Promise<ArtistModel[]> {
-    const artists = await api.get(endpoint);
-    return artists as ArtistModel[];
+    const artists = (await api.get<ArtistModel[]>(endpoint, filter)) as ArtistModel[];
+    return artists;
   }
 
   static async getArtistById(id: string): Promise<ArtistModel> {

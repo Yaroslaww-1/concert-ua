@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { ArtistDto } from '../dtos/artist.dto';
+import { FilterArtistDto } from '../dtos/filter-artist.dto';
 import { ArtistService } from '../services/artist.service';
 
 @Controller('artists')
@@ -9,8 +10,8 @@ export class ArtistController {
 
   @Get()
   @ApiResponse({ status: 200, description: 'artists', type: [ArtistDto] })
-  async getArtists(): Promise<ArtistDto[]> {
-    const artists = await this.artistService.findAll();
+  async getArtists(@Query() filter: FilterArtistDto): Promise<ArtistDto[]> {
+    const artists = await this.artistService.findAll(filter);
     return artists;
   }
 

@@ -1,11 +1,11 @@
-import { call, put, all, takeLatest, select } from 'redux-saga/effects';
+import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { fetchArtists } from './actions';
-import { RootState } from 'src/redux/rootReducer';
-import { ArtistService } from 'src/api/services/artist.service';
+import { ArtistService, IArtistFilter } from 'src/api/services/artist.service';
+import { parseUrlParams } from 'src/common/url/qs-helper';
 
 function* fetchArtistsSaga(action: ReturnType<typeof fetchArtists.requestPayload>) {
   try {
-    const filter = yield select((state: RootState) => state.artists.filter.state);
+    const filter = parseUrlParams<IArtistFilter>(window.location.search);
     const artists = yield call(ArtistService.getArtists, filter);
     yield put(fetchArtists.success(artists));
   } catch (error) {

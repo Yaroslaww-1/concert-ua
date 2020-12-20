@@ -3,6 +3,7 @@ import { IRepository } from '@application/common/types/repository.type';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { FilterArtistDto } from '../dtos/filter-artist.dto';
 import { ArtistEntity } from '../entities/artist.entity';
 import { ArtistImageRepository } from './artist-image.repository';
 
@@ -32,9 +33,17 @@ export class ArtistRepository extends BaseRepository<ArtistEntity> implements IR
       .groupBy('artists.id, artists.name, mainImage.id, galleryImages.id');
   }
 
-  async findAll(): Promise<ArtistEntity[]> {
-    const artists = await this.getCommonQuery().getMany();
-    return artists.map(artist => this.filterArtist(artist));
+  async findAll(filter: FilterArtistDto = {}): Promise<ArtistEntity[]> {
+    const { name, stylesIds } = filter;
+    const query = this.getCommonQuery();
+    if (stylesIds && stylesIds.length > 0) {
+      query.leftJoin('artists.styles', 'styles').andWhere('styles.id IN (:...stylesIds)', { stylesIds });
+    }
+    if (name) {
+      query.andWhere('artists.name ILIKE (:name)', { name: `%${name}%` });
+    }
+    const artists = await query.orderBy('artists.name').getMany();
+    return artists;
   }
 
   async findOne(id: number): Promise<ArtistEntity> {
