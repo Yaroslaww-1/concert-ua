@@ -11,7 +11,7 @@ import FilterStyles from 'src/components/Filter/Filters/FilterStyle';
 import FilterPopularRecent from 'src/components/Filter/Filters/FilterPopularRecent';
 import { FilterState } from './redux/reducer';
 import { fetchPlaces, fetchStyles } from './redux/actions';
-import { IEventFilter } from 'src/api/services/event.service';
+import { IEventFilter, PopularRecentFilter } from 'src/api/services/event.service';
 import { useFilter } from 'src/common/hooks/use-filter';
 import { fetchEvents, paginationActions } from '../EventsSection/redux/actions';
 import { addDaysToDate } from 'src/common/date/date.helper';
@@ -35,6 +35,7 @@ const FilterContainer: React.FC = () => {
       placesIds: ([] as number[]).concat(parsedFilterFromUrl.placesIds || []),
       offset: parsedFilterFromUrl.offset,
       limit: parsedFilterFromUrl.limit,
+      type: parsedFilterFromUrl.type,
     };
   };
 
@@ -46,16 +47,20 @@ const FilterContainer: React.FC = () => {
     parseFilter: parseFilterUrlParams,
   });
 
-  React.useEffect(() => {
-    dispatch(fetchStyles.request());
-    dispatch(fetchPlaces.request());
-  }, []);
-
   const {
     date: { from = new Date(), to = addDaysToDate(new Date(), 1000) } = {},
     stylesIds = [],
     placesIds = [],
+    type,
   } = filter;
+
+  React.useEffect(() => {
+    dispatch(fetchStyles.request());
+    dispatch(fetchPlaces.request());
+    if (!type) {
+      updateFilterUrlParam('type')(PopularRecentFilter.popular);
+    }
+  }, []);
 
   return (
     <FilterSection>
@@ -70,7 +75,11 @@ const FilterContainer: React.FC = () => {
         selectedPlaces={availablePlaces.filter((place) => placesIds.includes(place.id))}
         onSelect={(places) => updateFilterUrlParam('placesIds')(places.map((place) => place.id))}
       />
-      <FilterPopularRecent onPopularSelect={() => {}} onRecentSelect={() => {}} />
+      <FilterPopularRecent
+        preSelected={type}
+        onPopularSelect={() => updateFilterUrlParam('type')(PopularRecentFilter.popular)}
+        onRecentSelect={() => updateFilterUrlParam('type')(PopularRecentFilter.recent)}
+      />
     </FilterSection>
   );
 };

@@ -3,6 +3,11 @@ import { EventModel } from '../models/event.model';
 
 const endpoint = 'events';
 
+export enum PopularRecentFilter {
+  popular = 'popular',
+  recent = 'new',
+}
+
 export interface IEventFilter {
   date?: {
     from: Date;
@@ -12,6 +17,7 @@ export interface IEventFilter {
   stylesIds?: number[];
   offset?: number;
   limit?: number;
+  type?: PopularRecentFilter;
 }
 
 export class EventService {

@@ -2,7 +2,7 @@ import { BaseRepository } from '@application/common/base-classes/base-repository
 import { IRepository } from '@application/common/types/repository.type';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, SelectQueryBuilder } from 'typeorm';
 import { EventFilterOrderBy, FilterEventDto } from '../dtos/filter-event.dto';
 import { EventEntity } from '../entities/event.entity';
 
@@ -25,20 +25,23 @@ export class EventRepository extends BaseRepository<EventEntity> implements IRep
       .groupBy('events.id, artist.id, place.id, artist.mainImage.id, tags.id');
   }
 
-  private getOrderBy(orderBy: EventFilterOrderBy): [string, 'ASC' | 'DESC'] {
-    let order: [string, 'ASC' | 'DESC'] = ['events.date', 'ASC'];
+  private getQueryWithOrderBy(
+    query: SelectQueryBuilder<EventEntity>,
+    orderBy: EventFilterOrderBy,
+  ): SelectQueryBuilder<EventEntity> {
     if (orderBy.date) {
-      order = ['events.date', orderBy.date];
+      query = query.addOrderBy('events.date', orderBy.date);
     }
     if (orderBy.popularity) {
-      order = ['events.hot', orderBy.popularity];
+      query = query.addOrderBy('events.hot', orderBy.popularity);
     }
-    return order;
+    query = query.addOrderBy('events.id', 'ASC');
+    return query;
   }
 
   async findAll(filter: FilterEventDto = {}): Promise<EventEntity[]> {
     const { stylesIds, placesIds, date, offset = 0, limit = 8, orderBy = {} } = filter;
-    const query = this.getCommonQuery();
+    let query = this.getCommonQuery();
     if (stylesIds && stylesIds.length > 0) {
       query.leftJoin('events.styles', 'styles').andWhere('styles.id IN (:...stylesIds)', { stylesIds });
     }
@@ -48,8 +51,8 @@ export class EventRepository extends BaseRepository<EventEntity> implements IRep
     if (date) {
       query.andWhere('events.date BETWEEN (:from) AND (:to)', { from: date.from, to: date.to });
     }
+    query = this.getQueryWithOrderBy(query, orderBy);
     const events = await query
-      .orderBy(...this.getOrderBy(orderBy))
       .offset(offset)
       .take(limit)
       .getMany();
