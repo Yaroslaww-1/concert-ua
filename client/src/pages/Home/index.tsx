@@ -15,7 +15,6 @@ const HomePage: React.FC = () => {
       <EventsSecondaryCarousel />
       <NewEventsSection />
       <PopularEventsSection />
-      <NewEventsSection />
       <SubscribeContainer />
       <Footer />
     </PageComponent>

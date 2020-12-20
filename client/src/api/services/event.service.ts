@@ -28,13 +28,13 @@ export class EventService {
     return events.map(EventService.transformEvent);
   }
 
-  static async getNewEvents(): Promise<EventModel[]> {
-    const events = (await api.get<EventModel[]>(`${endpoint}/new`)) as EventModel[];
+  static async getNewEvents(filter: IEventFilter = { offset: 0, limit: 8 }): Promise<EventModel[]> {
+    const events = (await api.get<EventModel[]>(`${endpoint}/new`, filter)) as EventModel[];
     return events.map(EventService.transformEvent);
   }
 
-  static async getPopularEvents(): Promise<EventModel[]> {
-    const events = (await api.get<EventModel[]>(`${endpoint}/popular`)) as EventModel[];
+  static async getPopularEvents(filter: IEventFilter = { offset: 0, limit: 8 }): Promise<EventModel[]> {
+    const events = (await api.get<EventModel[]>(`${endpoint}/popular`, filter)) as EventModel[];
     return events.map(EventService.transformEvent);
   }
 

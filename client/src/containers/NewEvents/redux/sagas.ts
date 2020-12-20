@@ -1,6 +1,7 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { EventService } from 'src/api/services/event.service';
-import { fetchNewEvents } from './actions';
+import { createPaginationSagas } from 'src/redux/helpers/paginationHelperCreator';
+import { fetchNewEvents, paginationActions } from './actions';
 
 function* fetchNewEventsSaga(action: ReturnType<typeof fetchNewEvents.requestPayload>) {
   try {
@@ -15,6 +16,13 @@ function* watchFetchNewEvents() {
   yield takeLatest(fetchNewEvents.types.request, fetchNewEventsSaga);
 }
 
+const { watchPagination } = createPaginationSagas({
+  loadMoreAction: paginationActions.loadMore,
+  getCurrentPaginationState: (state) => state.home.newEvents.pagination,
+  fetchItems: (paginationFilter) => EventService.getNewEvents(paginationFilter),
+  fetchItemsAction: fetchNewEvents,
+});
+
 export default function* fetchNewEventsSagas() {
-  yield all([watchFetchNewEvents()]);
+  yield all([watchFetchNewEvents(), watchPagination()]);
 }
