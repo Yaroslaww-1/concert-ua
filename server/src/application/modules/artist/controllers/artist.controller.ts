@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { ArtistDto } from '../dtos/artist.dto';
-import { CreateArtistDto } from '../dtos/create-artist.dto';
 import { ArtistService } from '../services/artist.service';
 
 @Controller('artists')
@@ -20,11 +19,5 @@ export class ArtistController {
   async getArtist(@Param('id', new ParseIntPipe()) id: number): Promise<ArtistDto> {
     const artist = await this.artistService.findOne(id);
     return artist;
-  }
-
-  @Post()
-  async createArtist(@Body() artist: CreateArtistDto): Promise<ArtistDto> {
-    const newArtist = await this.artistService.save(artist);
-    return newArtist;
   }
 }

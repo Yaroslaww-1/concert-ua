@@ -1,55 +1,27 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsNumber, IsString, ValidateNested } from 'class-validator';
 import { ArtistImageDto } from './artist-image.dto';
 
 export class ArtistDto {
-  @ApiProperty({
-    description: 'id of artist',
-    minimum: 0,
-    type: Number,
-  })
+  @IsNumber()
   readonly id: number;
 
-  @ApiProperty({
-    description: 'name of artist',
-    type: String,
-  })
+  @IsString()
   readonly name: string;
 
-  @ApiProperty({
-    description: 'description of artist in HTML form',
-    type: String,
-  })
+  @IsString()
   readonly descriptionHTML: string;
 
-  @ApiProperty({
-    description: 'main artist image (preview)',
-    type: String,
-  })
+  @ValidateNested()
+  @Type(() => ArtistImageDto)
   readonly mainImage: ArtistImageDto;
 
-  @ApiProperty({
-    description: 'other artist images (gallery)',
-    type: String,
-  })
+  @ValidateNested()
+  @Type(() => ArtistImageDto)
   readonly galleryImages: ArtistImageDto[];
 
-  constructor({
-    id,
-    name,
-    descriptionHTML,
-    mainImage,
-    galleryImages,
-  }: {
-    id: number;
-    name: string;
-    descriptionHTML: string;
-    mainImage: ArtistImageDto;
-    galleryImages: ArtistImageDto[];
-  }) {
-    this.id = id;
-    this.name = name;
-    this.descriptionHTML = descriptionHTML;
-    this.mainImage = mainImage;
-    this.galleryImages = galleryImages;
+  constructor(props: ArtistDto) {
+    Object.assign(this, props);
   }
 }

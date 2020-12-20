@@ -3,13 +3,11 @@ import { IRepository } from '@application/common/types/repository.type';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateArtistDto } from '../dtos/create-artist.dto';
 import { ArtistEntity } from '../entities/artist.entity';
 import { ArtistImageRepository } from './artist-image.repository';
 
 @Injectable()
-export class ArtistRepository extends BaseRepository<ArtistEntity, CreateArtistDto>
-  implements IRepository<ArtistEntity, CreateArtistDto> {
+export class ArtistRepository extends BaseRepository<ArtistEntity> implements IRepository<ArtistEntity> {
   constructor(
     @InjectRepository(ArtistEntity)
     private readonly artistRepository: Repository<ArtistEntity>,
@@ -44,14 +42,5 @@ export class ArtistRepository extends BaseRepository<ArtistEntity, CreateArtistD
       .where('artists.id = :id', { id })
       .getOne();
     return this.filterArtist(artist);
-  }
-
-  async save(artist: CreateArtistDto): Promise<ArtistEntity> {
-    const mainImage = await this.artistImageRepository.save(artist.mainImage);
-    const galleryImages = await Promise.all(artist.galleryImages.map(image => this.artistImageRepository.save(image)));
-    const newArtist = await this.artistRepository.save(
-      this.artistRepository.create({ ...artist, mainImage, galleryImages }),
-    );
-    return newArtist;
   }
 }

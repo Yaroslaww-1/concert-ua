@@ -1,21 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsNumber, IsString } from 'class-validator';
 
 export class ArtistImageDto {
-  @ApiProperty({
-    description: 'id of artist image',
-    minimum: 0,
-    type: Number,
-  })
+  @IsNumber()
   readonly id: number;
 
-  @ApiProperty({
-    description: 'url of artist image',
-    type: String,
-  })
+  @IsString()
   readonly url: string;
 
-  constructor({ id, url }: { id: number; url: string }) {
-    this.id = id;
-    this.url = url;
+  constructor(props: ArtistImageDto) {
+    Object.assign(this, props);
   }
 }
