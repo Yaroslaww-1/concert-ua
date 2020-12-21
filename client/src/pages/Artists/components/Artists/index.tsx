@@ -28,7 +28,7 @@ const Artist: React.FC<IProps> = ({ artist, history }) => {
       classes={{ root: styles.imageRoot }}
       frontElement={
         <div className={styles.artistName}>
-          <Text fontSize={artistNameFontSize} textTransform="uppercase" fontFamily="League Gothic">
+          <Text fontSize={artistNameFontSize} textTransform="uppercase" fontFamily="League Gothic" lineHeight={1}>
             {artist.name}
           </Text>
         </div>

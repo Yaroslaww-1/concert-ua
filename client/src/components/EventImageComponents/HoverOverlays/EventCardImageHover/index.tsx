@@ -32,7 +32,7 @@ const EventCardImageHoverOverlay: React.FC<IProps> = ({ event: { imageUrl, name,
           </Text>
         </div>
         <div className={styles.title}>
-          <Text fontSize={'2vw'} fontWeight={600} textTransform={'uppercase'} lineHeight={1}>
+          <Text fontSize={'2rem'} fontWeight={600} textTransform={'uppercase'} lineHeight={1} wordBreak="break-word">
             {name}
           </Text>
         </div>

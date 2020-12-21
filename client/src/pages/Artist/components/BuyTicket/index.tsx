@@ -51,7 +51,7 @@ const BuyTicket: React.FC<IProps> = ({ ticket: event, artist, history }) => {
             lineHeight={1.1875}
             textTransform="capitalize"
           >
-            {event.price}
+            {event.price} UAN
           </Text>
         </div>
       </div>

@@ -29,7 +29,7 @@ const ArtistHoverOverlay: React.FC<IProps> = ({
     <div className={styles.root} style={hoverStyle} {...hoverProps}>
       <div className={styles.innerRoot}>
         <div className={styles.title}>
-          <Text fontSize="5.625rem" textTransform={'uppercase'} fontFamily="League Gothic">
+          <Text fontSize="4.625rem" textTransform={'uppercase'} fontFamily="League Gothic" wordBreak="break-word">
             {name}
           </Text>
         </div>

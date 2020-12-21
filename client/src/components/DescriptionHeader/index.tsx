@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import Text from 'src/components/Text';
+import { useScroll } from 'src/common/hooks/use-scroll';
 
 interface IProps {
   links: {
@@ -11,8 +12,14 @@ interface IProps {
 }
 
 const DescriptionHeader: React.FC<IProps> = ({ links }) => {
+  const [scrollToTop, elementRef] = useScroll();
+
+  React.useEffect(() => {
+    scrollToTop();
+  }, [links]);
+
   return (
-    <div className={styles.navbarRoot}>
+    <div className={styles.navbarRoot} ref={elementRef}>
       <div className={styles.navbarContent}>
         {links.map((link) => (
           <Text

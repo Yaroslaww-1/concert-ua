@@ -47,7 +47,7 @@ const FilterItem = <P extends object>({ icon, text, onSelect, renderPopoverConte
           horizontal: 'left',
         }}
         classes={{
-          paper: styles.popoverRoot,
+          paper: styles.popoverPaper,
         }}
         transitionDuration={0}
       >

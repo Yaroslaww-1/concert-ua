@@ -39,12 +39,13 @@ const EventCard: React.FC<IProps> = ({ event, classes, history }) => {
         </div>
         <div className={styles.name}>
           <Text
-            fontSize="3rem"
+            fontSize="2rem"
             textAlign="left"
             lineHeight={1}
             textTransform="uppercase"
             color="black"
             fontFamily="League Gothic"
+            wordBreak={'break-word'}
           >
             {name}
           </Text>
@@ -56,7 +57,7 @@ const EventCard: React.FC<IProps> = ({ event, classes, history }) => {
         </div>
         <div className={styles.price}>
           <Text fontSize="1.25rem" textAlign="left" fontWeight={900} color="black">
-            {price}
+            {price} UAN
           </Text>
         </div>
       </div>
