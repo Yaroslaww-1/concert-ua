@@ -58,7 +58,7 @@ const BuyTicket: React.FC<IProps> = ({ event: { date, place, price, promoter, ho
         <div className={styles.price}>
           <LocalOfferIcon />
           <Text color="black" fontWeight={800}>
-            {price}
+            {price} UAN
           </Text>
         </div>
         {hot && (

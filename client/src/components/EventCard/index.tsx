@@ -39,7 +39,7 @@ const EventCard: React.FC<IProps> = ({ event, classes, history }) => {
         </div>
         <div className={styles.name}>
           <Text
-            fontSize="2.5vw"
+            fontSize="2rem"
             textAlign="left"
             lineHeight={1}
             textTransform="uppercase"
