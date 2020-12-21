@@ -76,6 +76,11 @@ export const formatDateToDayFullMonth = (date: Date, delimiter = '-') => {
   return formatDate(date, options, delimiter);
 };
 
+export const formatDateToMonthYear = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = { month: 'long', year: 'numeric' };
+  return formatDate(date, options, ' ');
+};
+
 export const getTime = (date: Date) => `${date.getHours()}:${date.getMinutes()}`;
 
 export const getWeekdayName = (date: Date) => date.toLocaleDateString('en-US', { weekday: 'long' });

@@ -14,7 +14,7 @@ import {
   subtractMonthsFromDate,
   getFirstDateOfMonth,
   getLastDateOfMonth,
-  formatDateToDayMonthYear,
+  formatDateToMonthYear,
 } from 'src/common/date/date.helper';
 import BorderlessTransparentButton from 'src/components/Buttons/BorderlessTransparentButton';
 
@@ -67,7 +67,7 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
     return dayStyles.currentMonth;
   };
 
-  const getDateString = (date: Date) => formatDateToDayMonthYear(date, '.');
+  const getDateString = (date: Date) => formatDateToMonthYear(date);
 
   const onSubmitSelect = () => {
     onSelect({ from: startDate, to: endDate ? endDate : startDate });
@@ -81,13 +81,13 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
           text="Tomorrow"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => onChange(addDaysToDate(startDate, 1))}
+          onClick={() => onChange([addDaysToDate(new Date(), 1), addDaysToDate(new Date(), 1)])}
         />
         <ColoredButton
           text="Next week"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => onChange([addDaysToDate(startDate, 1), addDaysToDate(startDate, 8)])}
+          onClick={() => onChange([addDaysToDate(new Date(), 1), addDaysToDate(new Date(), 8)])}
         />
         <ColoredButton
           text="Next month"
@@ -95,8 +95,8 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
           onClick={() =>
             onChange([
-              getFirstDateOfMonth(addMonthsToDate(startDate, 1)),
-              getLastDateOfMonth(addMonthsToDate(startDate, 1)),
+              getFirstDateOfMonth(addMonthsToDate(new Date(), 1)),
+              getLastDateOfMonth(addMonthsToDate(new Date(), 1)),
             ])
           }
         />
@@ -104,7 +104,9 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
           text="All dates"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => onChange([getFirstDateOfMonth(startDate), getLastDateOfMonth(addMonthsToDate(startDate, 12))])}
+          onClick={() =>
+            onChange([getFirstDateOfMonth(new Date()), getLastDateOfMonth(addMonthsToDate(new Date(), 12))])
+          }
         />
       </div>
       <ReactDatePicker
