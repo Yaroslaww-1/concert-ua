@@ -1,14 +1,33 @@
 @import 'src/styles/variables';
 
 .root {
-  max-height: 600px;
+  max-height: 900px;
   width: 400px;
+  max-width: 400px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   color: $colorBlack;
   margin: 20px 40px 20px 40px;
+
+  @media (max-width: $desktopBreakpoint) {
+    overflow-x: scroll;
+    height: 600px;
+
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $colorLightGray;
+    }
+  }
+
+  @media (max-height: 900px) {
+    overflow-x: scroll;
+    height: 400px;
+  }
 }
 
 .confirmingButtons {

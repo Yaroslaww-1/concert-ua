@@ -35,7 +35,9 @@ const Artist: React.FC<IProps & RouteComponentProps & ForwarderRefProps<HTMLDivE
             textTransform="uppercase"
             fontSize="5.625rem"
             fontFamily="League Gothic"
+            wordBreak="break-word"
             classes={{ root: styles.artistName }}
+            lineHeight={1}
           >
             {artist.name}
           </Text>

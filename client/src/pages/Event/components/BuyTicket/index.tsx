@@ -41,24 +41,24 @@ const BuyTicket: React.FC<IProps> = ({ event: { date, place, price, promoter, ho
         <div className={styles.place}>
           <PlaceIcon />
           <div className={styles.placeText}>
-            <Text color="black" lineHeight={1} textTransform="capitalize">
+            <Text color="black" lineHeight={1} textTransform="capitalize" textAlign="left">
               {place.name}
             </Text>
-            <Text color="black" lineHeight={1} textTransform="capitalize">
+            <Text color="black" lineHeight={1} textTransform="capitalize" textAlign="left">
               {place.address}
             </Text>
           </div>
         </div>
         <div className={styles.promoter}>
           <PersonIcon />
-          <Text color="black" textTransform="capitalize">
+          <Text color="black" textTransform="capitalize" textAlign="left">
             {promoter}
           </Text>
         </div>
         <div className={styles.price}>
           <LocalOfferIcon />
           <Text color="black" fontWeight={800}>
-            {price}
+            {price} UAN
           </Text>
         </div>
         {hot && (
