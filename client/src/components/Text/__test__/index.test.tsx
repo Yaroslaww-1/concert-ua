@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import TextComponent from '../index';
 
 describe('TextComponent', () => {
@@ -16,19 +16,13 @@ describe('TextComponent', () => {
     expect(element).not.toBeNull();
     expect(element!.innerHTML).toBe(text);
   });
-});
 
-// test('Link changes the class when hovered', () => {
-//   // let tree = component.toJSON();
-//   // expect(tree).toMatchSnapshot();
-//   // // manually trigger the callback
-//   // tree.props.onMouseEnter();
-//   // // re-rendering
-//   // tree = component.toJSON();
-//   // expect(tree).toMatchSnapshot();
-//   // // manually trigger the callback
-//   // tree.props.onMouseLeave();
-//   // // re-rendering
-//   // tree = component.toJSON();
-//   // expect(tree).toMatchSnapshot();
-// });
+  it('should call onClick when clicked', () => {
+    const onClick = jest.fn(() => {});
+    const { container } = render(<TextComponent onClick={onClick}>Text</TextComponent>);
+    const element = container.getElementsByTagName('div').item(0)!;
+    fireEvent.click(element, onClick);
+    expect(onClick).toBeCalled();
+    expect(onClick).toBeCalledTimes(1);
+  });
+});
