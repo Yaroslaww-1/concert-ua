@@ -10,7 +10,7 @@ import {
   addDaysToDate,
   addMonthsToDate,
   isDateEqual,
-  isDateLess,
+  isDateLessOrEqual,
   subtractMonthsFromDate,
   getFirstDateOfMonth,
   getLastDateOfMonth,
@@ -51,7 +51,8 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
       if (isDateEqual(startDate, date)) return dayStyles.selected;
       else return dayStyles.unselected;
     }
-    if (isDateLess(startDate, date) && isDateLess(date, endDate)) {
+    if (isDateEqual(startDate, date) || isDateEqual(endDate, date)) return dayStyles.selected;
+    if (isDateLessOrEqual(startDate, date) && isDateLessOrEqual(date, endDate)) {
       return dayStyles.selected;
     }
     return dayStyles.unselected;
@@ -87,7 +88,10 @@ const DatePickerComponent: React.FC<IProps> = ({ from, to, onClose, onSelect }) 
           text="Next week"
           variant="gray"
           classes={{ root: styles.button, text: { fontSize: '0.75rem', fontWeight: 600, textTransform: 'capitalize' } }}
-          onClick={() => onChange([addDaysToDate(new Date(), 1), addDaysToDate(new Date(), 8)])}
+          onClick={() => {
+            console.log([addDaysToDate(new Date(), 1), addDaysToDate(new Date(), 8)]);
+            onChange([addDaysToDate(new Date(), 1), addDaysToDate(new Date(), 8)]);
+          }}
         />
         <ColoredButton
           text="Next month"
