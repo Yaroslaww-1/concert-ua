@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextComponent should match snapshot 1`] = `
+<div
+  class="root "
+>
+  <div
+    class="MuiFormControl-root MuiTextField-root textFieldRoot "
+  >
+    <div
+      class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+    >
+      <input
+        aria-invalid="false"
+        class="MuiInputBase-input MuiOutlinedInput-input"
+        id="id"
+        placeholder="label"
+        type="text"
+        value=""
+      />
+      <fieldset
+        aria-hidden="true"
+        class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        style="padding-left: 8px;"
+      >
+        <legend
+          class="PrivateNotchedOutline-legend-2"
+          style="width: 0.01px;"
+        >
+          <span>
+            ​
+          </span>
+        </legend>
+      </fieldset>
+    </div>
+    
+  </div>
+</div>
+`;
