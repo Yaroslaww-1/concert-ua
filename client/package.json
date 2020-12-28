@@ -1,6 +1,5 @@
 {
   "name": "client",
-  "homepage": "http://yaroslaww-1.github.io/concert-ua",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,13 +10,14 @@
     "@material-ui/system": "^4.9.14",
     "@reduxjs/toolkit": "^1.4.0",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
     "@types/history": "^4.7.8",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-test-renderer": "^17.0.0",
     "axios": "^0.20.0",
     "node-sass": "^4.14.1",
     "node-vibrant": "^3.1.4",
@@ -74,7 +74,8 @@
     "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "react-test-renderer": "^17.0.1"
   },
   "husky": {
     "hooks": {
