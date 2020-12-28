@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextComponent should match snapshot 1`] = `
+<div
+  class="root "
+  style="font-size: 1rem; text-transform: none; line-height: 1.4; word-break: break-word; text-align: center; font-weight: 400; letter-spacing: normal; font-family: Roboto;"
+>
+  Test text
+</div>
+`;
