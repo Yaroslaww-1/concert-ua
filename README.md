@@ -37,3 +37,10 @@ Here you can see installation algorithm for the project.
 4. ```npm run migration:run```
 5. ```npm run seed:run```
 6. ```npm run start:dev```
+
+#### Docker
+1. ```docker-compose up --build```
+2. stop container
+3. ```docker-compose run backend npm run migration:run```
+4. ```docker-compose run backend npm run seed:run```
+5. ```docker-compose up```
