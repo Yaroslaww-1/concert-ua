@@ -16,7 +16,7 @@ const ArtistGallery: React.FC<IProps> = ({ artist }) => {
         items={artist.galleryImages.map(({ url }) => ({ url }))}
         withDots={false}
         withArrowShadow={false}
-        classes={{ nextArrow: styles.nextArrow, prevArrow: styles.prevArrow }}
+        classes={{ image: styles.image, nextArrow: styles.nextArrow, prevArrow: styles.prevArrow }}
       />
     </div>
   );

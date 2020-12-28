@@ -61,7 +61,13 @@ const CheckboxList = <T extends IItem>({
             />
           }
           label={
-            <Text textTransform="capitalize" color="black" classes={{ root: styles.styleNameText }} lineHeight={1.3}>
+            <Text
+              textTransform="capitalize"
+              color="black"
+              classes={{ root: styles.styleNameText }}
+              lineHeight={1.3}
+              textAlign="left"
+            >
               {item.name}
             </Text>
           }

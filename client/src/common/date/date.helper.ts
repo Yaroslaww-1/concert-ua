@@ -30,12 +30,8 @@ export const isDateEqual = (date1: Date, date2: Date) => {
   );
 };
 
-export const isDateLess = (date: Date, compareTo: Date) => {
-  return (
-    date.getDate() <= compareTo.getDate() &&
-    date.getMonth() <= compareTo.getMonth() &&
-    date.getFullYear() <= compareTo.getFullYear()
-  );
+export const isDateLessOrEqual = (date: Date, compareTo: Date) => {
+  return date <= compareTo;
 };
 
 export const getFirstDateOfMonth = (date: Date) => {

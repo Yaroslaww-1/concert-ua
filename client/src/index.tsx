@@ -10,6 +10,8 @@ import store from 'src/redux/store';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from 'src/assets/theme/theme';
 
+console.log('RENDER');
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
