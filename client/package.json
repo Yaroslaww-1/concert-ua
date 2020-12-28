@@ -1,6 +1,5 @@
 {
   "name": "client",
-  "homepage": "http://yaroslaww-1.github.io/concert-ua",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

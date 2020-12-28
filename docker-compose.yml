@@ -1,0 +1,53 @@
+version: '3.6'
+
+services:
+  db:
+    container_name: musicua_db
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1
+      - POSTGRES_DB=musicua
+    volumes:
+      - postgres:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    networks:
+      - musicua_network
+    restart: always
+
+
+  backend:
+    container_name: musicua_backend
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports: 
+      - "5001:5001"
+    depends_on: 
+      - 'db'
+    env_file:
+      - server/.env
+    environment:
+      - DATABASE_HOST=db
+    networks: 
+      - musicua_network
+    restart: always
+
+  
+  client:
+    container_name: musicua_client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    env_file:
+      - client/.env
+
+networks:
+  musicua_network:
+    driver: bridge
+
+volumes:
+  postgres:
