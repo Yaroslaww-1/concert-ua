@@ -44,3 +44,7 @@ Here you can see installation algorithm for the project.
 3. ```docker-compose run backend npm run migration:run```
 4. ```docker-compose run backend npm run seed:run```
 5. ```docker-compose up```
+
+## Deployment
+1. http://159.89.16.206/
+2. Deployed version is located on feature/deployment
