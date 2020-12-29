@@ -20,6 +20,8 @@ export class ServerApplication {
       bodyParser: true,
     });
 
+    console.log(ServerApplicationConfig);
+
     app.enableCors({
       origin: ServerApplicationConfig.appClientUrl,
       optionsSuccessStatus: 200,
